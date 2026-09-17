@@ -154,6 +154,23 @@
       transition: transform var(--motion-base) var(--motion-spring);
     }
     .team-member-card:hover > div:first-child { transform: rotate(-4deg) scale(1.06); }
+    .team-profile-card {
+      transition: transform var(--motion-base) var(--motion-spring), border-color var(--motion-fast) ease, box-shadow var(--motion-base) var(--motion-spring);
+    }
+    .team-profile-card:hover {
+      transform: translateY(-3px);
+      border-color: #94A3B8;
+      box-shadow: 0 18px 34px -26px rgba(15, 23, 42, 0.5);
+    }
+    .team-profile-photo {
+      transition: transform var(--motion-base) var(--motion-spring);
+    }
+    .team-profile-card:hover .team-profile-photo { transform: scale(1.06); }
+    .team-profile-card { scroll-margin-top: 6.5rem; }
+    .team-profile-avatar { width: 4.5rem; height: 4.5rem; }
+    @media (min-width: 640px) {
+      .team-profile-avatar { width: 5.5rem; height: 5.5rem; }
+    }
     .direct-contact-link .direct-contact-value {
       transition: transform var(--motion-base) var(--motion-spring), color var(--motion-fast) ease;
     }
@@ -866,7 +883,7 @@
       .burger-line, .burger-lines, .mobile-menu, .language-slider, [data-i18n], [data-i18n-placeholder], #active-layer-indicator, #dynamic-layer-caption {
         transition: none !important;
       }
-      .motion-control, .motion-field, .motion-field input, .motion-field textarea, input[type="checkbox"], details, details > :not(summary), .team-member-card, .team-member-card > div:first-child, .direct-contact-value, #privacyModal, #privacyModal > div, .motion-feedback {
+      .motion-control, .motion-field, .motion-field input, .motion-field textarea, input[type="checkbox"], details, details > :not(summary), .team-member-card, .team-member-card > div:first-child, .team-profile-card, .team-profile-photo, .direct-contact-value, #privacyModal, #privacyModal > div, .motion-feedback {
         animation: none !important;
         transition: none !important;
         transform: none !important;
@@ -885,10 +902,7 @@
         <img src="data:image/png;base64,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"
              alt="WebExpress" width="40" height="23"
              class="h-6 sm:h-7 w-auto shrink-0 transition-opacity group-hover:opacity-80">
-        <div class="flex flex-col">
-          <span class="font-extrabold tracking-tight text-silver-900 text-lg leading-tight">WebExpress</span>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-silver-500 font-medium">Rēzekne • Rīga</span>
-        </div>
+        <span class="font-extrabold tracking-tight text-silver-900 text-lg leading-tight">WebExpress</span>
       </a>
 
       <!-- Quick Navigation Links & Actions -->
@@ -969,10 +983,6 @@
         <span class="inline-flex items-center gap-1.5">
           <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
           <span data-i18n="hero_trust_1">Nekādu maksājumu pirms jūsu «Jā»</span>
-        </span>
-        <span class="inline-flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          <span data-i18n="hero_trust_2">Studija Rēzeknē</span>
         </span>
         <span class="inline-flex items-center gap-1.5">
           <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -1455,7 +1465,7 @@
           <!-- Studio Text -->
           <div class="md:col-span-8">
             <span class="text-xs font-mono tracking-widest text-silver-600 uppercase font-bold" data-i18n="author_tag">Kas vada projektu</span>
-            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-silver-900 mt-1 mb-4" data-i18n="author_h2">Neliela studija no Rēzeknes</h2>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-silver-900 mt-1 mb-4" data-i18n="author_h2">Neliela studija</h2>
 
             <div class="space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
               <p data-i18n="author_p1">Strādājam bez biroja, menedžeriem un uzcenojuma par starpniecību — tāpēc mājaslapa maksā 250–550 €. Ja atrodaties Latgalē vai Rīgā, varam tikties klātienē un pārrunāt projektu.</p>
@@ -1463,37 +1473,60 @@
               <p class="text-silver-900 font-bold" data-i18n="author_p3">Strādājam tā: vispirms rezultāts — tad apmaksa.</p>
             </div>
 
-            <div class="mt-8 pt-6 border-t border-silver-300 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="team-member-card flex items-center gap-4 p-4 rounded-2xl bg-white border border-silver-200">
-                <div class="w-12 h-12 rounded-xl bg-silver-900 text-white font-mono font-black flex items-center justify-center shrink-0 text-sm" data-i18n="team_maxim_initials">MA</div>
-                <div class="min-w-0">
-                  <p class="text-sm font-bold text-silver-900 truncate" data-i18n="team_maxim_name">Maksims A.</p>
-                  <p class="text-xs text-silver-600" data-i18n="team_maxim_role">Mārketinga speciālists</p>
-                </div>
-              </div>
-              <div class="team-member-card flex items-center gap-4 p-4 rounded-2xl bg-white border border-silver-200">
-                <div class="w-12 h-12 rounded-xl bg-silver-500 text-white font-mono font-black flex items-center justify-center shrink-0 text-sm" data-i18n="team_luka_initials">LO</div>
-                <div class="min-w-0">
-                  <p class="text-sm font-bold text-silver-900 truncate" data-i18n="team_luka_name">Luka O.</p>
-                  <p class="text-xs text-silver-600" data-i18n="team_luka_role">IT speciālists</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Studio contacts -->
-            <div class="mt-6 pt-5 border-t border-silver-300 flex flex-wrap gap-6 text-xs font-mono font-semibold">
-              <a href="https://wa.me/37122441603" target="_blank" rel="noopener noreferrer" class="text-silver-700 hover:text-silver-900 flex items-center gap-1.5 transition-colors">
-                <span class="text-silver-900 font-bold">WhatsApp:</span> +371 22441603
-              </a>
-              <a href="https://t.me/webexpresslv" target="_blank" rel="noopener noreferrer" class="text-silver-700 hover:text-silver-900 flex items-center gap-1.5 transition-colors">
-                <span class="text-silver-900 font-bold">TG:</span> @webexpresslv
-              </a>
-              <span class="text-silver-700 flex items-center gap-1.5">
-                <span class="text-silver-900 font-bold" data-i18n="contacts_location_label">Atrašanās vieta:</span> Rēzekne, Latvija
-              </span>
-            </div>
           </div>
 
+        </div>
+
+        <!-- Team profiles -->
+        <div class="mt-10 pt-8 border-t border-silver-300">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article id="team-maksims" class="team-profile-card p-6 rounded-2xl bg-white border border-silver-200">
+              <div class="flex items-center gap-4">
+                <div class="team-profile-avatar rounded-2xl overflow-hidden border border-silver-200 bg-silver-100 shrink-0">
+                  <img src="assets/team/maksims.webp" width="400" height="400" loading="lazy" decoding="async" alt="Maksims A." class="team-profile-photo w-full h-full object-cover">
+                </div>
+                <div class="min-w-0">
+                  <p class="text-base sm:text-lg font-bold text-silver-900 truncate" data-i18n="team_maxim_name">Maksims A.</p>
+                  <p class="text-xs font-mono text-silver-600 font-semibold" data-i18n="team_maxim_role">Mārketinga speciālists</p>
+                </div>
+              </div>
+              <div class="mt-6 space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
+                <p data-i18n="team_maxim_p1">Mārketings ir rīku sistēma, kas ļauj jūsu biznesam augt un novērst vājās vietas klienta ceļā līdz pirkumam. Mājaslapa ir viena no svarīgākajām jūsu zīmola daļām un platforma, kas veidota tieši jūsu biznesam.</p>
+                <p data-i18n="team_maxim_p2">Maksims ir ieguvis izglītību Eiropas biznesa un veselības pārvaldības jomā, tāpēc viņam ir plašs redzesloks risinājumu meklēšanā jūsu biznesam un jūsu pakalpojumu ideālai pozicionēšanai tirgū. Viņa uzdevums, pateicoties izpratnei par klientu psiholoģiju un mērķiem, ir izveidot vai noregulēt strādājošu pārdošanas piltuvi, kontrolēt kvalitāti un User Experience, kas pielāgots tieši jūsu produktam vai pakalpojumam.</p>
+                <p class="text-silver-900 font-bold" data-i18n="team_maxim_p3">Šāda pieeja ļauj mūsu komandai kopā ar jums proaktīvi iet pretī klientam: mājaslapa strādās kā uz mērķi izbūvēta maģistrāle.</p>
+              </div>
+            </article>
+
+            <article id="team-luka" class="team-profile-card p-6 rounded-2xl bg-white border border-silver-200">
+              <div class="flex items-center gap-4">
+                <div class="team-profile-avatar rounded-2xl overflow-hidden border border-silver-200 bg-silver-100 shrink-0">
+                  <img src="assets/team/luka.webp" width="400" height="400" loading="lazy" decoding="async" alt="Luka O." class="team-profile-photo w-full h-full object-cover">
+                </div>
+                <div class="min-w-0">
+                  <p class="text-base sm:text-lg font-bold text-silver-900 truncate" data-i18n="team_luka_name">Luka O.</p>
+                  <p class="text-xs font-mono text-silver-600 font-semibold" data-i18n="team_luka_role">IT speciālists</p>
+                </div>
+              </div>
+              <div class="mt-6 space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
+                <p data-i18n="team_luka_p1">Mājaslapas tehniskā daļa nosaka, vai klients nokļūs līdz pieteikumam vai aizies ielādes vidū. Lapa var būt pareizi izdomāta, bet, ja tā atveras piecas sekundes, telefonā salūst vai pazaudē pieteikuma formu, viss darbs tiek anulēts. Tāpēc kods, serveris un infrastruktūra nav projekta otršķirīga daļa, bet gan tā pamats.</p>
+                <p data-i18n="team_luka_p2">Luka strādā ar Node.js, Python un Linux serveriem, tāpēc pārzina pilnu tehnisko ciklu: no izkārtojuma un izstrādes līdz izvietošanai, domēnam, analītikai un drošībai. Viņa uzdevums, pateicoties savu serveru administrēšanas pieredzei un praksei drošības jomā, ir panākt, lai lapa strādā stabili, ielādējas zibenīgi un ir aizsargāta: ievainojamības viņš atrod un novērš pats, nevis pēc tam, kad par tām uzzina klients.</p>
+                <p class="text-silver-900 font-bold" data-i18n="team_luka_p3">Šāda pieeja dod jums mājaslapu, kurai nav vajadzīga jūsu iesaiste tehniskajos jautājumos. Tā vienkārši strādā, un, kad bizness izaugs, to papildina, nevis pārtaisa no nulles.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Studio contacts -->
+        <div class="mt-10 pt-6 border-t border-silver-300 flex flex-wrap gap-6 text-xs font-mono font-semibold">
+          <a href="https://wa.me/37122441603" target="_blank" rel="noopener noreferrer" class="text-silver-700 hover:text-silver-900 flex items-center gap-1.5 transition-colors">
+            <span class="text-silver-900 font-bold">WhatsApp:</span> +371 22441603
+          </a>
+          <a href="https://t.me/webexpresslv" target="_blank" rel="noopener noreferrer" class="text-silver-700 hover:text-silver-900 flex items-center gap-1.5 transition-colors">
+            <span class="text-silver-900 font-bold">TG:</span> @webexpresslv
+          </a>
+          <span class="text-silver-700 flex items-center gap-1.5">
+            <span class="text-silver-900 font-bold" data-i18n="contacts_location_label">Atrašanās vieta:</span> Rēzekne, Latvija
+          </span>
         </div>
       </div>
     </section>
@@ -1712,7 +1745,6 @@
         hero_price_clarity: "без скрытых доплат",
         hero_cta_contacts: "Все контакты",
         hero_trust_1: "Никаких оплат до вашего «Да»",
-        hero_trust_2: "Студия из Резекне",
         hero_trust_3: "Собственный Linux-сервер",
         arch_scroll_hint: "Листайте вниз — слои разложатся",
         arch_title: "Не шаблон на конструкторе.<br class=\"hidden sm:inline\">Трехслойная инженерная сборка.",
@@ -1815,7 +1847,7 @@
         case3_meta: "Скролл-видео обжарки",
         cases_cta: "Хочу такой же под мой бизнес",
         author_tag: "Кто ведёт проект",
-        author_h2: "Небольшая студия из Резекне",
+        author_h2: "Небольшая студия",
         author_p1: "Мы работаем без офиса, менеджеров и наценки за прослойку — поэтому лендинг стоит 250–550 €, а не полторы тысячи. Вы платите за работу, а не за структуру агентства. Если вы в Латгалии или Риге, можем встретиться лично и обсудить проект вживую.",
         author_p2: "Сайты собираем на собственном сервере, без конструкторов с абонентской платой. Это значит: сайт открывается мгновенно даже на слабом мобильном интернете и принадлежит только вам — вместе с исходниками и доменом.",
         author_p3: "Работаем так: сначала результат — затем оплата.",
@@ -1866,13 +1898,17 @@
         privacy_operator: "Оператор данных: WebExpress, Резекне, Латвия.",
         contacts_title: "Связаться напрямую",
         contacts_subtitle: "Выберите удобный способ связи. Отвечаем в рабочее время.",
-        team_maxim_initials: "МА",
         team_maxim_name: "Максим.А",
         team_maxim_role: "Маркетолог",
         contacts_location_label: "Локация:",
-        team_luka_initials: "ЛО",
         team_luka_name: "Лука.О",
         team_luka_role: "IT-специалист",
+        team_maxim_p1: "Маркетинг – это система инструментов, которая позволяет вашему бизнесу развиваться и отлаживать узкие места на пути клиента к покупке. Сайт это один из важнейших составляющих вашего бренда и платформа созданная специально под ваш бизнес.",
+        team_maxim_p2: "Максим, получив образование в сфере европейского бизнеса и управления в здоровье, обладает широким профилем для поиска решений для вашего бизнеса и идеального позиционирования ваших услуг на рынке. Его роль, благодаря пониманию психологии и целей ваших клиентов, заключается в создании или отладке рабочей воронки продаж, контроле качества и User Experience, заточенных под ваш продукт или услугу.",
+        team_maxim_p3: "Такой подход позволяет нашей команде вместе с Вами проактивно идти к клиенту: сайт будет работать как проложенная к цели магистральная дорога.",
+        team_luka_p1: "Техническая часть сайта определяет, дойдёт ли клиент до заявки или уйдёт на середине загрузки. Сайт может быть правильно придуман, но если он открывается пять секунд, ломается на телефоне или теряет форму заявки, вся работа обнуляется. Поэтому код, сервер и инфраструктура не второстепенная часть проекта, а его основание.",
+        team_luka_p2: "Лука, работая с Node.js, Python и Linux-серверами, обладает полным техническим циклом: от вёрстки и разработки до размещения, домена, аналитики и безопасности. Его роль, благодаря опыту администрирования собственных серверов и практике в области безопасности, заключается в том, чтобы сайт работал стабильно, грузился мгновенно и был защищён: уязвимости он находит и закрывает сам, а не после того, как о них узнает клиент.",
+        team_luka_p3: "Такой подход даёт вам сайт, который не требует вашего участия в технике. Он просто работает, а когда бизнес вырастет, дорабатывается, а не переделывается с нуля.",
         menu_open: "Открыть меню",
         menu_close: "Закрыть меню",
         footer_location: "Резекне, Латвия • IT-услуги для локального бизнеса",
@@ -1894,7 +1930,6 @@
         hero_price_clarity: "bez slēptām piemaksām",
         hero_cta_contacts: "Visi kontakti",
         hero_trust_1: "Nekādu maksājumu pirms jūsu «Jā»",
-        hero_trust_2: "Studija Rēzeknē",
         hero_trust_3: "Personīgais Linux serveris",
         arch_scroll_hint: "Ritiniet uz leju — slāņi atdalīsies",
         arch_title: "Nav šablons. <br class=\"hidden sm:inline\">Trīsslāņu inženieru salikšana.",
@@ -1997,7 +2032,7 @@
         case3_meta: "Grauzdēšanas scroll-video",
         cases_cta: "Vēlos tādu pašu savam biznesam",
         author_tag: "Kas vada projektu",
-        author_h2: "Neliela studija no Rēzeknes",
+        author_h2: "Neliela studija",
         author_p1: "Strādājam bez biroja, menedžeriem un uzcenojuma par starpniecību — tāpēc mājaslapa maksā 250–550 €. Ja atrodaties Latgalē vai Rīgā, varam tikties klātienē un pārrunāt projektu.",
         author_p2: "Mājaslapas veidojam uz sava servera, bez konstruktoriem ar abonēšanas maksu. Lapa ielādējas zibenīgi un pieder tikai jums — kopā ar pirmkodu un domēnu.",
         author_p3: "Strādājam tā: vispirms rezultāts — tad apmaksa.",
@@ -2048,13 +2083,17 @@
         privacy_operator: "Datu pārzinis: WebExpress, Rēzekne, Latvija.",
         contacts_title: "Sazināties tieši",
         contacts_subtitle: "Izvēlieties ērtāko saziņas veidu. Atbildam darba laikā.",
-        team_maxim_initials: "MA",
         team_maxim_name: "Maksims A.",
         team_maxim_role: "Mārketinga speciālists",
         contacts_location_label: "Atrašanās vieta:",
-        team_luka_initials: "LO",
         team_luka_name: "Luka O.",
         team_luka_role: "IT speciālists",
+        team_maxim_p1: "Mārketings ir rīku sistēma, kas ļauj jūsu biznesam augt un novērst vājās vietas klienta ceļā līdz pirkumam. Mājaslapa ir viena no svarīgākajām jūsu zīmola daļām un platforma, kas veidota tieši jūsu biznesam.",
+        team_maxim_p2: "Maksims ir ieguvis izglītību Eiropas biznesa un veselības pārvaldības jomā, tāpēc viņam ir plašs redzesloks risinājumu meklēšanā jūsu biznesam un jūsu pakalpojumu ideālai pozicionēšanai tirgū. Viņa uzdevums, pateicoties izpratnei par klientu psiholoģiju un mērķiem, ir izveidot vai noregulēt strādājošu pārdošanas piltuvi, kontrolēt kvalitāti un User Experience, kas pielāgots tieši jūsu produktam vai pakalpojumam.",
+        team_maxim_p3: "Šāda pieeja ļauj mūsu komandai kopā ar jums proaktīvi iet pretī klientam: mājaslapa strādās kā uz mērķi izbūvēta maģistrāle.",
+        team_luka_p1: "Mājaslapas tehniskā daļa nosaka, vai klients nokļūs līdz pieteikumam vai aizies ielādes vidū. Lapa var būt pareizi izdomāta, bet, ja tā atveras piecas sekundes, telefonā salūst vai pazaudē pieteikuma formu, viss darbs tiek anulēts. Tāpēc kods, serveris un infrastruktūra nav projekta otršķirīga daļa, bet gan tā pamats.",
+        team_luka_p2: "Luka strādā ar Node.js, Python un Linux serveriem, tāpēc pārzina pilnu tehnisko ciklu: no izkārtojuma un izstrādes līdz izvietošanai, domēnam, analītikai un drošībai. Viņa uzdevums, pateicoties savu serveru administrēšanas pieredzei un praksei drošības jomā, ir panākt, lai lapa strādā stabili, ielādējas zibenīgi un ir aizsargāta: ievainojamības viņš atrod un novērš pats, nevis pēc tam, kad par tām uzzina klients.",
+        team_luka_p3: "Šāda pieeja dod jums mājaslapu, kurai nav vajadzīga jūsu iesaiste tehniskajos jautājumos. Tā vienkārši strādā, un, kad bizness izaugs, to papildina, nevis pārtaisa no nulles.",
         menu_open: "Atvērt izvēlni",
         menu_close: "Aizvērt izvēlni",
         footer_location: "Rēzekne, Latvija • IT pakalpojumi vietējam biznesam",
