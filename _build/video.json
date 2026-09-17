@@ -1,0 +1,12 @@
+[
+ {"out":"/home/kali/webexpress-site/_build/video/detailing.mp4","ratio":"16:9","resolution":"720p",
+  "image":"/home/kali/webexpress-site/demo/detailing/assets/raw/reveal-dirty.png",
+  "lastFrame":"/home/kali/webexpress-site/demo/detailing/assets/raw/reveal-clean.png",
+  "negativePrompt":"camera movement, zoom, pan, cuts, transitions, people, hands, text, logos",
+  "prompt":"Locked camera, static shot, single continuous take: the dusty dull car panel gradually becomes a deep glossy mirror finish as dirt dissolves away, slow steady linear progression from dirty to perfectly polished, no camera movement, no cuts, no people, no text"},
+ {"out":"/home/kali/webexpress-site/_build/video/kafejnica.mp4","ratio":"16:9","resolution":"720p",
+  "image":"/home/kali/webexpress-site/demo/kafejnica/assets/raw/reveal-green.png",
+  "lastFrame":"/home/kali/webexpress-site/demo/kafejnica/assets/raw/reveal-roasted.png",
+  "negativePrompt":"camera movement, zoom, pan, cuts, transitions, people, hands, text, logos",
+  "prompt":"Locked camera, static top down shot, single continuous take: raw green coffee beans in the ceramic bowl slowly darken and roast into glossy dark brown beans, slow steady linear progression, soft daylight unchanged, no camera movement, no cuts, no people, no text"}
+]

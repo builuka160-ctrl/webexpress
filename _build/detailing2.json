@@ -1,0 +1,8 @@
+[
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/hero-car-clean.png","ratio":"16:9",
+  "ref":"/home/kali/webexpress-site/demo/detailing/assets/raw/hero-car.png",
+  "prompt":"Using the attached studio photo: keep the exact same white car, same three quarter front angle, same pure white seamless background, same lighting and shadow. Remove every manufacturer emblem and badge from the grille, hood and body so the car is completely unbranded, leaving a smooth clean grille surface. Keep the photograph otherwise identical and photorealistic. No text, no logos, no watermarks, no people."},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/reveal-clean.png","ratio":"16:9",
+  "ref":"/home/kali/webexpress-site/demo/detailing/assets/raw/reveal-dirty.png",
+  "prompt":"Using the attached photo as the exact reference for camera angle, framing, car body shape, background and lighting: keep the identical locked frame, but show the same car panel after professional detailing - deep glossy mirror finish dark paint, no dust, no dirt film, no water spots, crisp reflections of the garage lights on the surface. Same composition, same perspective, same background. Photorealistic automotive photography. No text, no logos, no watermarks, no people."}
+]
