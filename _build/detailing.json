@@ -1,0 +1,22 @@
+[
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/hero-car.png","ratio":"16:9","model":"gemini-3-pro-image",
+  "prompt":"Studio photograph of a pristine white modern sports sedan, three quarter front view from the left, isolated on a pure white seamless background with a soft contact shadow under the wheels, crisp specular highlights along the body line, cool white studio light with subtle rim light, extremely clean automotive catalogue photography, unbranded generic car design, no badges, no license plate, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/hero-car-dark.png","ratio":"16:9",
+  "prompt":"Studio photograph of a silver grey modern coupe, three quarter rear view from the right, isolated on a pure white seamless background with a soft contact shadow, cool studio light, polished paint with mirror reflections, unbranded generic car design, no badges, no license plate, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/polish.png","ratio":"4:3",
+  "prompt":"Extreme macro of a dual action polisher foam pad working on deep black car paint, fine polishing compound spread on the surface, sharp reflection of a studio softbox in the paint, cool blue white rim light against a dark background, industrial automotive detailing photography, no hands, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/beading.png","ratio":"4:3",
+  "prompt":"Extreme macro of perfect round water beads on a hydrophobic ceramic coated deep black car hood, each droplet catching cold specular highlights, dark moody background, cool cyan white light, high contrast automotive detailing photography, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/wheel.png","ratio":"4:3",
+  "prompt":"Macro close up of a clean multi spoke dark grey alloy wheel with a fresh dressed black tyre, wet asphalt floor, dark garage background, cold directional light with strong rim light on the spokes, automotive detailing photography, unbranded wheel design, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/interior.png","ratio":"4:3",
+  "prompt":"Close up of an immaculately cleaned dark car interior: black leather seat stitching, dashboard and steering wheel edge, vacuum clean carpet, cold daylight through the window, dark moody automotive interior photography, unbranded generic design, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/engine.png","ratio":"4:3",
+  "prompt":"Close up of a spotless engine bay of a modern car, clean plastic covers and hoses, cold hard light from above, dark background, technical automotive photography, unbranded generic parts, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/reveal-dirty.png","ratio":"16:9",
+  "prompt":"Locked frame macro photograph of a car hood corner covered in dried road dust, dirt film and water spots, dull matte looking dark grey paint, flat overcast light, dark garage background, documentary automotive photography, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/tools.png","ratio":"16:9",
+  "prompt":"Top down flat lay of professional car detailing tools arranged on a dark grey concrete surface: microfibre towels, unbranded spray bottles, polishing pads, soft detailing brushes, cold side light with deep shadows, monochrome dark palette with a single red object, industrial editorial photography, no text, no logos, no watermarks, no people"},
+ {"out":"/home/kali/webexpress-site/demo/detailing/assets/raw/og.png","ratio":"16:9",
+  "prompt":"Dark cinematic studio shot of the front corner of a glossy black car with a strong red light streak reflecting along the body line, deep black background with large empty space on the left for typography, cold specular highlights, premium automotive advertising photography, unbranded generic car, no text, no logos, no watermarks, no people"}
+]

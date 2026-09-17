@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESTETIKA DENTAL — стоматология в Резекне | Демо-концепт WebExpress</title>
+<meta name="description" content="Демо-концепт сайта стоматологии: прозрачный прейскурант, имплантация, гигиена и отбеливание, запись онлайн. Резекне.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ESTETIKA DENTAL — стоматология в Резекне">
+<meta property="og:description" content="Прозрачные цены, план лечения до начала работы, запись онлайн. Демо-концепт студии WebExpress.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="theme-color" content="#B5CFDC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2317191B'/%3E%3Cpath d='M16 7c3 0 4 1.4 6 1.4S25 8 25 11c0 4-1.6 6.4-2.6 9.4S21 26 19.4 26c-1.4 0-1.6-3-3.4-3s-2 3-3.4 3C11 26 10.6 23.4 9.6 20.4S7 15 7 11c0-3 1-2.6 3-2.6S13 7 16 7z' fill='%23EDF2F5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#B5CFDC; --sky-2:#9BBCCE; --sky-soft:#D7E6EE; --paper:#EDF2F5;
+  --ink:#17191B; --ink-2:#212428; --muted:#5E656B; --white:#fff;
+  --pad:clamp(18px,4.5vw,56px);
+  --r:26px; --r-sm:14px; --r-xs:8px;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html{overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.035em;line-height:1.02}
+h1{font-size:clamp(1.95rem,3.9vw,3.7rem);font-weight:300}
+h1 b{font-weight:700}
+h2{font-size:clamp(1.7rem,3.8vw,3rem);font-weight:600;letter-spacing:-.03em;line-height:1.07}
+h3{font-size:clamp(1rem,1.5vw,1.2rem);font-weight:600;letter-spacing:-.02em}
+p{margin:0}
+.wrap{width:min(1320px,100%);margin-inline:auto;padding-inline:var(--pad)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 15px 7px 11px;border-radius:999px;background:var(--white);font-size:.76rem;font-weight:500;color:var(--ink)}
+.lead{color:var(--muted);font-size:clamp(.95rem,1.3vw,1.06rem);max-width:56ch}
+.band{padding:clamp(52px,7vw,104px) 0}
+.eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:.88rem;font-weight:500;padding:15px 26px;border-radius:999px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s;white-space:nowrap}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{transform:translateY(-2px);background:#000}
+.btn-white{background:var(--white);color:var(--ink);border-color:rgba(23,25,27,.1)}
+.btn-white:hover{transform:translateY(-2px)}
+.btn svg{transition:transform .25s}
+.btn:hover svg{transform:translateX(3px)}
+
+/* top */
+.top{position:sticky;top:0;z-index:60;padding-top:12px;background:linear-gradient(180deg,var(--paper) 62%,transparent)}
+.top-inner{display:flex;align-items:center;gap:16px;background:var(--white);border-radius:999px;padding:9px 9px 9px 20px;box-shadow:0 12px 30px -24px rgba(23,25,27,.7)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:-.02em;flex:none}
+.logo-mark{width:30px;height:30px;border-radius:999px;background:var(--ink);display:grid;place-items:center;flex:none}
+.top-nav{display:none;gap:26px;margin-inline:auto;font-size:.87rem;color:var(--muted)}
+.top-nav a{text-decoration:none;transition:color .2s}
+.top-nav a:hover{color:var(--ink)}
+.top .btn{margin-left:auto;padding:11px 20px;font-size:.82rem}
+@media(min-width:960px){.top-nav{display:flex}.top .btn{margin-left:0}}
+
+/* Below 960px the links collapse into a dropdown; without it the page had no
+   navigation at all on a phone. */
+.burger{display:none;place-content:center;gap:4px;flex:none;width:42px;height:42px;padding:0;border:0;border-radius:999px;background:var(--paper);cursor:pointer}
+.burger span{display:block;width:17px;height:2px;border-radius:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.burger:focus-visible{outline:2px solid var(--sky-2);outline-offset:2px}
+@media(max-width:959px){
+  .burger{display:grid}
+  .top-inner{position:relative}
+  .top-nav{position:absolute;left:0;right:0;top:calc(100% + 10px);flex-direction:column;gap:0;margin:0;padding:8px;border-radius:24px;background:var(--white);box-shadow:0 24px 46px -26px rgba(23,25,27,.75)}
+  .top-nav.open{display:flex}
+  .top-nav a{padding:13px 16px;border-radius:16px;font-size:.95rem;color:var(--ink)}
+  .top-nav a:hover{background:var(--paper)}
+  .top-nav .nav-cta{margin-top:4px;background:var(--ink);color:#fff;text-align:center;font-weight:600}
+}
+@media(max-width:600px){.top .btn{display:none}}
+
+.lang{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--paper);margin-left:auto}
+.lang button{font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:7px 11px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.lang button:focus-visible{outline:2px solid var(--sky-2);outline-offset:2px}
+.top .lang+.btn{margin-left:8px}
+@media(min-width:960px){.lang{margin-left:0}}
+
+@media(max-width:560px){
+  .top-inner{padding:7px 7px 7px 13px;gap:8px}
+  .logo{font-size:.85rem;gap:8px}
+  .logo-mark{width:26px;height:26px}
+  .top .btn{padding:10px 13px;font-size:.74rem}
+  .lang{padding:2px}
+  .lang button{padding:6px 8px;font-size:.64rem;letter-spacing:.04em}
+}
+
+/* hero */
+.hero{padding-top:14px}
+.hero-panel{position:relative;overflow:hidden;border-radius:var(--r);background:linear-gradient(170deg,#C3D9E4 0%,var(--sky) 45%,#A8C6D6 100%);padding:clamp(26px,4vw,44px) var(--pad) 0;isolation:isolate}
+.ghost{position:absolute;left:50%;bottom:-2%;translate:-50% 0;font-size:clamp(5rem,19vw,16rem);font-weight:700;letter-spacing:-.05em;color:rgba(255,255,255,.28);line-height:.8;pointer-events:none;user-select:none;z-index:0;white-space:nowrap}
+.hero-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:flex-start;position:relative;z-index:2}
+.hero-top .meta{text-align:right;font-size:.76rem;color:#3E5766;line-height:1.5}
+.hero-main{position:relative;z-index:2;display:flex;flex-direction:column;gap:2px;margin-top:clamp(18px,3vw,30px)}
+.hero-title{order:1}
+.hero-title.right{order:2}
+.hero-art{position:relative;margin-inline:auto;width:min(250px,52vw);margin-top:6px;order:3;z-index:1;background:radial-gradient(50% 42% at 50% 40%,rgba(226,238,246,.55) 0%,rgba(205,224,236,.28) 55%,rgba(181,207,220,0) 78%)}
+.hero-art img{width:100%;filter:drop-shadow(0 26px 34px rgba(29,58,77,.3))}
+.hero-side{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:22px 34px;justify-content:space-between;align-items:flex-end;padding-bottom:clamp(24px,4vw,40px)}
+.hero-copy{max-width:40ch;color:#2C3F4B;font-size:.95rem}
+.hero-copy .btn{margin-top:20px}
+.hero-nums{display:flex;gap:26px}
+.hero-nums div span{display:block;font-size:clamp(1.5rem,3vw,2.3rem);font-weight:600;letter-spacing:-.03em;line-height:1}
+.hero-nums div small{display:block;font-size:.72rem;color:#3E5766;margin-top:5px;max-width:14ch}
+@media(min-width:900px){
+  .hero-main{display:grid;grid-template-columns:1fr minmax(170px,auto) 1fr;align-items:start;gap:clamp(18px,3.4vw,54px)}
+  .hero-title{grid-column:auto}
+  .hero-title,.hero-title.right{order:0}
+  .hero-title.right{text-align:right}
+  .hero-art{width:clamp(180px,22vw,320px);margin-top:-18px;order:0}
+  .hero-side{padding-bottom:clamp(30px,4vw,54px)}
+}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(23,25,27,.12);border-radius:var(--r-sm);overflow:hidden;margin-top:clamp(26px,3.5vw,44px)}
+@media(min-width:800px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--paper);padding:clamp(18px,2.5vw,28px);display:flex;align-items:baseline;gap:12px}
+.stat b{font-size:clamp(1.7rem,3.4vw,2.7rem);font-weight:600;letter-spacing:-.04em;line-height:1}
+.stat span{font-size:.78rem;color:var(--muted);max-width:14ch;line-height:1.35}
+
+/* dark block */
+.dark-card{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(28px,4vw,56px)}
+.dark-head{display:grid;gap:18px;padding-bottom:clamp(24px,3vw,36px);border-bottom:1px solid rgba(255,255,255,.14)}
+@media(min-width:880px){.dark-head{grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}}
+.dark-head h2{color:#fff}
+.dark-head p{color:rgba(255,255,255,.66);font-size:.92rem}
+.cards{display:grid;gap:16px;margin-top:clamp(24px,3vw,36px)}
+@media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.svc{background:#1E2226;border:1px solid rgba(255,255,255,.08);border-radius:var(--r-sm);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.svc:hover{transform:translateY(-5px)}
+.svc img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.svc div{padding:20px 20px 24px;border-top:1px solid rgba(255,255,255,.08)}
+.svc h3{color:#fff}
+.svc p{margin-top:9px;font-size:.85rem;color:rgba(255,255,255,.6)}
+.svc .price{display:inline-block;margin-top:14px;font-size:.8rem;font-weight:600;color:#fff;background:rgba(181,207,220,.18);border:1px solid rgba(181,207,220,.35);padding:5px 11px;border-radius:999px}
+
+/* price list */
+.plist{display:grid;gap:clamp(26px,3vw,44px);margin-top:clamp(24px,3vw,40px)}
+@media(min-width:860px){.plist{grid-template-columns:1fr 1fr;gap:34px 52px}}
+.pgroup h3{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid rgba(23,25,27,.16)}
+.pgroup ul{list-style:none;margin:0;padding:0}
+.pgroup li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(23,25,27,.08);font-size:.93rem}
+.pgroup li small{display:block;color:var(--muted);font-size:.78rem;margin-top:2px;max-width:42ch}
+.pgroup .val{font-weight:600;white-space:nowrap}
+
+.tech{display:grid;gap:16px;margin-top:clamp(24px,3vw,40px)}
+@media(min-width:760px){.tech{grid-template-columns:1fr 1fr;gap:22px}}
+.tech figure{margin:0;background:var(--white);border-radius:var(--r);overflow:hidden}
+.tech img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.tech figcaption{padding:20px 22px 24px;font-size:.88rem;color:var(--muted)}
+.tech figcaption b{display:block;color:var(--ink);font-size:1rem;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+
+/* steps */
+.steps{display:grid;gap:14px;margin-top:clamp(24px,3vw,40px);counter-reset:s}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:var(--white);border-radius:var(--r-sm);padding:22px 20px 24px}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font-size:.78rem;font-weight:600;color:var(--sky-2);letter-spacing:.08em;margin-bottom:12px}
+.step p{margin-top:8px;font-size:.86rem;color:var(--muted)}
+
+/* highlight */
+.hl{display:grid;gap:22px;align-items:center;margin-top:clamp(26px,3vw,44px)}
+@media(min-width:900px){.hl{grid-template-columns:1.05fr .95fr;gap:44px}}
+.hl-card{background:var(--sky);border-radius:var(--r);padding:clamp(26px,3.6vw,46px);position:relative;overflow:hidden}
+.hl-card b{display:block;font-size:clamp(3rem,8vw,5.6rem);font-weight:600;letter-spacing:-.05em;line-height:.95}
+.hl-card p{margin-top:14px;font-size:.92rem;color:#2C3F4B;max-width:38ch}
+.hl-smile{position:absolute;top:clamp(20px,3vw,34px);right:clamp(20px,3vw,34px)}
+
+/* contacts + form */
+.split{display:grid;gap:clamp(22px,3vw,38px)}
+@media(min-width:900px){.split{grid-template-columns:.92fr 1.08fr}}
+.panel{background:var(--white);border-radius:var(--r);padding:clamp(24px,3.2vw,40px)}
+.clinic{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:15px;font-size:.93rem}
+.clinic b{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;font-weight:600}
+.map-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.88rem;font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(23,25,27,.25);padding-bottom:2px}
+form{display:grid;gap:14px;margin-top:20px}
+.two{display:grid;gap:14px}
+@media(min-width:600px){.two{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:6px}
+.field label{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;font-size:.94rem;padding:13px 15px;border-radius:var(--r-xs);border:1px solid rgba(23,25,27,.16);background:var(--paper);color:var(--ink);width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--sky-2);outline-offset:1px;border-color:transparent}
+.form-note{font-size:.75rem;color:var(--muted)}
+.form-status{display:none;padding:13px 15px;border-radius:var(--r-xs);background:var(--sky-soft);font-size:.88rem}
+.form-status.show{display:block}
+.clinic-photo{margin-top:26px;border-radius:var(--r-sm);overflow:hidden}
+
+footer{background:var(--ink);color:rgba(255,255,255,.66);margin-top:clamp(44px,6vw,80px);padding:clamp(44px,6vw,76px) 0 28px;border-radius:var(--r) var(--r) 0 0}
+.foot-grid{display:grid;gap:30px}
+@media(min-width:820px){.foot-grid{grid-template-columns:1.4fr .8fr .8fr}}
+footer h3{color:#fff;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase}
+footer ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px;font-size:.88rem}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+.foot-bottom{margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.45)}
+
+.demo-badge{position:fixed;left:14px;bottom:14px;z-index:70;display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 12px;border-radius:999px;background:rgba(23,25,27,.92);color:#fff;font-size:.73rem;font-weight:500;text-decoration:none;backdrop-filter:blur(10px);box-shadow:0 14px 30px -18px rgba(0,0,0,.9);transition:transform .2s}
+.demo-badge:hover{transform:translateY(-2px)}
+
+.rise{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rise.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark"><svg width="15" height="15" viewBox="0 0 32 32"><path d="M16 7c3 0 4 1.4 6 1.4S25 8 25 11c0 4-1.6 6.4-2.6 9.4S21 26 19.4 26c-1.4 0-1.6-3-3.4-3s-2 3-3.4 3C11 26 10.6 23.4 9.6 20.4S7 15 7 11c0-3 1-2.6 3-2.6S13 7 16 7z" fill="#EDF2F5"/></svg></span>
+      Estetika Dental
+    </a>
+    <nav class="top-nav" id="top-nav">
+      <a href="#services">Услуги</a>
+      <a href="#prices">Цены</a>
+      <a href="#tech">Оборудование</a>
+      <a href="#visit">Первый визит</a>
+      <a href="#contacts">Клиника</a>
+      <a class="nav-cta" href="#booking">Записаться</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Valoda / Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="lv" aria-pressed="false">LV</button></div>
+    <a class="btn btn-dark" href="#booking">Записаться</a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="top-nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-panel">
+      <span class="ghost" aria-hidden="true">Estetika</span>
+      <div class="hero-top">
+        <span class="pill">Принимаем по записи, Резекне</span>
+        <p class="meta">Пн–Пт 8:00–19:00 · Сб 9:00–14:00<br>Латгалес 14, Резекне</p>
+      </div>
+      <div class="hero-main">
+        <h1 class="hero-title">Спокойная<br><b>стоматология</b></h1>
+        <div class="hero-art">
+          <img src="assets/hero-implant.svg" width="560" height="900" alt="Керамическая коронка на титановом имплантате — 3D-визуализация" fetchpriority="high">
+        </div>
+        <h1 class="hero-title right"><b>и понятная</b><br>цена</h1>
+      </div>
+      <div class="hero-side">
+        <div class="hero-copy">
+          <p>План лечения и смету показываем до начала работы. Если можно сохранить зуб — сохраняем, а не ставим имплантат «на всякий случай».</p>
+          <a class="btn btn-dark" href="#booking">Записаться на осмотр
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12h15m0 0-5-5m5 5-5 5"/></svg>
+          </a>
+        </div>
+        <div class="hero-nums">
+          <div><span data-count="14">14</span><small>лет клинике</small></div>
+          <div><span data-count="6">6</span><small>врачей в двух кабинетах</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats rise">
+      <div class="stat"><b data-count="30">30</b><span>минут — первичный осмотр</span></div>
+      <div class="stat"><b data-count="0">0</b><span>€ за консультацию и план</span></div>
+      <div class="stat"><b data-count="3">3</b><span>дня на временную коронку</span></div>
+      <div class="stat"><b data-count="24">24</b><span>месяца гарантии на работу</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services" style="padding-top:clamp(36px,5vw,70px)">
+  <div class="wrap">
+    <div class="dark-card rise">
+      <div class="dark-head">
+        <h2>Занимаемся тем, что делаем каждый день, а не «всем сразу»</h2>
+        <p>Три направления, на которых держится клиника. Сложную челюстно-лицевую хирургию не берём и честно отправляем в Даугавпилс или Ригу — так быстрее для пациента.</p>
+      </div>
+      <div class="cards">
+        <article class="svc">
+          <img src="assets/hygiene.webp" width="800" height="600" alt="Инструменты для профессиональной гигиены полости рта" loading="lazy">
+          <div>
+            <h3>Гигиена и профилактика</h3>
+            <p>Ультразвук, Air Flow, полировка и фторирование за один визит. Показываем, где щётка не достаёт именно у вас.</p>
+            <span class="price">от 55 €</span>
+          </div>
+        </article>
+        <article class="svc">
+          <img src="assets/tray.webp" width="800" height="600" alt="Стерильный лоток со стоматологическими инструментами" loading="lazy">
+          <div>
+            <h3>Лечение и реставрация</h3>
+            <p>Кариес под микроскопом, каналы с рентген-контролем. Если зуб можно сохранить — обсуждаем это до удаления.</p>
+            <span class="price">от 70 €</span>
+          </div>
+        </article>
+        <article class="svc">
+          <img src="assets/aligner.webp" width="800" height="600" alt="Прозрачная элайнер-капа для выравнивания зубов" loading="lazy">
+          <div>
+            <h3>Имплантация и протезирование</h3>
+            <p>Сканер вместо слепков, временная коронка на третий день, постоянная — после приживления.</p>
+            <span class="price">от 690 €</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="prices" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Прейскурант</span>
+    <h2 style="margin-top:10px;max-width:22ch">Цены, по которым можно заранее посчитать визит</h2>
+    <p class="lead" style="margin-top:14px">Это не «от» ради рекламы: в чек входит осмотр, анестезия и снимок, если он нужен. Итог по своему случаю вы увидите в плане лечения до начала работы.</p>
+    <div class="plist">
+      <div class="pgroup">
+        <h3>Приём и диагностика</h3>
+        <ul>
+          <li><span>Консультация и план лечения<small>Осмотр, обсуждение вариантов, смета на руки</small></span><span class="val">0 €</span></li>
+          <li><span>Прицельный снимок<small>Один зуб, цифровой рентген</small></span><span class="val">8 €</span></li>
+          <li><span>Панорамный снимок<small>Вся челюсть, нужен для имплантации</small></span><span class="val">25 €</span></li>
+        </ul>
+      </div>
+      <div class="pgroup">
+        <h3>Гигиена</h3>
+        <ul>
+          <li><span>Комплексная чистка<small>Ультразвук, Air Flow, полировка</small></span><span class="val">55 €</span></li>
+          <li><span>Фторирование<small>После чистки, обе челюсти</small></span><span class="val">15 €</span></li>
+          <li><span>Отбеливание в кресле<small>Два сеанса, с домашними капами</small></span><span class="val">250 €</span></li>
+        </ul>
+      </div>
+      <div class="pgroup">
+        <h3>Лечение</h3>
+        <ul>
+          <li><span>Пломба (кариес)<small>Композит, с анестезией и полировкой</small></span><span class="val">от 70 €</span></li>
+          <li><span>Лечение канала<small>Цена за канал, с контрольным снимком</small></span><span class="val">от 95 €</span></li>
+          <li><span>Удаление зуба<small>Простое; сложное — от 90 €</small></span><span class="val">от 50 €</span></li>
+        </ul>
+      </div>
+      <div class="pgroup">
+        <h3>Имплантация и протезы</h3>
+        <ul>
+          <li><span>Имплантат с установкой<small>Система с гарантией производителя</small></span><span class="val">от 690 €</span></li>
+          <li><span>Коронка на имплантат<small>Цирконий, изготовление 5–7 дней</small></span><span class="val">от 450 €</span></li>
+          <li><span>Съёмный протез<small>Полный, с примеркой</small></span><span class="val">от 520 €</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="tech" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Оборудование</span>
+    <h2 style="margin-top:10px;max-width:24ch">Сканер вместо слепков и своя зуботехника рядом</h2>
+    <div class="tech">
+      <figure class="rise">
+        <img src="assets/scanner.webp" width="800" height="600" alt="Интраоральный 3D-сканер на приставке рядом с монитором" loading="lazy">
+        <figcaption><b>3D-сканер</b>Снимок челюсти за 3 минуты, без ложки с массой во рту. Модель уходит в лабораторию в тот же день.</figcaption>
+      </figure>
+      <figure class="rise">
+        <img src="assets/veneers.webp" width="800" height="600" alt="Керамические виниры на белой поверхности" loading="lazy">
+        <figcaption><b>Керамика</b>Коронки и виниры делает лаборатория в Резекне — примерка и правки без ожидания посылки из Риги.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Первый визит</span>
+    <h2 style="margin-top:10px;max-width:20ch">Как проходит приём, если вы давно не были у врача</h2>
+    <div class="steps">
+      <div class="step rise"><h3>Осмотр без спешки</h3><p>30 минут: смотрим все зубы, дёсны и прикус, при необходимости делаем снимок.</p></div>
+      <div class="step rise"><h3>План и смета</h3><p>Показываем на экране, что нашли, и раскладываем лечение на этапы с ценами.</p></div>
+      <div class="step rise"><h3>Порядок работ</h3><p>Сначала боль и инфекция, потом эстетика. Можно растянуть на несколько месяцев.</p></div>
+      <div class="step rise"><h3>Контроль</h3><p>Через 6 месяцев зовём на осмотр и чистку — напоминаем сами, если вы не против.</p></div>
+    </div>
+
+    <div class="hl">
+      <div class="rise">
+        <h2>Боитесь стоматологов? Скажите об этом на входе</h2>
+        <p class="lead" style="margin-top:16px">Это не редкость и не повод стесняться. Работаем медленнее, проговариваем каждый шаг, делаем паузы по поднятой руке. Первый визит можно ограничить только осмотром — без лечения в тот же день.</p>
+      </div>
+      <div class="hl-card rise">
+        <svg class="hl-smile" width="54" height="30" viewBox="0 0 54 30" fill="none" stroke="#17191B" stroke-width="3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="5" r="2.4" fill="#17191B" stroke="none"/><circle cx="26" cy="5" r="2.4" fill="#17191B" stroke="none"/><path d="M4 16c4 8 22 10 28 0"/></svg>
+        <b>0 €</b>
+        <p>Консультация, осмотр и план лечения — бесплатно, даже если вы решите лечиться в другом месте. Платите только за саму работу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contacts" style="padding-top:0">
+  <div class="wrap split">
+    <div class="panel rise">
+      <span class="eyebrow">Клиника</span>
+      <h2 style="margin-top:10px;font-size:clamp(1.5rem,2.6vw,2rem)">Латгалес 14, Резекне</h2>
+      <p class="lead" style="margin-top:14px">Второй этаж, лифт есть. Во дворе бесплатная парковка на 6 машин, на улице — платная зона.</p>
+      <ul class="clinic">
+        <li><b>Телефон</b>+371 2X XXX XXX (WhatsApp)</li>
+        <li><b>Часы работы</b>Пн–Пт 8:00 – 19:00 · Сб 9:00 – 14:00</li>
+        <li><b>Экстренный приём</b>Острая боль — звоните, найдём место в тот же день</li>
+        <li><b>Почта</b>registratura@estetikadental.demo</li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Latgales+iela+14%2C+R%C4%93zekne" target="_blank" rel="noopener noreferrer">
+        Открыть в Google Maps
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+      <div class="clinic-photo"><img src="assets/chair.webp" width="1400" height="788" alt="Кабинет клиники: стоматологическое кресло у окна" loading="lazy"></div>
+    </div>
+    <div class="panel rise" id="booking">
+      <span class="eyebrow">Запись</span>
+      <h2 style="margin-top:10px;font-size:clamp(1.5rem,2.6vw,2rem)">Выберите время — перезвоним и подтвердим</h2>
+      <p class="lead" style="margin-top:12px">Если у вас острая боль, отметьте это в комментарии: такие заявки смотрим первыми и отвечаем в течение часа в рабочее время.</p>
+      <form id="bookingForm" novalidate>
+        <div class="two">
+          <div class="field"><label for="name">Имя</label><input id="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required></div>
+          <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" autocomplete="tel" placeholder="+371 …" required></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="day">Дата</label><input id="day" type="date"></div>
+          <div class="field"><label for="time">Время</label>
+            <select id="time">
+              <option>Утро, 8:00 – 11:00</option>
+              <option>День, 11:00 – 15:00</option>
+              <option>Вечер, 15:00 – 19:00</option>
+              <option>Суббота</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="reason">С чем придёте</label>
+          <select id="reason">
+            <option>Осмотр и консультация</option>
+            <option>Профессиональная гигиена</option>
+            <option>Болит зуб</option>
+            <option>Имплантация или протезирование</option>
+            <option>Отбеливание</option>
+          </select>
+        </div>
+        <div class="field"><label for="note">Комментарий</label><textarea id="note" rows="2" placeholder="Например: боюсь лечения, давно не был у врача"></textarea></div>
+        <button class="btn btn-dark" type="submit" style="justify-self:start">Отправить заявку</button>
+        <p class="form-note">Это демо-концепт: заявка никуда не уходит. На рабочем сайте форма открывает WhatsApp с готовым текстом записи.</p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Estetika Dental</h3>
+      <ul><li style="max-width:40ch">Стоматология в Резекне: гигиена, лечение, имплантация и протезирование. Консультация и план лечения — бесплатно.</li></ul>
+    </div>
+    <div>
+      <h3>Разделы</h3>
+      <ul>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#prices">Прейскурант</a></li>
+        <li><a href="#tech">Оборудование</a>
+      <a href="#visit">Первый визит</a></li>
+        <li><a href="#booking">Запись</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Контакты</h3>
+      <ul>
+        <li>Латгалес 14, Резекне</li>
+        <li>+371 2X XXX XXX</li>
+        <li>Пн–Пт 8:00 – 19:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>ESTETIKA DENTAL — вымышленная клиника. Демо-концепт студии WebExpress.</span>
+    <a href="../../index.html#portfolio">← Ко всем демо-нишам</a>
+  </div>
+</footer>
+
+<a class="demo-badge" href="../../index.html#portfolio">Демо-концепт WebExpress</a>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dentist","name":"Estetika Dental","description":"Демо-концепт сайта стоматологической клиники в Резекне: гигиена, лечение, имплантация, прозрачный прейскурант.","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Latgales iela 14","addressLocality":"Rēzekne","addressCountry":"LV"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"09:00","closes":"14:00"}]}
+</script>
+
+<script>
+/* i18n: словарь ru -> lv, подмена текстовых узлов и атрибутов без перезагрузки */
+(function(){
+  var LV={"ESTETIKA DENTAL — стоматология в Резекне | Демо-концепт WebExpress": "ESTETIKA DENTAL — zobārstniecība Rēzeknē | WebExpress demo", "Демо-концепт сайта стоматологии: прозрачный прейскурант, имплантация, гигиена и отбеливание, запись онлайн. Резекне.": "Zobārstniecības mājaslapas demo: caurspīdīgs cenrādis, implantācija, higiēna un balināšana, pieraksts online. Rēzekne.", "ESTETIKA DENTAL — стоматология в Резекне": "ESTETIKA DENTAL — zobārstniecība Rēzeknē", "Прозрачные цены, план лечения до начала работы, запись онлайн. Демо-концепт студии WebExpress.": "Caurspīdīgas cenas, ārstēšanas plāns pirms darba sākuma, pieraksts online. WebExpress studijas demo.", "Услуги": "Pakalpojumi", "Цены": "Cenas", "Оборудование": "Aprīkojums", "Первый визит": "Pirmā vizīte", "Клиника": "Klīnika", "Записаться": "Pieteikties", "Принимаем по записи, Резекне": "Pieņemam pēc pieraksta, Rēzekne", "Пн–Пт 8:00–19:00 · Сб 9:00–14:00": "P–Pk 8:00–19:00 · S 9:00–14:00", "Латгалес 14, Резекне": "Latgales iela 14, Rēzekne", "Спокойная": "Mierīga", "стоматология": "zobārstniecība", "Керамическая коронка на титановом имплантате — 3D-визуализация": "Keramikas kronītis uz titāna implanta — 3D vizualizācija", "и понятная": "un skaidra", "цена": "cena", "План лечения и смету показываем до начала работы. Если можно сохранить зуб — сохраняем, а не ставим имплантат «на всякий случай».": "Ārstēšanas plānu un tāmi parādām pirms darba sākuma. Ja zobu var saglabāt — saglabājam, nevis liekam implantu «katram gadījumam».", "Записаться на осмотр": "Pieteikties apskatei", "лет клинике": "gadi klīnikai", "врачей в двух кабинетах": "ārsti divos kabinetos", "минут — первичный осмотр": "minūtes — pirmreizējā apskate", "€ за консультацию и план": "€ par konsultāciju un plānu", "дня на временную коронку": "dienas pagaidu kronītim", "месяца гарантии на работу": "mēneši garantijas darbam", "Занимаемся тем, что делаем каждый день, а не «всем сразу»": "Darām to, ko darām katru dienu, nevis «visu uzreiz»", "Три направления, на которых держится клиника. Сложную челюстно-лицевую хирургию не берём и честно отправляем в Даугавпилс или Ригу — так быстрее для пациента.": "Trīs virzieni, uz kuriem balstās klīnika. Sarežģītu sejas un žokļu ķirurģiju neuzņemamies un godīgi sūtām uz Daugavpili vai Rīgu — pacientam tā ir ātrāk.", "Инструменты для профессиональной гигиены полости рта": "Instrumenti profesionālai mutes higiēnai", "Гигиена и профилактика": "Higiēna un profilakse", "Ультразвук, Air Flow, полировка и фторирование за один визит. Показываем, где щётка не достаёт именно у вас.": "Ultraskaņa, Air Flow, pulēšana un fluorēšana vienā vizītē. Parādām, kur tieši jums birste netiek klāt.", "от 55 €": "no 55 €", "Стерильный лоток со стоматологическими инструментами": "Sterila paplāte ar zobārstniecības instrumentiem", "Лечение и реставрация": "Ārstēšana un restaurācija", "Кариес под микроскопом, каналы с рентген-контролем. Если зуб можно сохранить — обсуждаем это до удаления.": "Kariess zem mikroskopa, kanāli ar rentgena kontroli. Ja zobu var saglabāt — pārrunājam to pirms izraušanas.", "от 70 €": "no 70 €", "Прозрачная элайнер-капа для выравнивания зубов": "Caurspīdīgs elainers zobu izlīdzināšanai", "Имплантация и протезирование": "Implantācija un protezēšana", "Сканер вместо слепков, временная коронка на третий день, постоянная — после приживления.": "Skeneris nospiedumu vietā, pagaidu kronītis trešajā dienā, pastāvīgais — pēc implanta ieaugšanas.", "от 690 €": "no 690 €", "Прейскурант": "Cenrādis", "Цены, по которым можно заранее посчитать визит": "Cenas, pēc kurām vizīti var aprēķināt jau iepriekš", "Это не «от» ради рекламы: в чек входит осмотр, анестезия и снимок, если он нужен. Итог по своему случаю вы увидите в плане лечения до начала работы.": "Šis nav «no» reklāmas dēļ: rēķinā ietilpst apskate, anestēzija un rentgens, ja tas vajadzīgs. Savu summu redzēsiet ārstēšanas plānā pirms darba sākuma.", "Приём и диагностика": "Pieņemšana un diagnostika", "Консультация и план лечения": "Konsultācija un ārstēšanas plāns", "Осмотр, обсуждение вариантов, смета на руки": "Apskate, variantu pārrunāšana, tāme uz rokas", "Прицельный снимок": "Mērķtiecīgs rentgens", "Один зуб, цифровой рентген": "Viens zobs, digitālais rentgens", "Панорамный снимок": "Panorāmas rentgens", "Вся челюсть, нужен для имплантации": "Viss žoklis, vajadzīgs implantācijai", "Гигиена": "Higiēna", "Комплексная чистка": "Kompleksā tīrīšana", "Ультразвук, Air Flow, полировка": "Ultraskaņa, Air Flow, pulēšana", "Фторирование": "Fluorēšana", "После чистки, обе челюсти": "Pēc tīrīšanas, abi žokļi", "Отбеливание в кресле": "Balināšana krēslā", "Два сеанса, с домашними капами": "Divas reizes, ar mājas kapām", "Лечение": "Ārstēšana", "Пломба (кариес)": "Plomba (kariess)", "Композит, с анестезией и полировкой": "Kompozīts, ar anestēziju un pulēšanu", "Лечение канала": "Kanāla ārstēšana", "Цена за канал, с контрольным снимком": "Cena par vienu kanālu, ar kontroles rentgenu", "от 95 €": "no 95 €", "Удаление зуба": "Zoba izraušana", "Простое; сложное — от 90 €": "Vienkārša; sarežģīta — no 90 €", "от 50 €": "no 50 €", "Имплантация и протезы": "Implantācija un protēzes", "Имплантат с установкой": "Implants ar ievietošanu", "Система с гарантией производителя": "Sistēma ar ražotāja garantiju", "Коронка на имплантат": "Kronītis uz implanta", "Цирконий, изготовление 5–7 дней": "Cirkonijs, izgatavošana 5–7 dienas", "от 450 €": "no 450 €", "Съёмный протез": "Izņemamā protēze", "Полный, с примеркой": "Pilnā, ar pielaikošanu", "от 520 €": "no 520 €", "Сканер вместо слепков и своя зуботехника рядом": "Skeneris nospiedumu vietā un sava zobu laboratorija blakus", "Интраоральный 3D-сканер на приставке рядом с монитором": "Intraorālais 3D skeneris statīvā blakus monitoram", "3D-сканер": "3D skeneris", "Снимок челюсти за 3 минуты, без ложки с массой во рту. Модель уходит в лабораторию в тот же день.": "Žokļa skenējums 3 minūtēs, bez karotes ar masu mutē. Modelis aiziet uz laboratoriju tajā pašā dienā.", "Керамические виниры на белой поверхности": "Keramikas vinīri uz baltas virsmas", "Керамика": "Keramika", "Коронки и виниры делает лаборатория в Резекне — примерка и правки без ожидания посылки из Риги.": "Kronīšus un vinīrus izgatavo laboratorija Rēzeknē — pielaikošana un labojumi bez gaidīšanas uz sūtījumu no Rīgas.", "Как проходит приём, если вы давно не были у врача": "Kā notiek vizīte, ja sen neesat bijis pie ārsta", "Осмотр без спешки": "Apskate bez steigas", "30 минут: смотрим все зубы, дёсны и прикус, при необходимости делаем снимок.": "30 minūtes: apskatām visus zobus, smaganas un sakodienu, ja vajag — uztaisām rentgenu.", "План и смета": "Plāns un tāme", "Показываем на экране, что нашли, и раскладываем лечение на этапы с ценами.": "Parādām uz ekrāna, ko atradām, un sadalām ārstēšanu posmos ar cenām.", "Порядок работ": "Darbu secība", "Сначала боль и инфекция, потом эстетика. Можно растянуть на несколько месяцев.": "Vispirms sāpes un infekcija, pēc tam estētika. Var izstiept uz vairākiem mēnešiem.", "Контроль": "Kontrole", "Через 6 месяцев зовём на осмотр и чистку — напоминаем сами, если вы не против.": "Pēc 6 mēnešiem aicinām uz apskati un tīrīšanu — atgādinām paši, ja jūs neiebilstat.", "Боитесь стоматологов? Скажите об этом на входе": "Baidāties no zobārstiem? Pasakiet to uzreiz", "Это не редкость и не повод стесняться. Работаем медленнее, проговариваем каждый шаг, делаем паузы по поднятой руке. Первый визит можно ограничить только осмотром — без лечения в тот же день.": "Tas nav retums un nav jākautrējas. Strādājam lēnāk, izrunājam katru soli, paceļat roku — apstājamies. Pirmo vizīti var aprobežot ar apskati, bez ārstēšanas tajā pašā dienā.", "Консультация, осмотр и план лечения — бесплатно, даже если вы решите лечиться в другом месте. Платите только за саму работу.": "Konsultācija, apskate un ārstēšanas plāns — bez maksas, pat ja izlemsiet ārstēties citur. Maksājat tikai par pašu darbu.", "Второй этаж, лифт есть. Во дворе бесплатная парковка на 6 машин, на улице — платная зона.": "Otrais stāvs, lifts ir. Pagalmā bezmaksas stāvvieta sešām mašīnām, uz ielas — maksas zona.", "Телефон": "Telefons", "Часы работы": "Darba laiks", "Пн–Пт 8:00 – 19:00 · Сб 9:00 – 14:00": "P–Pk 8:00 – 19:00 · S 9:00 – 14:00", "Экстренный приём": "Neatliekamā pieņemšana", "Острая боль — звоните, найдём место в тот же день": "Asas sāpes — zvaniet, atradīsim vietu tajā pašā dienā", "Почта": "E-pasts", "Открыть в Google Maps": "Atvērt Google Maps", "Кабинет клиники: стоматологическое кресло у окна": "Klīnikas kabinets: zobārstniecības krēsls pie loga", "Запись": "Pieraksts", "Выберите время — перезвоним и подтвердим": "Izvēlieties laiku — atzvanīsim un apstiprināsim", "Если у вас острая боль, отметьте это в комментарии: такие заявки смотрим первыми и отвечаем в течение часа в рабочее время.": "Ja jums ir asas sāpes, atzīmējiet to komentārā: šādus pieteikumus skatām pirmos un atbildam stundas laikā darba laikā.", "Имя": "Vārds", "Как к вам обращаться": "Kā jūs uzrunāt", "Дата": "Datums", "Время": "Laiks", "Утро, 8:00 – 11:00": "No rīta, 8:00 – 11:00", "День, 11:00 – 15:00": "Dienā, 11:00 – 15:00", "Вечер, 15:00 – 19:00": "Vakarā, 15:00 – 19:00", "Суббота": "Sestdien", "С чем придёте": "Ar ko atnāksiet", "Осмотр и консультация": "Apskate un konsultācija", "Профессиональная гигиена": "Profesionālā higiēna", "Болит зуб": "Sāp zobs", "Имплантация или протезирование": "Implantācija vai protezēšana", "Отбеливание": "Balināšana", "Комментарий": "Komentārs", "Например: боюсь лечения, давно не был у врача": "Piemēram: baidos no ārstēšanas, sen neesmu bijis pie ārsta", "Отправить заявку": "Nosūtīt pieteikumu", "Это демо-концепт: заявка никуда не уходит. На рабочем сайте форма открывает WhatsApp с готовым текстом записи.": "Šis ir demo: pieteikums nekur netiek nosūtīts. Darba versijā forma atver WhatsApp ar gatavu pieraksta tekstu.", "Стоматология в Резекне: гигиена, лечение, имплантация и протезирование. Консультация и план лечения — бесплатно.": "Zobārstniecība Rēzeknē: higiēna, ārstēšana, implantācija un protezēšana. Konsultācija un ārstēšanas plāns — bez maksas.", "Разделы": "Sadaļas", "Контакты": "Kontakti", "Пн–Пт 8:00 – 19:00": "P–Pk 8:00 – 19:00", "ESTETIKA DENTAL — вымышленная клиника. Демо-концепт студии WebExpress.": "ESTETIKA DENTAL ir izdomāta klīnika. WebExpress studijas demo.", "← Ко всем демо-нишам": "← Uz visām demo nišām", "Демо-концепт WebExpress": "WebExpress demo", "Проверьте имя и телефон — по ним регистратура подтверждает запись.": "Pārbaudiet vārdu un telefonu — pa tiem reģistratūra apstiprina pierakstu.", "Заявка принята (демо). На рабочем сайте здесь открывается WhatsApp: «Запись,": "Pieteikums pieņemts (demo). Darba versijā šeit atveras WhatsApp: «Pieraksts,", "дата не выбрана": "datums nav izvēlēts", "Отправлено": "Nosūtīts"};
+  var KEY='wx-lang';
+  var qs=new URLSearchParams(location.search).get('lang');
+  var lang=(qs||localStorage.getItem(KEY)||'lv').toLowerCase();
+  if(lang!=='lv')lang='ru';
+  var norm=function(s){return s.replace(/\s+/g,' ').trim()};
+  window.tr=function(s){if(lang!=='lv')return s;return LV[norm(s)]||s};
+  window.wxLang=function(){return lang};
+
+  var nodes=[],attrs=[],metas=[],title=document.title;
+  var ATTRS=['alt','placeholder','aria-label','title','data-label'];
+  function collect(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var p=n.parentNode&&n.parentNode.nodeName;
+      if(p==='SCRIPT'||p==='STYLE')return NodeFilter.FILTER_REJECT;
+      return norm(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }});
+    var n;while(n=w.nextNode())nodes.push([n,n.nodeValue]);
+    ATTRS.forEach(function(a){
+      Array.prototype.forEach.call(document.querySelectorAll('['+a+']'),function(el){
+        attrs.push([el,a,el.getAttribute(a)]);
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('meta[name="description"],meta[property^="og:"]'),function(m){
+      metas.push([m,m.getAttribute('content')]);
+    });
+  }
+  function apply(){
+    var on=lang==='lv';
+    nodes.forEach(function(p){
+      var o=p[1],t=LV[norm(o)];
+      p[0].nodeValue=(on&&t)?o.match(/^\s*/)[0]+t+o.match(/\s*$/)[0]:o;
+    });
+    attrs.forEach(function(p){
+      var t=LV[norm(p[2])];
+      p[0].setAttribute(p[1],(on&&t)?t:p[2]);
+    });
+    metas.forEach(function(p){
+      var t=LV[norm(p[1])];
+      p[0].setAttribute('content',(on&&t)?t:p[1]);
+    });
+    document.title=(on&&LV[norm(title)])?LV[norm(title)]:title;
+    document.documentElement.lang=on?'lv':'ru';
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'),function(b){
+      b.setAttribute('aria-pressed',String(b.dataset.lang===lang));
+    });
+  }
+  function set(l){
+    lang=l;try{localStorage.setItem(KEY,l)}catch(e){}
+    apply();
+    document.dispatchEvent(new CustomEvent('wx:lang',{detail:l}));
+  }
+  /* This script sits at the end of <body>, so the markup is already parsed:
+     translate now rather than on DOMContentLoaded, otherwise Latvian visitors
+     see a flash of Russian before the swap. */
+  var boot=function(){
+    collect();apply();
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'),function(b){
+      b.addEventListener('click',function(){set(b.dataset.lang)});
+    });
+  };
+  if(document.body)boot();else document.addEventListener('DOMContentLoaded',boot);
+})();
+</script>
+<script>
+(function(){
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{rootMargin:'0px 0px -12% 0px',threshold:.12});
+  document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
+
+  /* counters */
+  var cio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target,to=parseInt(el.dataset.count,10);cio.unobserve(el);
+      if(reduced||to===0){el.textContent=to;return}
+      var t0=null,dur=900;
+      var step=function(t){
+        if(!t0)t0=t;
+        var p=Math.min(1,(t-t0)/dur);
+        el.textContent=Math.round(to*(1-Math.pow(1-p,3)));
+        if(p<1)requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    })
+  },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+
+  /* mobile navigation */
+  var burger=document.querySelector('.burger'),nav=document.getElementById('top-nav');
+  if(burger&&nav){
+    var setNav=function(open){
+      nav.classList.toggle('open',open);
+      burger.setAttribute('aria-expanded',String(open));
+      burger.setAttribute('aria-label',open?(window.tr?window.tr('Закрыть меню'):'Закрыть меню'):(window.tr?window.tr('Открыть меню'):'Открыть меню'));
+    };
+    burger.addEventListener('click',function(){setNav(!nav.classList.contains('open'))});
+    nav.addEventListener('click',function(e){if(e.target.closest('a'))setNav(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false)});
+    document.addEventListener('click',function(e){
+      if(!nav.classList.contains('open'))return;
+      if(!nav.contains(e.target)&&!burger.contains(e.target))setNav(false);
+    });
+    window.addEventListener('resize',function(){if(window.innerWidth>=960)setNav(false)});
+  }
+
+  /* hero parallax */
+  var art=document.querySelector('.hero-art img'),ghost=document.querySelector('.ghost');
+  if(art&&!reduced&&window.innerWidth>=900){
+    var raf=null;
+    var onS=function(){
+      if(raf)return;
+      raf=requestAnimationFrame(function(){
+        raf=null;
+        var y=window.scrollY;
+        if(y>900)return;
+        art.style.transform='translateY('+(y*0.12)+'px) scale('+(1+y*0.00008)+')';
+        ghost.style.transform='translate(-50%,'+(y*-0.06)+'px)';
+      });
+    };
+    window.addEventListener('scroll',onS,{passive:true});
+  }
+
+  /* form */
+  var form=document.getElementById('bookingForm'),st=document.getElementById('formStatus');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim();
+    st.classList.add('show');
+    if(name.length<2||phone.replace(/\D/g,'').length<7){st.textContent=tr('Проверьте имя и телефон — по ним регистратура подтверждает запись.');return}
+    st.textContent=tr('Заявка принята (демо). На рабочем сайте здесь открывается WhatsApp: «Запись,')+' '+name+', '+document.getElementById('reason').value.toLowerCase()+', '+(document.getElementById('day').value||tr('дата не выбрана'))+', '+document.getElementById('time').value+'».';
+    form.querySelector('button').textContent=tr('Отправлено');
+  });
+})();
+</script>
+</body>
+</html>

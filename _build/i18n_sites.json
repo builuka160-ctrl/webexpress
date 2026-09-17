@@ -1,0 +1,20 @@
+{
+ "kafejnica": {
+  "page": "/home/kali/webexpress-site/demo/kafejnica/index.html",
+  "anchor": "<a class=\"btn btn-primary\" href=\"#booking\">Забронировать стол</a>",
+  "css_anchor": "/* hero */",
+  "css": ".lang{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:rgba(63,51,43,.07);margin-left:auto}\n.lang button{font:inherit;font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:7px 11px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}\n.lang button[aria-pressed=\"true\"]{background:var(--white);color:var(--ink);box-shadow:0 4px 12px -8px rgba(63,51,43,.8)}\n.lang button:focus-visible{outline:2px solid var(--mocha);outline-offset:2px}\n.nav .lang+.btn{margin-left:8px}\n@media(min-width:900px){.lang{margin-left:0}}\n\n"
+ },
+ "detailing": {
+  "page": "/home/kali/webexpress-site/demo/detailing/index.html",
+  "anchor": "<a class=\"btn btn-out\" href=\"#booking\">Записаться</a>",
+  "css_anchor": "/* hero */",
+  "css": ".lang{display:inline-flex;gap:2px;padding:3px;border-radius:var(--r);background:rgba(22,22,24,.06);margin-left:auto}\n.lang button{font:inherit;font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:7px 10px;border:0;border-radius:2px;background:transparent;color:#75767A;cursor:pointer;transition:background .2s,color .2s}\n.lang button[aria-pressed=\"true\"]{background:var(--ink);color:#fff}\n.lang button:focus-visible{outline:2px solid var(--red);outline-offset:2px}\n.top .lang+.btn{margin-left:8px}\n@media(min-width:1000px){.lang{margin-left:0}}\n\n"
+ },
+ "dental": {
+  "page": "/home/kali/webexpress-site/demo/dental/index.html",
+  "anchor": "<a class=\"btn btn-dark\" href=\"#booking\">Записаться</a>",
+  "css_anchor": "/* hero */",
+  "css": ".lang{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:var(--paper);margin-left:auto}\n.lang button{font:inherit;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:7px 11px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}\n.lang button[aria-pressed=\"true\"]{background:var(--ink);color:#fff}\n.lang button:focus-visible{outline:2px solid var(--sky-2);outline-offset:2px}\n.top .lang+.btn{margin-left:8px}\n@media(min-width:960px){.lang{margin-left:0}}\n\n"
+ }
+}

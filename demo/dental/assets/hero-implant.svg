@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 764" width="560" height="764" role="img" aria-label="Керамическая коронка на титановом имплантате">
+<defs>
+  <linearGradient id="enamel" x1="0.12" y1="0" x2="0.86" y2="1">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset=".26" stop-color="#FCFDFE"/>
+    <stop offset=".58" stop-color="#F2F5F7"/>
+    <stop offset=".84" stop-color="#E2E8EC"/>
+    <stop offset="1" stop-color="#CBD5DB"/>
+  </linearGradient>
+  <linearGradient id="occlusal" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#C7D4DC" stop-opacity=".55"/>
+    <stop offset="1" stop-color="#C7D4DC" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="gloss" cx=".32" cy=".22" r=".62">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+    <stop offset=".55" stop-color="#ffffff" stop-opacity=".25"/>
+    <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="enamelEdge" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+    <stop offset=".45" stop-color="#ffffff" stop-opacity="0"/>
+    <stop offset="1" stop-color="#94A6B1" stop-opacity=".45"/>
+  </linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#5E6B75"/>
+    <stop offset=".16" stop-color="#C9D3DA"/>
+    <stop offset=".34" stop-color="#F2F6F8"/>
+    <stop offset=".52" stop-color="#9FAEB9"/>
+    <stop offset=".72" stop-color="#E6ECF0"/>
+    <stop offset=".88" stop-color="#7C8A95"/>
+    <stop offset="1" stop-color="#48555F"/>
+  </linearGradient>
+  <linearGradient id="collar" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#6B7883"/>
+    <stop offset=".2" stop-color="#EEF3F6"/>
+    <stop offset=".5" stop-color="#93A2AD"/>
+    <stop offset=".8" stop-color="#E4EAEE"/>
+    <stop offset="1" stop-color="#5A666F"/>
+  </linearGradient>
+  <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#1D3A4D" stop-opacity=".3"/>
+    <stop offset="1" stop-color="#1D3A4D" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+  <clipPath id="screwClip"><path d="M 200 468 L 360 468 L 314 674 Q 280 716 246 674 Z"/></clipPath>
+</defs>
+
+<ellipse cx="280" cy="734" rx="150" ry="24" fill="url(#shadow)"/>
+
+<!-- screw -->
+<path d="M 200 468 L 360 468 L 314 674 Q 280 716 246 674 Z" fill="url(#steel)"/>
+<g clip-path="url(#screwClip)"><path d="M 203.2 484.0 L 356.8 476.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 203.2 487.6 L 356.8 479.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 207.7 507.0 L 352.3 499.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 207.7 510.6 L 352.3 502.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 212.3 530.0 L 347.7 522.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 212.3 533.6 L 347.7 525.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 216.9 553.0 L 343.1 545.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 216.9 556.6 L 343.1 548.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 221.4 576.0 L 338.6 568.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 221.4 579.6 L 338.6 571.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 226.0 599.0 L 334.0 591.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 226.0 602.6 L 334.0 594.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 230.5 622.0 L 329.5 614.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 230.5 625.6 L 329.5 617.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 235.1 645.0 L 324.9 637.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 235.1 648.6 L 324.9 640.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/><path d="M 239.7 668.0 L 320.3 660.0" stroke="rgba(28,44,56,.32)" stroke-width="3.4" stroke-linecap="round"/><path d="M 239.7 671.6 L 320.3 663.6" stroke="rgba(255,255,255,.55)" stroke-width="1.6" stroke-linecap="round"/></g>
+
+<!-- abutment -->
+<path d="M 174 398 L 386 398 L 368 468 L 192 468 Z" fill="url(#steel)"/>
+<rect x="186" y="456" width="188" height="14" rx="6" fill="url(#collar)"/>
+
+<!-- collar where the crown seats on the abutment -->
+<path d="M 158 382 Q 280 418 402 382 L 402 398 Q 280 434 158 398 Z" fill="url(#collar)"/>
+
+<!-- crown -->
+<path d="M 152 398 C 102 364 98 266 98 226 C 98 182 118 132 138 114 Q 173.5 84 209.0 106 Q 244.5 74 280.0 106 Q 315.5 74 351.0 106 Q 386.5 84 422.0 114 C 442 132 462 182 462 226 C 462 266 458 364 408 398 Z" fill="url(#enamel)"/>
+<path d="M 152 398 C 102 364 98 266 98 226 C 98 182 118 132 138 114 Q 173.5 84 209.0 106 Q 244.5 74 280.0 106 Q 315.5 74 351.0 106 Q 386.5 84 422.0 114 C 442 132 462 182 462 226 C 462 266 458 364 408 398 Z" fill="url(#enamelEdge)" opacity=".75"/>
+<path d="M 152 398 C 102 364 98 266 98 226 C 98 182 118 132 138 114 Q 173.5 84 209.0 106 Q 244.5 74 280.0 106 Q 315.5 74 351.0 106 Q 386.5 84 422.0 114 C 442 132 462 182 462 226 C 462 266 458 364 408 398 Z" fill="url(#occlusal)" opacity=".85"/>
+<path d="M 280 130 L 280 256" stroke="rgba(108,126,138,.5)" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M 280 182.92 Q 252.72 160.92 205.5256 160" stroke="rgba(108,126,138,.36)" stroke-width="5.5" stroke-linecap="round" fill="none"/><path d="M 280 220.72 Q 236.0 198.72 159.88 160" stroke="rgba(108,126,138,.36)" stroke-width="5.5" stroke-linecap="round" fill="none"/><path d="M 280 182.92 Q 307.28 160.92 354.4744 160" stroke="rgba(108,126,138,.36)" stroke-width="5.5" stroke-linecap="round" fill="none"/><path d="M 280 220.72 Q 324.0 198.72 400.12 160" stroke="rgba(108,126,138,.36)" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+<path d="M 152 398 C 102 364 98 266 98 226 C 98 182 118 132 138 114 Q 173.5 84 209.0 106 Q 244.5 74 280.0 106 Q 315.5 74 351.0 106 Q 386.5 84 422.0 114 C 442 132 462 182 462 226 C 462 266 458 364 408 398 Z" fill="url(#gloss)"/>
+
+<!-- specular highlights -->
+<path d="M 184 142 Q 152 216 162 288 Q 170 336 198 366" stroke="rgba(255,255,255,.85)" stroke-width="24" stroke-linecap="round" fill="none" filter="url(#soft)" opacity=".7"/>
+<ellipse cx="360" cy="170" rx="28" ry="44" fill="#fff" opacity=".5" filter="url(#soft)" transform="rotate(18 360 170)"/>
+<path d="M 138 362 Q 280 406 422 362" stroke="rgba(90,108,120,.22)" stroke-width="10" fill="none" filter="url(#soft)"/>
+</svg>

@@ -1,0 +1,6 @@
+[
+ {"out":"/home/kali/webexpress-site/_build/video/dental.mp4","ratio":"16:9","resolution":"720p",
+  "image":"/home/kali/webexpress-site/demo/dental/assets/raw/hero-implant.png",
+  "negativePrompt":"camera movement, zoom, pan, cuts, transitions, people, hands, text, logos, blood, gums",
+  "prompt":"Locked camera, static studio shot, single continuous take: the glossy white ceramic tooth crown on its polished titanium implant post slowly rotates clockwise on its own axis at constant speed, pale blue seamless background unchanged, studio lighting unchanged, slow steady linear rotation, no camera movement, no cuts, no people, no text"}
+]

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NORDIC DETAILING — детейлинг-мойка в Резекне | Демо-концепт WebExpress</title>
+<meta name="description" content="Демо-концепт сайта детейлинг-центра: мойка, полировка, керамика, химчистка салона. Калькулятор стоимости и запись онлайн. Резекне.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NORDIC DETAILING — детейлинг-мойка в Резекне">
+<meta property="og:description" content="Мойка, полировка, керамика и химчистка. Расчёт стоимости за минуту. Демо-концепт студии WebExpress.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="theme-color" content="#161618">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23161618'/%3E%3Cpath d='M6 20l5-9h4l-5 9zm8 0l5-9h4l-5 9z' fill='%23CE2425'/%3E%3Cpath d='M20 20l5-9h1.5l-5 9z' fill='%23F8F8F8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161618; --ink-2:#1E1F23; --line:#2A2B30; --paper:#F8F8F8; --white:#fff;
+  --steel:#8A8C90; --steel-2:#BEC1C4; --red:#CE2425; --red-dark:#A81B1C;
+  --pad:clamp(18px,4.5vw,60px);
+  --r:4px; --r-md:10px;
+  --font-display:'Montserrat',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html{overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--font-display);font-weight:800;line-height:1.02}
+h1{font-size:clamp(2.1rem,5.6vw,4.7rem);text-transform:uppercase;letter-spacing:.01em;overflow-wrap:break-word;hyphens:auto}
+h2{font-size:clamp(1.55rem,3.4vw,2.6rem);letter-spacing:-.01em}
+h3{font-size:clamp(1rem,1.4vw,1.15rem);letter-spacing:.01em}
+p{margin:0}
+.wrap{width:min(1280px,100%);margin-inline:auto;padding-inline:var(--pad)}
+.eyebrow{font-family:var(--font-display);font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--steel)}
+.lead{color:#5B5C60;font-size:clamp(.95rem,1.3vw,1.05rem);max-width:58ch}
+.band{padding:clamp(56px,8vw,110px) 0}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lead{color:var(--steel-2)}
+.dark .eyebrow{color:var(--steel)}
+
+/* topbar */
+.top{position:sticky;top:0;z-index:50;background:rgba(248,248,248,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(22,22,24,.09)}
+.top-inner{display:flex;align-items:center;gap:20px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none}
+.logo-mark{width:34px;height:34px;border-radius:6px;background:var(--ink);display:grid;place-items:center;flex:none}
+.logo-mark svg{display:block}
+.logo b{font-family:var(--font-display);font-weight:800;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;display:block;line-height:1.2}
+.logo .addr{font-size:.68rem;color:var(--steel);letter-spacing:.02em;display:block}
+.top-nav{display:none;gap:24px;margin-inline:auto;font-size:.84rem;font-weight:500}
+.top-nav a{text-decoration:none;color:#4A4B4F;transition:color .2s}
+.top-nav a:hover{color:var(--red)}
+.top-phone{display:none;font-family:var(--font-display);font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:14px 26px;border-radius:var(--r);border:1.5px solid transparent;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .2s;white-space:nowrap}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-out{border-color:var(--red);color:var(--red);background:transparent}
+.btn-out:hover{background:var(--red);color:#fff}
+.btn-light{background:var(--paper);color:var(--ink)}
+.btn-light:hover{background:#fff}
+.top .btn{margin-left:auto;padding:11px 20px}
+@media(min-width:1000px){.top-nav{display:flex}.top-phone{display:block}.top .btn{margin-left:0}}
+
+/* Below 1000px the links collapse into a dropdown; without it the page had no
+   navigation at all on a phone. */
+.burger{display:none;place-content:center;gap:4px;flex:none;width:42px;height:42px;padding:0;border:0;border-radius:var(--r);background:rgba(22,22,24,.06);cursor:pointer}
+.burger span{display:block;width:17px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.burger:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+@media(max-width:999px){
+  .burger{display:grid}
+  .top-inner{position:relative}
+  .top-nav{position:absolute;left:0;right:0;top:calc(100% + 10px);flex-direction:column;gap:0;margin:0;padding:8px;border-radius:var(--r);background:#fff;box-shadow:0 24px 46px -26px rgba(22,22,24,.8)}
+  .top-nav.open{display:flex}
+  .top-nav a{padding:13px 16px;border-radius:var(--r);font-size:.95rem;color:var(--ink)}
+  .top-nav a:hover{background:rgba(22,22,24,.06);color:var(--red)}
+  .top-nav .nav-cta{margin-top:4px;background:var(--red);color:#fff;text-align:center;font-weight:700}
+  .top-nav .nav-cta:hover{background:var(--red-dark);color:#fff}
+}
+@media(max-width:600px){.top .btn{display:none}}
+
+.lang{display:inline-flex;gap:2px;padding:3px;border-radius:var(--r);background:rgba(22,22,24,.06);margin-left:auto}
+.lang button{font:inherit;font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.08em;padding:7px 10px;border:0;border-radius:2px;background:transparent;color:#75767A;cursor:pointer;transition:background .2s,color .2s}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.lang button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.top .lang+.btn{margin-left:8px}
+@media(min-width:1000px){.lang{margin-left:0}}
+
+@media(max-width:560px){
+  .top-inner{gap:8px}
+  .logo-mark{width:28px;height:28px}
+  .logo b{font-size:.66rem;letter-spacing:.1em}
+  .logo .addr{display:none}
+  .top .btn{padding:10px 12px;font-size:.66rem;letter-spacing:.04em}
+  .lang{padding:2px}
+  .lang button{padding:6px 7px;font-size:.62rem;letter-spacing:.04em}
+}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(40px,7vw,86px) 0 clamp(20px,3vw,40px);background:#fff}
+.hero-grid{display:grid;gap:26px}
+.hero h1{margin-top:14px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-row{display:grid;gap:22px;margin-top:22px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.usp{display:grid;gap:14px;margin-top:38px;padding-top:24px;border-top:1px solid rgba(22,22,24,.12)}
+.usp div{display:flex;gap:11px;align-items:flex-start;font-size:.86rem;color:#4A4B4F;max-width:34ch}
+.usp svg{flex:none;margin-top:3px}
+.hero-car{position:relative;margin-top:-6%;margin-right:calc(var(--pad)*-1)}
+.hero-car img{width:100%;object-fit:contain}
+@media(min-width:900px){
+  .hero-grid{grid-template-columns:1.12fr .88fr;align-items:center;gap:10px}
+  .hero-row{grid-template-columns:1fr;max-width:42ch}
+  .hero-car{margin-top:0;margin-right:calc(var(--pad)*-2.2);width:122%;margin-left:-12%}
+  .usp{grid-template-columns:repeat(3,1fr);gap:22px}
+  .usp div{max-width:none}
+}
+
+/* feature list */
+.feat{display:grid;gap:34px;margin-top:clamp(30px,4vw,48px)}
+@media(min-width:800px){.feat{grid-template-columns:1fr 1fr;gap:38px 56px}}
+.feat h3{color:#fff;letter-spacing:.02em}
+.feat p{margin-top:9px;font-size:.88rem;color:var(--steel-2);max-width:46ch}
+.feat-item{border-top:1px solid var(--line);padding-top:18px}
+
+/* photo grid */
+.pgrid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);margin-top:clamp(34px,5vw,56px)}
+@media(min-width:900px){.pgrid{grid-template-columns:repeat(3,1fr);gap:14px}}
+.pgrid figure{margin:0;position:relative;overflow:hidden;border-radius:var(--r-md);background:#000;aspect-ratio:4/3}
+.pgrid img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.3,1),opacity .4s;opacity:.88}
+.pgrid figure:hover img{transform:scale(1.06);opacity:1}
+.pgrid figcaption{position:absolute;left:12px;bottom:11px;font-size:.72rem;font-weight:600;letter-spacing:.04em;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.pgrid figure.wide{grid-column:span 2}
+
+/* scrub */
+.scrub{position:relative;height:280vh;background:var(--ink)}
+.scrub-sticky{position:sticky;top:0;min-height:100vh;display:grid;place-items:center;padding:clamp(80px,11vh,120px) var(--pad) clamp(36px,6vh,64px)}
+.scrub-card{position:relative;width:min(1100px,100%);aspect-ratio:16/9;overflow:hidden;border-radius:var(--r-md);background:#0C0C0D}
+.scrub-card video,.scrub-card .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scrub-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,.5) 0%,rgba(12,12,13,0) 32%,rgba(12,12,13,.85) 100%)}
+.scrub-copy{position:absolute;inset:auto 0 0;z-index:2;padding:clamp(20px,3.4vw,40px);max-width:640px;color:#fff}
+.scrub-copy h2{color:#fff}
+.scrub-copy p{margin-top:11px;color:rgba(255,255,255,.82);font-size:.92rem}
+.scrub-hint{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+.scrub-hint i{width:20px;height:32px;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;position:relative;flex:none}
+.scrub-hint i::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:2px;background:#fff;translate:-50% 0;animation:wheel 1.8s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(0)}35%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+.scrub.static{height:auto}
+.scrub.static .scrub-sticky{position:relative;min-height:0;padding-block:clamp(40px,7vw,64px)}
+.scrub.static .scrub-card{aspect-ratio:4/5}
+
+/* reveal */
+.reveal{position:relative;overflow:hidden;border-radius:var(--r-md);background:#000;touch-action:pan-y;margin-top:clamp(26px,4vw,40px)}
+.reveal-frame{position:relative;aspect-ratio:4/3}
+@media(min-width:800px){.reveal-frame{aspect-ratio:16/9}}
+.reveal-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reveal-top{clip-path:inset(0 0 0 var(--split,50%))}
+.reveal-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent}
+.reveal-range:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+.reveal-handle{position:absolute;top:0;bottom:0;left:var(--split,50%);width:2px;background:var(--red);pointer-events:none}
+.reveal-handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;translate:-50% -50%;border-radius:999px;background:var(--red);box-shadow:0 10px 30px -8px rgba(0,0,0,.8);background-image:linear-gradient(90deg,transparent 42%,#fff 42%,#fff 45%,transparent 45%,transparent 55%,#fff 55%,#fff 58%,transparent 58%)}
+.reveal-tag{position:absolute;bottom:13px;padding:6px 13px;border-radius:var(--r);background:rgba(0,0,0,.65);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;pointer-events:none}
+.reveal-tag.l{left:13px}.reveal-tag.r{right:13px}
+
+/* prices */
+.price-cols{display:grid;gap:clamp(30px,4vw,54px);margin-top:clamp(28px,4vw,44px)}
+@media(min-width:820px){.price-cols{grid-template-columns:1fr 1fr;gap:38px 56px}}
+.price-group h3{font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;padding-bottom:12px;border-bottom:2px solid var(--red)}
+.price-group ul{list-style:none;margin:0;padding:0}
+.price-group li{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:15px 0;border-bottom:1px solid rgba(22,22,24,.1)}
+.price-group b{font-family:var(--font-display);font-weight:700;font-size:.93rem;display:block}
+.price-group small{display:block;color:#75767A;font-size:.78rem;margin-top:3px;max-width:44ch}
+.price-group .val{font-family:var(--font-display);font-weight:800;font-size:.95rem;white-space:nowrap;padding-top:1px}
+
+.price-car{margin-top:clamp(10px,2vw,24px);margin-right:calc(var(--pad)*-1)}
+.price-car img{width:100%;object-fit:contain}
+@media(min-width:900px){.price-car{width:58%;margin-left:auto;margin-right:calc(var(--pad)*-1.6);margin-top:-40px}}
+
+/* calculator */
+.calc{display:grid;gap:26px;background:var(--white);border:1px solid rgba(22,22,24,.1);border-radius:var(--r-md);padding:clamp(22px,3.4vw,40px)}
+@media(min-width:900px){.calc{grid-template-columns:1.15fr .85fr;gap:44px}}
+.calc-group{margin-bottom:22px}
+.calc-group>span{display:block;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.opt span{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1.5px solid rgba(22,22,24,.16);border-radius:var(--r);font-size:.85rem;font-weight:500;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.opt input:checked+span{border-color:var(--red);background:rgba(206,36,37,.06);color:var(--red);font-weight:600}
+.opt input:focus-visible+span{outline:2px solid var(--red);outline-offset:2px}
+.calc-out{background:var(--ink);color:#fff;border-radius:var(--r-md);padding:clamp(20px,3vw,30px);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.calc-sum{font-family:var(--font-display);font-weight:800;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1;letter-spacing:-.02em}
+.calc-out ul{list-style:none;margin:14px 0 0;padding:0;font-size:.82rem;color:var(--steel-2);display:grid;gap:7px}
+.calc-out li{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed rgba(255,255,255,.14);padding-bottom:6px}
+.calc-note{font-size:.74rem;color:var(--steel)}
+
+/* form + contacts */
+.split2{display:grid;gap:clamp(24px,3vw,40px)}
+@media(min-width:900px){.split2{grid-template-columns:.92fr 1.08fr}}
+.panel{background:var(--white);border:1px solid rgba(22,22,24,.1);border-radius:var(--r-md);padding:clamp(22px,3.2vw,38px)}
+.dark .panel{background:var(--ink-2);border-color:var(--line)}
+form{display:grid;gap:14px;margin-top:20px}
+.two{display:grid;gap:14px}
+@media(min-width:600px){.two{grid-template-columns:1fr 1fr}}
+.field{display:grid;gap:6px}
+.field label{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--steel)}
+.field input,.field select,.field textarea{font:inherit;font-size:.93rem;padding:13px 14px;border-radius:var(--r);border:1px solid rgba(22,22,24,.18);background:#fff;color:var(--ink);width:100%}
+.dark .field input,.dark .field select,.dark .field textarea{background:#131316;border-color:var(--line);color:#fff}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--red);outline-offset:1px;border-color:transparent}
+.form-note{font-size:.74rem;color:var(--steel)}
+.form-status{display:none;padding:13px 15px;border-radius:var(--r);background:rgba(206,36,37,.08);border:1px solid rgba(206,36,37,.3);font-size:.86rem}
+.form-status.show{display:block}
+.contact-list{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:16px;font-size:.92rem}
+.contact-list b{font-family:var(--font-display);display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:3px}
+.map-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-weight:600;font-size:.86rem;color:var(--red);text-decoration:none}
+
+/* footer */
+footer{background:#0F0F11;color:var(--steel-2);padding:clamp(44px,6vw,74px) 0 28px}
+.foot-grid{display:grid;gap:30px}
+@media(min-width:820px){.foot-grid{grid-template-columns:1.4fr .8fr .8fr}}
+footer h3{color:#fff;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase}
+footer ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px;font-size:.87rem}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+.foot-bottom{margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.74rem;color:#6F7074}
+
+.demo-badge{position:fixed;left:14px;bottom:14px;z-index:60;display:inline-flex;align-items:center;gap:9px;padding:9px 15px 9px 12px;border-radius:999px;background:rgba(22,22,24,.92);color:#fff;font-size:.73rem;font-weight:600;text-decoration:none;backdrop-filter:blur(10px);box-shadow:0 14px 30px -18px rgba(0,0,0,.9);transition:transform .2s}
+.demo-badge:hover{transform:translateY(-2px)}
+
+.rise{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rise.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.scrub-hint i::after{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 32 32"><path d="M6 22l6-12h4l-6 12zm8 0l6-12h4l-6 12z" fill="#CE2425"/><path d="M21 22l6-12h1.6l-6 12z" fill="#F8F8F8"/></svg></span>
+      <span><b>Nordic Detailing</b><span class="addr">Резекне, Виляку 12</span></span>
+    </a>
+    <nav class="top-nav" id="top-nav">
+      <a href="#works">Что делаем</a>
+      <a href="#result">Результат</a>
+      <a href="#prices">Цены</a>
+      <a href="#calc">Калькулятор</a>
+      <a href="#contacts">Контакты</a>
+      <a class="nav-cta" href="#booking">Записаться</a>
+    </nav>
+    <a class="top-phone" href="#contacts">+371 2X XXX XXX</a>
+    <div class="lang" role="group" aria-label="Valoda / Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="lv" aria-pressed="false">LV</button></div>
+    <a class="btn btn-out" href="#booking">Записаться</a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="top-nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Детейлинг-центр · Резекне и Лудза</span>
+      <h1>Детейлинг-<em>мойка</em></h1>
+      <div class="hero-row">
+        <p class="lead">Возвращаем кузову вид, за который не стыдно при продаже: бесконтактная мойка, глубокая чистка, полировка и защита. Работаем по записи, машина в боксе 3–8 часов.</p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-red" href="#booking">Записаться онлайн</a>
+        <a class="btn btn-out" href="#calc">Рассчитать стоимость</a>
+      </div>
+      <div class="usp">
+        <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CE2425" stroke-width="3"><path d="m6 4 8 8-8 8"/></svg><span>Не трогаем ЛКП абразивом без замера толщины</span></div>
+        <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CE2425" stroke-width="3"><path d="m6 4 8 8-8 8"/></svg><span>Первая мойка со скидкой 15% по записи</span></div>
+        <div><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CE2425" stroke-width="3"><path d="m6 4 8 8-8 8"/></svg><span>Химия Koch Chemie и Sonax, не «ведро на рынке»</span></div>
+      </div>
+    </div>
+    <div class="hero-car">
+      <img src="assets/hero-car.webp" width="1500" height="837" alt="Белый седан после детейлинг-мойки на белом фоне" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="works">
+  <div class="wrap">
+    <span class="eyebrow">Что входит в работу</span>
+    <h2 style="margin-top:10px;max-width:20ch">Мойка — это шесть отдельных этапов, а не «полил и вытер»</h2>
+    <div class="feat">
+      <div class="feat-item">
+        <h3>Предмойка и бесконтакт</h3>
+        <p>Активная пена держится на кузове 5–7 минут и снимает дорожную плёнку, чтобы грязь не работала как наждак под тряпкой.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Пороги, арки, подвеска</h3>
+        <p>Машина поднимается на подъёмник: моем то, что с земли не видно, и откуда зимой лезет соль и реагенты.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Химчистка салона</h3>
+        <p>Экстрактор и пар для ткани, мягкая химия для кожи. Запах уходит вместе с источником, а не перебивается ароматизатором.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Полировка и защита</h3>
+        <p>Замеряем толщину ЛКП, снимаем риски за 2–3 прохода и закрываем поверхность кварцем или воском.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Диски и резина</h3>
+        <p>Очиститель против налёта от колодок, промывка внутренней части диска, чернение резины без жирных подтёков.</p>
+      </div>
+      <div class="feat-item">
+        <h3>Стёкла и оптика</h3>
+        <p>Полировка фар от помутнения и антидождь на лобовое — зимой на трассе это видно в первый же вечер.</p>
+      </div>
+    </div>
+    <div class="pgrid">
+      <figure><img src="assets/polish.webp" width="800" height="600" alt="Полировальная машинка с кругом на чёрном лакокрасочном покрытии" loading="lazy"><figcaption>Полировка</figcaption></figure>
+      <figure><img src="assets/beading.webp" width="800" height="600" alt="Капли воды собираются шариками на защищённом кузове" loading="lazy"><figcaption>Керамика</figcaption></figure>
+      <figure><img src="assets/wheel.webp" width="800" height="600" alt="Чистый легкосплавный диск и обработанная резина" loading="lazy"><figcaption>Диски</figcaption></figure>
+      <figure><img src="assets/interior.webp" width="800" height="600" alt="Чистый тёмный салон автомобиля после химчистки" loading="lazy"><figcaption>Салон</figcaption></figure>
+      <figure><img src="assets/engine.webp" width="800" height="600" alt="Вымытый моторный отсек автомобиля" loading="lazy"><figcaption>Моторный отсек</figcaption></figure>
+      <figure><img src="assets/tools.webp" width="1400" height="788" alt="Инструменты и химия для детейлинга разложены на бетоне" loading="lazy"><figcaption>Чем работаем</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="scrub" id="result">
+  <div class="scrub-sticky">
+    <div class="scrub-card">
+      <img class="poster" id="washPoster" src="assets/wash-poster.webp" width="960" height="540" alt="Грязная панель кузова до мойки" loading="lazy">
+      <video id="washVideo" muted playsinline preload="none" aria-hidden="true" poster="assets/wash-poster.webp"></video>
+      <div class="scrub-copy">
+        <span class="eyebrow" style="color:#BEC1C4">Результат</span>
+        <h2>Листайте — и грязь уходит с панели</h2>
+        <p>Один кадр, снятый в боксе: дорожная плёнка, пена, промывка, сушка. Ровно то, что происходит с машиной за первые сорок минут работы.</p>
+        <span class="scrub-hint"><i aria-hidden="true"></i>Прокрутите страницу</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="compare">
+  <div class="wrap">
+    <span class="eyebrow">До и после</span>
+    <h2 style="margin-top:10px;max-width:22ch">Потяните ползунок — увидите разницу на одной и той же панели</h2>
+    <div class="reveal rise" id="reveal">
+      <div class="reveal-frame">
+        <img src="assets/reveal-dirty.webp" width="1200" height="675" alt="Кузов автомобиля до мойки: дорожная грязь и разводы" loading="lazy">
+        <img class="reveal-top" src="assets/reveal-clean.webp" width="1200" height="675" alt="Тот же кузов после мойки и полировки: глубокий глянец" loading="lazy">
+        <span class="reveal-handle" aria-hidden="true"></span>
+        <span class="reveal-tag l">До</span>
+        <span class="reveal-tag r">После</span>
+        <input class="reveal-range" id="revealRange" type="range" min="0" max="100" value="50" aria-label="Сравнение кузова до и после мойки">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="prices" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Прайс</span>
+    <h2 style="margin-top:10px">Цены за работу, без «уточняйте по телефону»</h2>
+    <p class="lead" style="margin-top:14px">Указана стоимость для седана. Кроссовер +15%, внедорожник и минивэн +30%. Точную сумму по своей машине можно посчитать в калькуляторе ниже.</p>
+    <div class="price-cols">
+      <div class="price-group">
+        <h3>Экстерьер</h3>
+        <ul>
+          <li><span><b>Бесконтактная мойка EURO</b><small>Пена, ручная промывка, сушка, стёкла</small></span><span class="val">от 25 €</span></li>
+          <li><span><b>Мойка PREMIUM</b><small>EURO + пороги, арки, проёмы дверей, чернение резины</small></span><span class="val">от 45 €</span></li>
+          <li><span><b>DETAILING-мойка кузова</b><small>PREMIUM + глина, обезжиривание, воск на 2 месяца</small></span><span class="val">от 95 €</span></li>
+        </ul>
+      </div>
+      <div class="price-group">
+        <h3>Интерьер</h3>
+        <ul>
+          <li><span><b>Уборка салона BASIC</b><small>Пылесос, пластик, стёкла изнутри, коврики</small></span><span class="val">от 20 €</span></li>
+          <li><span><b>Химчистка ткани</b><small>Экстрактор, сиденья и потолок, сушка 2 часа</small></span><span class="val">от 90 €</span></li>
+          <li><span><b>Кожа: чистка и питание</b><small>Мягкая химия, кондиционер, обработка швов</small></span><span class="val">от 110 €</span></li>
+        </ul>
+      </div>
+      <div class="price-group">
+        <h3>Полировка и защита</h3>
+        <ul>
+          <li><span><b>Полировка в один проход</b><small>Снимает мелкие риски и матовость, держится сезон</small></span><span class="val">от 160 €</span></li>
+          <li><span><b>Кварцевое покрытие</b><small>Гидрофоб и защита ЛКП до 8 месяцев</small></span><span class="val">от 190 €</span></li>
+          <li><span><b>Полировка фар</b><small>Снятие помутнения, лак с УФ-фильтром</small></span><span class="val">35 € / пара</span></li>
+        </ul>
+      </div>
+      <div class="price-group">
+        <h3>Днище и подкапотное</h3>
+        <ul>
+          <li><span><b>Мойка днища на подъёмнике</b><small>После зимы, с промывкой арок и подвески</small></span><span class="val">от 40 €</span></li>
+          <li><span><b>Мойка моторного отсека</b><small>С укрытием электрики, продувка, консервант</small></span><span class="val">от 45 €</span></li>
+          <li><span><b>Антикор арок</b><small>Осмотр, зачистка очагов, состав на 2 сезона</small></span><span class="val">от 130 €</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="price-car"><img src="assets/car-rear.webp" width="1100" height="614" alt="Серебристый автомобиль после комплексного детейлинга, вид сзади" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band" id="calc" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Калькулятор</span>
+    <h2 style="margin-top:10px">Соберите комплекс под свою машину</h2>
+    <div class="calc rise" style="margin-top:clamp(24px,3vw,38px)">
+      <div>
+        <div class="calc-group">
+          <span>Тип кузова</span>
+          <div class="opts" id="calcBody">
+            <label class="opt"><input type="radio" name="body" value="1" data-label="Седан" checked><span>Седан / хэтчбек</span></label>
+            <label class="opt"><input type="radio" name="body" value="1.15" data-label="Кроссовер"><span>Кроссовер</span></label>
+            <label class="opt"><input type="radio" name="body" value="1.3" data-label="Внедорожник"><span>Внедорожник / минивэн</span></label>
+          </div>
+        </div>
+        <div class="calc-group">
+          <span>Базовый пакет</span>
+          <div class="opts" id="calcPack">
+            <label class="opt"><input type="radio" name="pack" value="25" data-label="Мойка EURO" checked><span>Мойка EURO — 25 €</span></label>
+            <label class="opt"><input type="radio" name="pack" value="45" data-label="Мойка PREMIUM"><span>PREMIUM — 45 €</span></label>
+            <label class="opt"><input type="radio" name="pack" value="95" data-label="DETAILING-мойка"><span>DETAILING — 95 €</span></label>
+          </div>
+        </div>
+        <div class="calc-group" style="margin-bottom:0">
+          <span>Добавить к работе</span>
+          <div class="opts" id="calcExtra">
+            <label class="opt"><input type="checkbox" value="90" data-label="Химчистка ткани"><span>Химчистка ткани +90 €</span></label>
+            <label class="opt"><input type="checkbox" value="190" data-label="Кварцевое покрытие"><span>Керамика +190 €</span></label>
+            <label class="opt"><input type="checkbox" value="35" data-label="Полировка фар"><span>Фары +35 €</span></label>
+            <label class="opt"><input type="checkbox" value="40" data-label="Мойка днища"><span>Днище +40 €</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="calc-out">
+        <div>
+          <span class="eyebrow" style="color:#8A8C90">Ориентир по стоимости</span>
+          <div class="calc-sum" id="calcSum">от 25 €</div>
+          <ul id="calcList"></ul>
+        </div>
+        <div>
+          <a class="btn btn-red" id="calcBtn" href="#booking" style="width:100%">Записаться с этим расчётом</a>
+          <p class="calc-note" style="margin-top:12px">Итог считаем при осмотре: сильно загрязнённый салон или битумные пятна добавляют время. Отклонение обычно в пределах 10–15%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="contacts">
+  <div class="wrap split2">
+    <div>
+      <span class="eyebrow">Контакты</span>
+      <h2 style="margin-top:10px">Резекне, улица Виляку 12, бокс 3</h2>
+      <p class="lead" style="margin-top:14px">Заезд со двора, перед боксом есть место под две машины. На комплекс с полировкой закладывайте день: отдаём машину после того, как покрытие встало.</p>
+      <ul class="contact-list">
+        <li><b>Телефон</b>+371 2X XXX XXX (WhatsApp)</li>
+        <li><b>Часы работы</b>Пн–Сб 9:00 – 19:00, воскресенье — по записи</li>
+        <li><b>Почта</b>bookings@nordicdetailing.demo</li>
+      </ul>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Vil%C4%81ku+iela+12%2C+R%C4%93zekne" target="_blank" rel="noopener noreferrer">
+        Открыть в Google Maps
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+    <div class="panel" id="booking">
+      <span class="eyebrow">Запись</span>
+      <h2 style="margin-top:8px;font-size:clamp(1.4rem,2.4vw,1.9rem)">Оставьте заявку — подтвердим слот в WhatsApp</h2>
+      <p class="lead" style="margin-top:12px">Напишите машину и что беспокоит. Если работа не по нашей части (кузовной ремонт, покраска) — честно скажем сразу.</p>
+      <form id="bookingForm" novalidate>
+        <div class="two">
+          <div class="field"><label for="name">Имя</label><input id="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required></div>
+          <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" autocomplete="tel" placeholder="+371 …" required></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="car">Машина</label><input id="car" type="text" placeholder="Например: Octavia 2016, универсал"></div>
+          <div class="field"><label for="day">Удобный день</label><input id="day" type="date"></div>
+        </div>
+        <div class="field"><label for="task">Что нужно сделать</label><textarea id="task" rows="3" placeholder="Например: мойка PREMIUM + химчистка передних сидений"></textarea></div>
+        <button class="btn btn-red" type="submit" style="justify-self:start">Отправить заявку</button>
+        <p class="form-note">Это демо-концепт: заявка никуда не уходит. На рабочем сайте кнопка открывает WhatsApp с готовым текстом.</p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Nordic Detailing</h3>
+      <ul><li style="max-width:40ch;color:#8A8C90">Детейлинг-центр в Резекне: мойка, химчистка, полировка и защита кузова. Работаем по записи, один пост — одна машина.</li></ul>
+    </div>
+    <div>
+      <h3>Услуги</h3>
+      <ul>
+        <li><a href="#prices">Мойка и экстерьер</a></li>
+        <li><a href="#prices">Химчистка салона</a></li>
+        <li><a href="#prices">Полировка и керамика</a></li>
+        <li><a href="#calc">Калькулятор</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Контакты</h3>
+      <ul>
+        <li>Виляку 12, бокс 3, Резекне</li>
+        <li>+371 2X XXX XXX</li>
+        <li>Пн–Сб 9:00 – 19:00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>NORDIC DETAILING — вымышленный детейлинг-центр. Демо-концепт студии WebExpress.</span>
+    <a href="../../index.html#portfolio">← Ко всем демо-нишам</a>
+  </div>
+</footer>
+
+<a class="demo-badge" href="../../index.html#portfolio">Демо-концепт WebExpress</a>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoWash","name":"Nordic Detailing","description":"Демо-концепт сайта детейлинг-центра в Резекне: мойка, химчистка, полировка, защита кузова.","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Vilāku iela 12","addressLocality":"Rēzekne","addressCountry":"LV"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+
+<script>
+/* i18n: словарь ru -> lv, подмена текстовых узлов и атрибутов без перезагрузки */
+(function(){
+  var LV={"NORDIC DETAILING — детейлинг-мойка в Резекне | Демо-концепт WebExpress": "NORDIC DETAILING — detailing mazgāšana Rēzeknē | WebExpress demo", "Демо-концепт сайта детейлинг-центра: мойка, полировка, керамика, химчистка салона. Калькулятор стоимости и запись онлайн. Резекне.": "Detailing centra mājaslapas demo: mazgāšana, pulēšana, keramika, salona ķīmiskā tīrīšana. Cenas kalkulators un pieraksts online. Rēzekne.", "NORDIC DETAILING — детейлинг-мойка в Резекне": "NORDIC DETAILING — detailing mazgāšana Rēzeknē", "Мойка, полировка, керамика и химчистка. Расчёт стоимости за минуту. Демо-концепт студии WebExpress.": "Mazgāšana, pulēšana, keramika un ķīmiskā tīrīšana. Cenas aprēķins minūtē. WebExpress studijas demo.", "Резекне, Виляку 12": "Rēzekne, Vilāku 12", "Что делаем": "Ko darām", "Результат": "Rezultāts", "Цены": "Cenas", "Калькулятор": "Kalkulators", "Контакты": "Kontakti", "Записаться": "Pieteikties", "Детейлинг-центр · Резекне и Лудза": "Detailing centrs · Rēzekne un Ludza", "Детейлинг-": "Detailing ", "мойка": "mazgāšana", "Возвращаем кузову вид, за который не стыдно при продаже: бесконтактная мойка, глубокая чистка, полировка и защита. Работаем по записи, машина в боксе 3–8 часов.": "Atgriežam virsbūvei izskatu, par kuru nav kauns pārdodot: bezkontakta mazgāšana, dziļā tīrīšana, pulēšana un aizsardzība. Strādājam pēc pieraksta, mašīna boksā 3–8 stundas.", "Записаться онлайн": "Pieteikties online", "Рассчитать стоимость": "Aprēķināt cenu", "Не трогаем ЛКП абразивом без замера толщины": "Neaiztiekam lakas slāni ar abrazīvu, kamēr nav nomērīts tā biezums", "Первая мойка со скидкой 15% по записи": "Pirmā mazgāšana ar 15% atlaidi pēc pieraksta", "Химия Koch Chemie и Sonax, не «ведро на рынке»": "Koch Chemie un Sonax ķīmija, nevis «spainis no tirgus»", "Белый седан после детейлинг-мойки на белом фоне": "Balts sedans pēc detailing mazgāšanas uz balta fona", "Что входит в работу": "Kas ietilpst darbā", "Мойка — это шесть отдельных этапов, а не «полил и вытер»": "Mazgāšana ir seši atsevišķi posmi, nevis «aplēja un noslaucīja»", "Предмойка и бесконтакт": "Priekšmazgāšana un bezkontakts", "Активная пена держится на кузове 5–7 минут и снимает дорожную плёнку, чтобы грязь не работала как наждак под тряпкой.": "Aktīvās putas paliek uz virsbūves 5–7 minūtes un noņem ceļa plēvi, lai netīrumi zem lupatas nestrādātu kā smilšpapīrs.", "Пороги, арки, подвеска": "Sliekšņi, arkas, balstiekārta", "Машина поднимается на подъёмник: моем то, что с земли не видно, и откуда зимой лезет соль и реагенты.": "Mašīnu paceļam uz pacēlāja: mazgājam to, kas no zemes nav redzams un no kurienes ziemā nāk sāls un reaģenti.", "Химчистка салона": "Salona ķīmiskā tīrīšana", "Экстрактор и пар для ткани, мягкая химия для кожи. Запах уходит вместе с источником, а не перебивается ароматизатором.": "Ekstraktors un tvaiks audumam, saudzīga ķīmija ādai. Smaka pazūd kopā ar avotu, nevis tiek pārsegta ar aromatizatoru.", "Полировка и защита": "Pulēšana un aizsardzība", "Замеряем толщину ЛКП, снимаем риски за 2–3 прохода и закрываем поверхность кварцем или воском.": "Nomērām lakas biezumu, noņemam skrāpējumus 2–3 piegājienos un noslēdzam virsmu ar kvarcu vai vasku.", "Диски и резина": "Diski un riepas", "Очиститель против налёта от колодок, промывка внутренней части диска, чернение резины без жирных подтёков.": "Tīrītājs pret bremžu putekļiem, diska iekšpuses izmazgāšana, riepu melnināšana bez taukainām svītrām.", "Стёкла и оптика": "Stikli un optika", "Полировка фар от помутнения и антидождь на лобовое — зимой на трассе это видно в первый же вечер.": "Lukturu pulēšana pret duļķainumu un antilietus uz priekšējā stikla — ziemā uz šosejas to pamana jau pirmajā vakarā.", "Полировальная машинка с кругом на чёрном лакокрасочном покрытии": "Pulēšanas mašīna ar disku uz melnas lakas virsmas", "Полировка": "Pulēšana", "Капли воды собираются шариками на защищённом кузове": "Ūdens lāses saveļas bumbiņās uz aizsargātas virsbūves", "Керамика": "Keramika", "Чистый легкосплавный диск и обработанная резина": "Tīrs vieglmetāla disks un apstrādāta riepa", "Диски": "Diski", "Чистый тёмный салон автомобиля после химчистки": "Tīrs tumšs auto salons pēc ķīmiskās tīrīšanas", "Салон": "Salons", "Вымытый моторный отсек автомобиля": "Izmazgāts auto motora nodalījums", "Моторный отсек": "Motora nodalījums", "Инструменты и химия для детейлинга разложены на бетоне": "Detailing instrumenti un ķīmija izklāti uz betona", "Чем работаем": "Ar ko strādājam", "Грязная панель кузова до мойки": "Netīrs virsbūves panelis pirms mazgāšanas", "Листайте — и грязь уходит с панели": "Ritiniet — un netīrumi pazūd no paneļa", "Один кадр, снятый в боксе: дорожная плёнка, пена, промывка, сушка. Ровно то, что происходит с машиной за первые сорок минут работы.": "Viens kadrs, uzņemts boksā: ceļa plēve, putas, skalošana, žāvēšana. Tieši tas, kas ar mašīnu notiek pirmajās četrdesmit darba minūtēs.", "Прокрутите страницу": "Ritiniet lapu", "До и после": "Pirms un pēc", "Потяните ползунок — увидите разницу на одной и той же панели": "Pavelciet slīdni — redzēsiet atšķirību uz viena un tā paša paneļa", "Кузов автомобиля до мойки: дорожная грязь и разводы": "Auto virsbūve pirms mazgāšanas: ceļa netīrumi un svītras", "Тот же кузов после мойки и полировки: глубокий глянец": "Tā pati virsbūve pēc mazgāšanas un pulēšanas: dziļš spīdums", "До": "Pirms", "После": "Pēc", "Сравнение кузова до и после мойки": "Virsbūves salīdzinājums pirms un pēc mazgāšanas", "Прайс": "Cenrādis", "Цены за работу, без «уточняйте по телефону»": "Cenas par darbu, bez «precizējiet pa telefonu»", "Указана стоимость для седана. Кроссовер +15%, внедорожник и минивэн +30%. Точную сумму по своей машине можно посчитать в калькуляторе ниже.": "Norādīta cena sedanam. Krosoveram +15%, apvidus auto un minivenam +30%. Precīzu summu savai mašīnai var aprēķināt kalkulatorā zemāk.", "Экстерьер": "Eksterjers", "Бесконтактная мойка EURO": "Bezkontakta mazgāšana EURO", "Пена, ручная промывка, сушка, стёкла": "Putas, rokas skalošana, žāvēšana, stikli", "от 25 €": "no 25 €", "Мойка PREMIUM": "Mazgāšana PREMIUM", "EURO + пороги, арки, проёмы дверей, чернение резины": "EURO + sliekšņi, arkas, durvju ailes, riepu melnināšana", "от 45 €": "no 45 €", "DETAILING-мойка кузова": "DETAILING virsbūves mazgāšana", "PREMIUM + глина, обезжиривание, воск на 2 месяца": "PREMIUM + māls, attaukošana, vasks uz 2 mēnešiem", "от 95 €": "no 95 €", "Интерьер": "Interjers", "Уборка салона BASIC": "Salona uzkopšana BASIC", "Пылесос, пластик, стёкла изнутри, коврики": "Putekļsūcējs, plastmasa, stikli no iekšpuses, paklājiņi", "от 20 €": "no 20 €", "Химчистка ткани": "Auduma ķīmiskā tīrīšana", "Экстрактор, сиденья и потолок, сушка 2 часа": "Ekstraktors, sēdekļi un griesti, žāvēšana 2 stundas", "от 90 €": "no 90 €", "Кожа: чистка и питание": "Āda: tīrīšana un barošana", "Мягкая химия, кондиционер, обработка швов": "Saudzīga ķīmija, kondicionieris, šuvju apstrāde", "от 110 €": "no 110 €", "Полировка в один проход": "Pulēšana vienā piegājienā", "Снимает мелкие риски и матовость, держится сезон": "Noņem sīkus skrāpējumus un matētumu, turas sezonu", "от 160 €": "no 160 €", "Кварцевое покрытие": "Kvarca pārklājums", "Гидрофоб и защита ЛКП до 8 месяцев": "Hidrofobs un lakas aizsardzība līdz 8 mēnešiem", "от 190 €": "no 190 €", "Полировка фар": "Lukturu pulēšana", "Снятие помутнения, лак с УФ-фильтром": "Duļķainuma noņemšana, laka ar UV filtru", "35 € / пара": "35 € / pāris", "Днище и подкапотное": "Dibens un motora nodalījums", "Мойка днища на подъёмнике": "Dibena mazgāšana uz pacēlāja", "После зимы, с промывкой арок и подвески": "Pēc ziemas, ar arku un balstiekārtas izskalošanu", "от 40 €": "no 40 €", "Мойка моторного отсека": "Motora nodalījuma mazgāšana", "С укрытием электрики, продувка, консервант": "Ar elektrikas nosegšanu, izpūšana, konservants", "Антикор арок": "Arku antikorozija", "Осмотр, зачистка очагов, состав на 2 сезона": "Apskate, perēkļu notīrīšana, sastāvs uz 2 sezonām", "от 130 €": "no 130 €", "Серебристый автомобиль после комплексного детейлинга, вид сзади": "Sudrabains auto pēc kompleksa detailing, skats no aizmugures", "Соберите комплекс под свою машину": "Salieciet komplektu savai mašīnai", "Тип кузова": "Virsbūves tips", "Седан / хэтчбек": "Sedans / hečbeks", "Кроссовер": "Krosovers", "Внедорожник / минивэн": "Apvidus auto / minivens", "Базовый пакет": "Pamata pakete", "Мойка EURO — 25 €": "Mazgāšana EURO — 25 €", "Добавить к работе": "Pievienot darbam", "Химчистка ткани +90 €": "Auduma ķīmiskā tīrīšana +90 €", "Керамика +190 €": "Keramika +190 €", "Фары +35 €": "Lukturi +35 €", "Днище +40 €": "Dibens +40 €", "Ориентир по стоимости": "Aptuvenā cena", "Записаться с этим расчётом": "Pieteikties ar šo aprēķinu", "Итог считаем при осмотре: сильно загрязнённый салон или битумные пятна добавляют время. Отклонение обычно в пределах 10–15%.": "Galīgo summu nosakām apskatē: ļoti netīrs salons vai bituma traipi pievieno laiku. Novirze parasti ir 10–15% robežās.", "Резекне, улица Виляку 12, бокс 3": "Rēzekne, Vilāku iela 12, bokss 3", "Заезд со двора, перед боксом есть место под две машины. На комплекс с полировкой закладывайте день: отдаём машину после того, как покрытие встало.": "Iebraukšana no pagalma, pie boksa ir vieta divām mašīnām. Kompleksam ar pulēšanu ieplānojiet dienu: mašīnu atdodam pēc tam, kad pārklājums ir nostiprinājies.", "Телефон": "Telefons", "Часы работы": "Darba laiks", "Пн–Сб 9:00 – 19:00, воскресенье — по записи": "P–S 9:00 – 19:00, svētdien — pēc pieraksta", "Почта": "E-pasts", "Открыть в Google Maps": "Atvērt Google Maps", "Запись": "Pieraksts", "Оставьте заявку — подтвердим слот в WhatsApp": "Atstājiet pieteikumu — apstiprināsim laiku WhatsApp", "Напишите машину и что беспокоит. Если работа не по нашей части (кузовной ремонт, покраска) — честно скажем сразу.": "Norādiet mašīnu un to, kas jūs uztrauc. Ja darbs nav mūsu daļa (virsbūves remonts, krāsošana) — godīgi pateiksim uzreiz.", "Имя": "Vārds", "Как к вам обращаться": "Kā jūs uzrunāt", "Машина": "Mašīna", "Например: Octavia 2016, универсал": "Piemēram: Octavia 2016, universālis", "Удобный день": "Ērtā diena", "Что нужно сделать": "Kas jāizdara", "Например: мойка PREMIUM + химчистка передних сидений": "Piemēram: PREMIUM mazgāšana + priekšējo sēdekļu ķīmiskā tīrīšana", "Отправить заявку": "Nosūtīt pieteikumu", "Это демо-концепт: заявка никуда не уходит. На рабочем сайте кнопка открывает WhatsApp с готовым текстом.": "Šis ir demo: pieteikums nekur netiek nosūtīts. Darba versijā poga atver WhatsApp ar gatavu tekstu.", "Детейлинг-центр в Резекне: мойка, химчистка, полировка и защита кузова. Работаем по записи, один пост — одна машина.": "Detailing centrs Rēzeknē: mazgāšana, ķīmiskā tīrīšana, pulēšana un virsbūves aizsardzība. Strādājam pēc pieraksta, viens posts — viena mašīna.", "Услуги": "Pakalpojumi", "Мойка и экстерьер": "Mazgāšana un eksterjers", "Полировка и керамика": "Pulēšana un keramika", "Виляку 12, бокс 3, Резекне": "Vilāku 12, bokss 3, Rēzekne", "Пн–Сб 9:00 – 19:00": "P–S 9:00 – 19:00", "NORDIC DETAILING — вымышленный детейлинг-центр. Демо-концепт студии WebExpress.": "NORDIC DETAILING ir izdomāts detailing centrs. WebExpress studijas demo.", "← Ко всем демо-нишам": "← Uz visām demo nišām", "Демо-концепт WebExpress": "WebExpress demo", "Проверьте имя и телефон — по ним мы подтверждаем запись.": "Pārbaudiet vārdu un telefonu — pa tiem apstiprinām pierakstu.", "Заявка принята (демо). На рабочем сайте здесь открывается WhatsApp: «Запись,": "Pieteikums pieņemts (demo). Darba versijā šeit atveras WhatsApp: «Pieraksts,", "машина не указана": "mašīna nav norādīta", "расчёт": "aprēķins", "Отправлено": "Nosūtīts", "Мойка PREMIUM — 45 €": "Mazgāšana PREMIUM — 45 €", "PREMIUM — 45 €": "PREMIUM — 45 €", "DETAILING — 95 €": "DETAILING — 95 €", "Седан": "Sedans", "Внедорожник": "Apvidus auto", "Мойка EURO": "Mazgāšana EURO", "DETAILING-мойка": "DETAILING mazgāšana", "от": "no"};
+  var KEY='wx-lang';
+  var qs=new URLSearchParams(location.search).get('lang');
+  var lang=(qs||localStorage.getItem(KEY)||'lv').toLowerCase();
+  if(lang!=='lv')lang='ru';
+  var norm=function(s){return s.replace(/\s+/g,' ').trim()};
+  window.tr=function(s){if(lang!=='lv')return s;return LV[norm(s)]||s};
+  window.wxLang=function(){return lang};
+
+  var nodes=[],attrs=[],metas=[],title=document.title;
+  var ATTRS=['alt','placeholder','aria-label','title','data-label'];
+  function collect(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var p=n.parentNode&&n.parentNode.nodeName;
+      if(p==='SCRIPT'||p==='STYLE')return NodeFilter.FILTER_REJECT;
+      return norm(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;
+    }});
+    var n;while(n=w.nextNode())nodes.push([n,n.nodeValue]);
+    ATTRS.forEach(function(a){
+      Array.prototype.forEach.call(document.querySelectorAll('['+a+']'),function(el){
+        attrs.push([el,a,el.getAttribute(a)]);
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('meta[name="description"],meta[property^="og:"]'),function(m){
+      metas.push([m,m.getAttribute('content')]);
+    });
+  }
+  function apply(){
+    var on=lang==='lv';
+    nodes.forEach(function(p){
+      var o=p[1],t=LV[norm(o)];
+      p[0].nodeValue=(on&&t)?o.match(/^\s*/)[0]+t+o.match(/\s*$/)[0]:o;
+    });
+    attrs.forEach(function(p){
+      var t=LV[norm(p[2])];
+      p[0].setAttribute(p[1],(on&&t)?t:p[2]);
+    });
+    metas.forEach(function(p){
+      var t=LV[norm(p[1])];
+      p[0].setAttribute('content',(on&&t)?t:p[1]);
+    });
+    document.title=(on&&LV[norm(title)])?LV[norm(title)]:title;
+    document.documentElement.lang=on?'lv':'ru';
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'),function(b){
+      b.setAttribute('aria-pressed',String(b.dataset.lang===lang));
+    });
+  }
+  function set(l){
+    lang=l;try{localStorage.setItem(KEY,l)}catch(e){}
+    apply();
+    document.dispatchEvent(new CustomEvent('wx:lang',{detail:l}));
+  }
+  /* This script sits at the end of <body>, so the markup is already parsed:
+     translate now rather than on DOMContentLoaded, otherwise Latvian visitors
+     see a flash of Russian before the swap. */
+  var boot=function(){
+    collect();apply();
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'),function(b){
+      b.addEventListener('click',function(){set(b.dataset.lang)});
+    });
+  };
+  if(document.body)boot();else document.addEventListener('DOMContentLoaded',boot);
+})();
+</script>
+<script>
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{rootMargin:'0px 0px -12% 0px',threshold:.12});
+  document.querySelectorAll('.rise').forEach(function(el){io.observe(el)});
+
+  /* scroll scrub */
+  var sec=document.getElementById('result'),vid=document.getElementById('washVideo'),poster=document.getElementById('washPoster');
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(sec&&vid&&!reduced&&window.innerWidth>=768){
+    vid.src='assets/wash-scrub.mp4';vid.preload='auto';vid.load();
+    var target=0,current=0,ready=false,raf=null;
+    vid.addEventListener('loadedmetadata',function(){ready=true});
+    vid.addEventListener('loadeddata',function(){poster.style.transition='opacity .4s';poster.style.opacity='0'});
+    var tick=function(){
+      current+=(target-current)*0.12;
+      if(ready&&Math.abs(target-current)>0.003){try{vid.currentTime=current}catch(e){}raf=requestAnimationFrame(tick)}
+      else{if(ready){try{vid.currentTime=target}catch(e){}}raf=null}
+    };
+    var onS=function(){
+      if(!ready)return;
+      var r=sec.getBoundingClientRect(),total=sec.offsetHeight-window.innerHeight;
+      var p=Math.max(0,Math.min(1,-r.top/total));
+      target=p*(vid.duration||1);
+      if(!raf)raf=requestAnimationFrame(tick);
+    };
+    window.addEventListener('scroll',onS,{passive:true});
+    window.addEventListener('resize',onS);
+    vid.addEventListener('loadeddata',onS);
+  }else if(sec){sec.classList.add('static');if(vid)vid.remove()}
+
+  /* reveal */
+  var range=document.getElementById('revealRange'),rev=document.getElementById('reveal');
+  if(range&&rev){
+    var apply=function(){rev.style.setProperty('--split',range.value+'%')};
+    apply();range.addEventListener('input',apply);
+    var drag=function(e){
+      var r=rev.getBoundingClientRect();
+      var x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
+      range.value=Math.max(0,Math.min(100,x/r.width*100));apply();
+    };
+    rev.addEventListener('pointerdown',function(e){rev.setPointerCapture(e.pointerId);drag(e)});
+    rev.addEventListener('pointermove',function(e){if(e.buttons)drag(e)});
+  }
+
+  /* calculator */
+  var sum=document.getElementById('calcSum'),list=document.getElementById('calcList'),btn=document.getElementById('calcBtn');
+  var calc=function(){
+    var body=document.querySelector('#calcBody input:checked');
+    var pack=document.querySelector('#calcPack input:checked');
+    var coef=parseFloat(body.value),base=parseFloat(pack.value);
+    var total=base*coef,rows=['<li><span>'+pack.dataset.label+' ('+body.dataset.label+')</span><span>'+Math.round(total)+' €</span></li>'];
+    document.querySelectorAll('#calcExtra input:checked').forEach(function(x){
+      var v=parseFloat(x.value)*(coef>1?1.1:1);
+      total+=v;rows.push('<li><span>'+x.dataset.label+'</span><span>+'+Math.round(v)+' €</span></li>');
+    });
+    sum.textContent=tr('от')+' '+Math.round(total)+' €';
+    list.innerHTML=rows.join('');
+    btn.dataset.summary=sum.textContent;
+  };
+  document.querySelectorAll('.calc input').forEach(function(i){i.addEventListener('change',calc)});
+  calc();
+  document.addEventListener('wx:lang',calc);
+
+  /* form */
+  var form=document.getElementById('bookingForm'),st=document.getElementById('formStatus');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('name').value.trim(),phone=document.getElementById('phone').value.trim();
+    st.classList.add('show');
+    if(name.length<2||phone.replace(/\D/g,'').length<7){st.textContent=tr('Проверьте имя и телефон — по ним мы подтверждаем запись.');return}
+    st.textContent=tr('Заявка принята (демо). На рабочем сайте здесь открывается WhatsApp: «Запись,')+' '+name+', '+(document.getElementById('car').value||tr('машина не указана'))+', '+tr('расчёт')+' '+(document.getElementById('calcSum').textContent)+'».';
+    form.querySelector('button').textContent=tr('Отправлено');
+  });
+})();
+
+/* mobile navigation */
+(function(){
+  var burger=document.querySelector('.burger'),nav=document.getElementById('top-nav');
+  if(!burger||!nav)return;
+  var setNav=function(open){
+    nav.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',String(open));
+    var label=open?'Закрыть меню':'Открыть меню';
+    burger.setAttribute('aria-label',window.tr?window.tr(label):label);
+  };
+  burger.addEventListener('click',function(){setNav(!nav.classList.contains('open'))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))setNav(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setNav(false)});
+  document.addEventListener('click',function(e){
+    if(!nav.classList.contains('open'))return;
+    if(!nav.contains(e.target)&&!burger.contains(e.target))setNav(false);
+  });
+  window.addEventListener('resize',function(){if(window.innerWidth>=1000)setNav(false)});
+})();
+</script>
+</body>
+</html>
