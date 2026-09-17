@@ -8,18 +8,18 @@ crown is tall.
 """
 import math, os, sys
 
-W, H = 560, 900
+W, H = 560, 764
 CX = 280
 
 # ── crown ──────────────────────────────────────────────────────────────────
-CROWN_TOP, CROWN_NECK = 92, 402          # occlusal surface .. gum line
-CROWN_HALF, NECK_HALF = 148, 104         # widest point .. neck
+CROWN_TOP, CROWN_NECK = 68, 398          # occlusal surface .. gum line
+CROWN_HALF, NECK_HALF = 182, 128         # widest point .. neck
 CUSPS = 4
 
 def crown_path():
     """Bell silhouette whose top edge is a row of cusps."""
     shoulder = CROWN_TOP + 46            # where the cusps meet the side walls
-    waist = CROWN_TOP + 150              # widest point of the crown
+    waist = CROWN_TOP + 158              # widest point of the crown
     d = [f'M {CX - NECK_HALF} {CROWN_NECK}']
     # left wall, neck -> waist -> shoulder
     d.append(f'C {CX - CROWN_HALF + 4} {CROWN_NECK - 34} {CX - CROWN_HALF} {waist + 40} {CX - CROWN_HALF} {waist}')
@@ -56,10 +56,10 @@ def fissures():
     return ''.join(out)
 
 # ── abutment and screw ─────────────────────────────────────────────────────
-ABUT_TOP, ABUT_BOT = 402, 496
-ABUT_HALF_TOP, ABUT_HALF_BOT = 86, 70
-SCREW_TOP, SCREW_TIP = 496, 806
-SCREW_HALF_TOP, SCREW_HALF_TIP = 64, 26
+ABUT_TOP, ABUT_BOT = 398, 468
+ABUT_HALF_TOP, ABUT_HALF_BOT = 106, 88
+SCREW_TOP, SCREW_TIP = 468, 700
+SCREW_HALF_TOP, SCREW_HALF_TIP = 80, 34
 
 def screw_outline():
     return (f'M {CX - SCREW_HALF_TOP} {SCREW_TOP} L {CX + SCREW_HALF_TOP} {SCREW_TOP} '
@@ -129,7 +129,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
   <clipPath id="screwClip"><path d="{screw_outline()}"/></clipPath>
 </defs>
 
-<ellipse cx="{CX}" cy="846" rx="132" ry="22" fill="url(#shadow)"/>
+<ellipse cx="{CX}" cy="{SCREW_TIP + 34}" rx="150" ry="24" fill="url(#shadow)"/>
 
 <!-- screw -->
 <path d="{screw_outline()}" fill="url(#steel)"/>
@@ -140,7 +140,7 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
 <rect x="{CX - ABUT_HALF_BOT - 6}" y="{ABUT_BOT - 12}" width="{2 * ABUT_HALF_BOT + 12}" height="14" rx="6" fill="url(#collar)"/>
 
 <!-- collar where the crown seats on the abutment -->
-<path d="M {CX - 100} {ABUT_TOP - 16} Q {CX} {ABUT_TOP + 20} {CX + 100} {ABUT_TOP - 16} L {CX + 100} {ABUT_TOP} Q {CX} {ABUT_TOP + 36} {CX - 100} {ABUT_TOP} Z" fill="url(#collar)"/>
+<path d="M {CX - NECK_HALF + 6} {ABUT_TOP - 16} Q {CX} {ABUT_TOP + 20} {CX + NECK_HALF - 6} {ABUT_TOP - 16} L {CX + NECK_HALF - 6} {ABUT_TOP} Q {CX} {ABUT_TOP + 36} {CX - NECK_HALF + 6} {ABUT_TOP} Z" fill="url(#collar)"/>
 
 <!-- crown -->
 <path d="{crown_path()}" fill="url(#enamel)"/>
@@ -150,9 +150,9 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{
 <path d="{crown_path()}" fill="url(#gloss)"/>
 
 <!-- specular highlights -->
-<path d="M {CX - 78} {CROWN_TOP + 70} Q {CX - 104} {CROWN_TOP + 140} {CX - 96} {CROWN_TOP + 208} Q {CX - 90} {CROWN_TOP + 254} {CX - 66} {CROWN_TOP + 284}" stroke="rgba(255,255,255,.85)" stroke-width="24" stroke-linecap="round" fill="none" filter="url(#soft)" opacity=".7"/>
-<ellipse cx="{CX + 62}" cy="{CROWN_TOP + 96}" rx="24" ry="40" fill="#fff" opacity=".5" filter="url(#soft)" transform="rotate(18 {CX + 62} {CROWN_TOP + 96})"/>
-<path d="M {CX - 118} {CROWN_NECK - 36} Q {CX} {CROWN_NECK + 8} {CX + 118} {CROWN_NECK - 36}" stroke="rgba(90,108,120,.22)" stroke-width="10" fill="none" filter="url(#soft)"/>
+<path d="M {CX - 96} {CROWN_TOP + 74} Q {CX - 128} {CROWN_TOP + 148} {CX - 118} {CROWN_TOP + 220} Q {CX - 110} {CROWN_TOP + 268} {CX - 82} {CROWN_TOP + 298}" stroke="rgba(255,255,255,.85)" stroke-width="24" stroke-linecap="round" fill="none" filter="url(#soft)" opacity=".7"/>
+<ellipse cx="{CX + 80}" cy="{CROWN_TOP + 102}" rx="28" ry="44" fill="#fff" opacity=".5" filter="url(#soft)" transform="rotate(18 {CX + 80} {CROWN_TOP + 102})"/>
+<path d="M {CX - NECK_HALF - 14} {CROWN_NECK - 36} Q {CX} {CROWN_NECK + 8} {CX + NECK_HALF + 14} {CROWN_NECK - 36}" stroke="rgba(90,108,120,.22)" stroke-width="10" fill="none" filter="url(#soft)"/>
 </svg>
 '''
 
