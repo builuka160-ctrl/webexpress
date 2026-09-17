@@ -166,6 +166,42 @@
       transition: transform var(--motion-base) var(--motion-spring);
     }
     .team-profile-card:hover .team-profile-photo { transform: scale(1.06); }
+
+    /* Specialist bio: unfolds on hover with a mouse, on tap on touch screens */
+    .team-profile-bio {
+      display: grid;
+      grid-template-rows: 0fr;
+      margin-top: 0;
+      opacity: 0;
+      transition: grid-template-rows 420ms var(--motion-spring), margin-top 420ms var(--motion-spring), opacity var(--motion-base) ease;
+    }
+    .team-profile-bio > div { overflow: hidden; min-height: 0; }
+    .team-profile-card.is-open .team-profile-bio { grid-template-rows: 1fr; margin-top: 1.5rem; opacity: 1; }
+    @media (hover: hover) and (pointer: fine) {
+      .team-profile-card:hover .team-profile-bio,
+      .team-profile-card:focus-within .team-profile-bio { grid-template-rows: 1fr; margin-top: 1.5rem; opacity: 1; }
+    }
+    .team-profile-toggle {
+      margin-top: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 0.75rem;
+      background: #FFFFFF;
+      color: #334155;
+      font: 700 0.68rem/1 'JetBrains Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background-color var(--motion-fast) ease, border-color var(--motion-fast) ease, color var(--motion-fast) ease;
+    }
+    .team-profile-toggle:hover { background: #F1F5F9; border-color: #94A3B8; color: #0F172A; }
+    .team-profile-toggle svg { transition: transform var(--motion-base) var(--motion-spring); }
+    .team-profile-card.is-open .team-profile-toggle svg { transform: rotate(180deg); }
+    .team-profile-toggle .team-profile-toggle-less { display: none; }
+    .team-profile-card.is-open .team-profile-toggle .team-profile-toggle-more { display: none; }
+    .team-profile-card.is-open .team-profile-toggle .team-profile-toggle-less { display: inline; }
     .team-profile-card { scroll-margin-top: 6.5rem; }
     .team-profile-avatar { width: 4.5rem; height: 4.5rem; }
     @media (min-width: 640px) {
@@ -883,7 +919,7 @@
       .burger-line, .burger-lines, .mobile-menu, .language-slider, [data-i18n], [data-i18n-placeholder], #active-layer-indicator, #dynamic-layer-caption {
         transition: none !important;
       }
-      .motion-control, .motion-field, .motion-field input, .motion-field textarea, input[type="checkbox"], details, details > :not(summary), .team-member-card, .team-member-card > div:first-child, .team-profile-card, .team-profile-photo, .direct-contact-value, #privacyModal, #privacyModal > div, .motion-feedback {
+      .motion-control, .motion-field, .motion-field input, .motion-field textarea, input[type="checkbox"], details, details > :not(summary), .team-member-card, .team-member-card > div:first-child, .team-profile-card, .team-profile-photo, .team-profile-bio, .team-profile-toggle svg, .direct-contact-value, #privacyModal, #privacyModal > div, .motion-feedback {
         animation: none !important;
         transition: none !important;
         transform: none !important;
@@ -1500,7 +1536,7 @@
 
         <!-- Team profiles -->
         <div class="mt-10 pt-8 border-t border-silver-300">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
             <article id="team-maksims" class="team-profile-card p-6 rounded-2xl bg-white border border-silver-200">
               <div class="flex items-center gap-4">
                 <div class="team-profile-avatar rounded-2xl overflow-hidden border border-silver-200 bg-silver-100 shrink-0">
@@ -1511,10 +1547,17 @@
                   <p class="text-xs font-mono text-silver-600 font-semibold" data-i18n="team_maxim_role">Mārketinga speciālists</p>
                 </div>
               </div>
-              <div class="mt-6 space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
-                <p data-i18n="team_maxim_p1">Mārketings ir rīku sistēma, kas ļauj jūsu biznesam augt un novērst vājās vietas klienta ceļā līdz pirkumam. Mājaslapa ir viena no svarīgākajām jūsu zīmola daļām un platforma, kas veidota tieši jūsu biznesam.</p>
-                <p data-i18n="team_maxim_p2">Maksims ir ieguvis izglītību Eiropas biznesa un veselības pārvaldības jomā, tāpēc viņam ir plašs redzesloks risinājumu meklēšanā jūsu biznesam un jūsu pakalpojumu ideālai pozicionēšanai tirgū. Viņa uzdevums, pateicoties izpratnei par klientu psiholoģiju un mērķiem, ir izveidot vai noregulēt strādājošu pārdošanas piltuvi, kontrolēt kvalitāti un User Experience, kas pielāgots tieši jūsu produktam vai pakalpojumam.</p>
-                <p class="text-silver-900 font-bold" data-i18n="team_maxim_p3">Šāda pieeja ļauj mūsu komandai kopā ar jums proaktīvi iet pretī klientam: mājaslapa strādās kā uz mērķi izbūvēta maģistrāle.</p>
+              <button type="button" class="team-profile-toggle" aria-expanded="false" aria-controls="team-maksims-bio" onclick="toggleTeamProfile(this)">
+                <span class="team-profile-toggle-more" data-i18n="team_more">Par speciālistu</span>
+                <span class="team-profile-toggle-less" data-i18n="team_less">Aizvērt</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="team-profile-bio" id="team-maksims-bio">
+                <div class="space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
+                  <p data-i18n="team_maxim_p1">Mārketings ir rīku sistēma, kas ļauj jūsu biznesam augt un novērst vājās vietas klienta ceļā līdz pirkumam. Mājaslapa ir viena no svarīgākajām jūsu zīmola daļām un platforma, kas veidota tieši jūsu biznesam.</p>
+                  <p data-i18n="team_maxim_p2">Maksims ir ieguvis izglītību Eiropas biznesa un veselības pārvaldības jomā, tāpēc viņam ir plašs redzesloks risinājumu meklēšanā jūsu biznesam un jūsu pakalpojumu ideālai pozicionēšanai tirgū. Viņa uzdevums, pateicoties izpratnei par klientu psiholoģiju un mērķiem, ir izveidot vai noregulēt strādājošu pārdošanas piltuvi, kontrolēt kvalitāti un User Experience, kas pielāgots tieši jūsu produktam vai pakalpojumam.</p>
+                  <p class="text-silver-900 font-bold" data-i18n="team_maxim_p3">Šāda pieeja ļauj mūsu komandai kopā ar jums proaktīvi iet pretī klientam: mājaslapa strādās kā uz mērķi izbūvēta maģistrāle.</p>
+                </div>
               </div>
             </article>
 
@@ -1528,10 +1571,17 @@
                   <p class="text-xs font-mono text-silver-600 font-semibold" data-i18n="team_luka_role">IT speciālists</p>
                 </div>
               </div>
-              <div class="mt-6 space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
-                <p data-i18n="team_luka_p1">Mājaslapas tehniskā daļa nosaka, vai klients nokļūs līdz pieteikumam vai aizies ielādes vidū. Lapa var būt pareizi izdomāta, bet, ja tā atveras piecas sekundes, telefonā salūst vai pazaudē pieteikuma formu, viss darbs tiek anulēts. Tāpēc kods, serveris un infrastruktūra nav projekta otršķirīga daļa, bet gan tā pamats.</p>
-                <p data-i18n="team_luka_p2">Luka strādā ar Node.js, Python un Linux serveriem, tāpēc pārzina pilnu tehnisko ciklu: no izkārtojuma un izstrādes līdz izvietošanai, domēnam, analītikai un drošībai. Viņa uzdevums, pateicoties savu serveru administrēšanas pieredzei un praksei drošības jomā, ir panākt, lai lapa strādā stabili, ielādējas zibenīgi un ir aizsargāta: ievainojamības viņš atrod un novērš pats, nevis pēc tam, kad par tām uzzina klients.</p>
-                <p class="text-silver-900 font-bold" data-i18n="team_luka_p3">Šāda pieeja dod jums mājaslapu, kurai nav vajadzīga jūsu iesaiste tehniskajos jautājumos. Tā vienkārši strādā, un, kad bizness izaugs, to papildina, nevis pārtaisa no nulles.</p>
+              <button type="button" class="team-profile-toggle" aria-expanded="false" aria-controls="team-luka-bio" onclick="toggleTeamProfile(this)">
+                <span class="team-profile-toggle-more" data-i18n="team_more">Par speciālistu</span>
+                <span class="team-profile-toggle-less" data-i18n="team_less">Aizvērt</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="team-profile-bio" id="team-luka-bio">
+                <div class="space-y-3.5 text-xs sm:text-sm text-silver-700 leading-relaxed">
+                  <p data-i18n="team_luka_p1">Mājaslapas tehniskā daļa nosaka, vai klients nokļūs līdz pieteikumam vai aizies ielādes vidū. Lapa var būt pareizi izdomāta, bet, ja tā atveras piecas sekundes, telefonā salūst vai pazaudē pieteikuma formu, viss darbs tiek anulēts. Tāpēc kods, serveris un infrastruktūra nav projekta otršķirīga daļa, bet gan tā pamats.</p>
+                  <p data-i18n="team_luka_p2">Luka strādā ar Node.js, Python un Linux serveriem, tāpēc pārzina pilnu tehnisko ciklu: no izkārtojuma un izstrādes līdz izvietošanai, domēnam, analītikai un drošībai. Viņa uzdevums, pateicoties savu serveru administrēšanas pieredzei un praksei drošības jomā, ir panākt, lai lapa strādā stabili, ielādējas zibenīgi un ir aizsargāta: ievainojamības viņš atrod un novērš pats, nevis pēc tam, kad par tām uzzina klients.</p>
+                  <p class="text-silver-900 font-bold" data-i18n="team_luka_p3">Šāda pieeja dod jums mājaslapu, kurai nav vajadzīga jūsu iesaiste tehniskajos jautājumos. Tā vienkārši strādā, un, kad bizness izaugs, to papildina, nevis pārtaisa no nulles.</p>
+                </div>
               </div>
             </article>
           </div>
@@ -1925,6 +1975,8 @@
         privacy_operator: "Оператор данных: WebExpress, Резекне, Латвия.",
         contacts_title: "Связаться напрямую",
         contacts_subtitle: "Выберите удобный способ связи. Отвечаем в рабочее время.",
+        team_more: "Подробнее о специалисте",
+        team_less: "Свернуть",
         team_maxim_name: "Максим.А",
         team_maxim_role: "Маркетолог",
         contacts_location_label: "Локация:",
@@ -2116,6 +2168,8 @@
         privacy_operator: "Datu pārzinis: WebExpress, Rēzekne, Latvija.",
         contacts_title: "Sazināties tieši",
         contacts_subtitle: "Izvēlieties ērtāko saziņas veidu. Atbildam darba laikā.",
+        team_more: "Par speciālistu",
+        team_less: "Aizvērt",
         team_maxim_name: "Maksims A.",
         team_maxim_role: "Mārketinga speciālists",
         contacts_location_label: "Atrašanās vieta:",
@@ -2431,6 +2485,16 @@
     // Вписать URL веб-приложения Google Apps Script (doPost), развёрнутого
     // на аккаунте, куда должны приходить заявки.
     const LEAD_ENDPOINT = '';
+
+    // Specialist bios: collapsed by default, opened by tap/click; on pointer
+    // devices CSS also opens them on hover, so this only drives the explicit
+    // toggle (touch screens and keyboard).
+    function toggleTeamProfile(button) {
+      const card = button.closest('.team-profile-card');
+      if (!card) return;
+      const open = card.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', String(open));
+    }
 
     let privacyCloseTimer;
     function openPrivacy() {
