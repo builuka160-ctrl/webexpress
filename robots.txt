@@ -1,0 +1,25 @@
+# WebExpress — https://webexpress.lv/
+# Индексируется весь сайт; закрыты только служебные каталоги сборки.
+
+User-agent: *
+Allow: /
+Disallow: /_build/
+Disallow: /*.zip$
+
+# Быстрый обход для основных поисковых роботов.
+User-agent: Googlebot
+Allow: /
+Disallow: /_build/
+Disallow: /*.zip$
+
+User-agent: Bingbot
+Allow: /
+Disallow: /_build/
+Disallow: /*.zip$
+
+User-agent: YandexBot
+Allow: /
+Disallow: /_build/
+Disallow: /*.zip$
+
+Sitemap: https://webexpress.lv/sitemap.xml
