@@ -119,6 +119,15 @@
     .b-card:hover { border-color: #64748B; }
     .b-card-highlight { border-color: #0F172A; border-radius: 1rem; box-shadow: 0 18px 38px -28px rgba(15,23,42,.8); }
 
+    /* Segmented controls of the TCO simulator */
+    .seg { display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:.25rem; padding:.25rem; border:1px solid #E4E4E7; border-radius:.7rem; background:#F4F4F5; }
+    .seg button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.1rem; min-height:2.9rem; padding:.4rem .35rem; border:0; border-radius:.5rem; background:transparent; color:#52525B; font:700 .72rem/1.15 'Plus Jakarta Sans',sans-serif; text-align:center; cursor:pointer; transition:background .18s ease,color .18s ease,box-shadow .18s ease; }
+    .seg button:hover { color:#0A0A0A; background:rgba(255,255,255,.75); }
+    .seg button span { color:inherit; font:500 .6rem/1.15 'JetBrains Mono',monospace; opacity:.6; }
+    .seg button[aria-pressed="true"] { color:#FFFFFF; background:#0A0A0A; box-shadow:0 8px 16px -12px rgba(15,23,42,.95); }
+    .seg button[aria-pressed="true"]:hover { background:#1E293B; color:#FFFFFF; }
+    .seg button:focus-visible { outline:2px solid #0F172A; outline-offset:2px; }
+
     .architecture { padding: 5rem 1rem; border-bottom: 1px solid #E2E8F0; background: linear-gradient(180deg,#FFFFFF,#F8FAFC); overflow: hidden; }
     .architecture-grid { display: grid; grid-template-columns: minmax(17rem,.85fr) minmax(24rem,1.15fr); gap: clamp(2rem,6vw,5rem); width: min(100%,72rem); margin: 0 auto; align-items: center; }
     .architecture-copy h2 { margin-top: .8rem; color: var(--we-ink); font-size: clamp(2rem,4vw,3.35rem); font-weight: 800; letter-spacing: -.055em; line-height: 1.03; }
@@ -222,13 +231,13 @@
       <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto">
         <div class="p-4 rounded-xl b-card text-left">
           <div class="text-[11px] font-medium text-zinc-500 uppercase tracking-wider">Экономия на 1 сайт</div>
-          <div class="text-xl sm:text-2xl font-bold text-black mt-1" id="chip-saving-1">~1 660 €</div>
-          <div class="text-[11px] text-zinc-400 mt-0.5">за 10 лет владения</div>
+          <div class="text-xl sm:text-2xl font-bold text-black mt-1" id="chip-saving-1">~1 626 €</div>
+          <div class="text-[11px] text-zinc-400 mt-0.5">за 10 лет vs Wix на тарифе Care</div>
         </div>
         <div class="p-4 rounded-xl b-card text-left">
           <div class="text-[11px] font-medium text-zinc-500 uppercase tracking-wider">Экономия на 5 сайтов</div>
-          <div class="text-xl sm:text-2xl font-bold text-black mt-1" id="chip-saving-5">~8 300 €</div>
-          <div class="text-[11px] text-zinc-400 mt-0.5">при пяти проектах</div>
+          <div class="text-xl sm:text-2xl font-bold text-black mt-1" id="chip-saving-5">~8 131 €</div>
+          <div class="text-[11px] text-zinc-400 mt-0.5">за 10 лет vs Wix, пять проектов</div>
         </div>
         <div class="p-4 rounded-xl b-card text-left">
           <div class="text-[11px] font-medium text-zinc-500 uppercase tracking-wider">PageSpeed Mobile</div>
@@ -285,54 +294,51 @@
     
     <!-- Calculator Panel -->
     <div class="b-card p-6 sm:p-8 rounded-2xl">
-        <div class="mobile-stack flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-200 pb-6">
+
+      <div class="mobile-stack flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-zinc-200 pb-6">
         <div>
           <span class="text-xs font-mono uppercase tracking-widest text-zinc-400">Симулятор TCO</span>
           <h2 class="text-2xl sm:text-3xl font-bold text-black mt-1">Интерактивный расчет расходов</h2>
           <p class="text-zinc-500 text-xs sm:text-sm mt-1">Оцените долгосрочные расходы при росте количества проектов</p>
         </div>
-
-        <!-- Controls: Inflation -->
-        <div class="flex flex-wrap items-center gap-3">
-          <div class="bg-zinc-100 border border-zinc-200 rounded-lg px-3 py-1.5 flex items-center gap-2">
-            <label for="inflation-rate" class="text-xs text-zinc-500 font-medium">Рост продлений/год:</label>
-            <select id="inflation-rate" onchange="recalculate()" class="bg-white text-xs text-black rounded px-2 py-1 border border-zinc-300 focus:outline-none focus:border-black font-medium">
-              <option value="0">0% (Фикс. цена)</option>
-              <option value="0.05" selected>+5% в год</option>
-              <option value="0.08">+8% в год</option>
-            </select>
-          </div>
+        <div class="flex flex-col gap-1.5 md:items-end shrink-0">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 bg-zinc-50 text-[11px] font-mono text-zinc-600">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#00dc82] neon-pulse"></span>
+            <span>Прайс-листы: сентябрь 2026</span>
+          </span>
+          <span class="text-[11px] font-mono text-zinc-400">Пересчёт по курсу 1 € = 1,15 $</span>
         </div>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 items-center bg-zinc-50 p-5 rounded-xl border border-zinc-200">
-        <div class="md:col-span-2 space-y-2">
-          <div class="flex justify-between items-center">
+      <!-- Controls -->
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+        <div class="lg:col-span-7 lg:self-start bg-zinc-50 p-5 rounded-xl border border-zinc-200 flex flex-col">
+          <div class="flex justify-between items-center gap-3">
             <label for="sites-count" class="text-xs font-semibold uppercase tracking-wider text-zinc-700">
               Количество обслуживаемых сайтов:
             </label>
-            <span id="sites-count-display" class="px-2.5 py-1 bg-black text-white font-mono font-bold rounded text-xs">
+            <span id="sites-count-display" class="px-2.5 py-1 bg-black text-white font-mono font-bold rounded text-xs shrink-0">
               1 сайт
             </span>
           </div>
-          <input 
-            type="range" 
-            id="sites-count" 
-            min="1" 
-            max="10" 
-            value="1" 
+          <input
+            type="range"
+            id="sites-count"
+            min="1"
+            max="10"
+            value="1"
             step="1"
             oninput="handleSitesChange(this.value)"
-            class="w-full h-1.5 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-black"
+            class="mt-4 w-full h-1.5 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-black"
           >
-          <div class="flex justify-between text-[11px] text-zinc-400 font-mono">
+          <div class="mt-2 flex justify-between text-[11px] text-zinc-400 font-mono">
             <span>1 сайт</span>
             <span>3 сайта</span>
             <span>5 сайтов</span>
             <span>10 сайтов</span>
           </div>
-          <!-- Quick Preset Buttons -->
-          <div class="flex items-center justify-between gap-2 pt-1">
+          <div class="mt-4 pt-4 flex items-center justify-between gap-2 border-t border-zinc-200">
             <span class="text-[11px] text-zinc-500 font-mono">Быстрый выбор:</span>
             <div class="flex items-center gap-1.5">
               <button type="button" onclick="setPresetSites(1)" class="px-2.5 py-1 rounded text-xs font-mono font-medium border border-zinc-200 bg-white hover:bg-black hover:text-white transition">1</button>
@@ -341,43 +347,87 @@
               <button type="button" onclick="setPresetSites(10)" class="px-2.5 py-1 rounded text-xs font-mono font-medium border border-zinc-200 bg-white hover:bg-black hover:text-white transition">10</button>
             </div>
           </div>
+          <div class="mt-4 pt-4 border-t border-zinc-200">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-400">База расчёта</span>
+            <p class="mt-1.5 text-[11px] sm:text-xs text-zinc-700 leading-relaxed" id="calc-basis">1 сайт · Tilda Personal — 1 подписка, 104 € / год · Wix Light — 1 подписка, 177 € / год · WebExpress Care — 60 € / год. Индексация продлений Tilda и Wix: +5% в год.</p>
+          </div>
         </div>
 
-        <div class="text-xs text-zinc-600 bg-white p-3.5 rounded-lg border border-zinc-200">
-          <span class="font-bold text-black">Принцип тарификации:</span>
-          Конструкторы берут отдельную подписку за каждый сайт. В WebExpress тариф <strong>5 € в месяц за проект</strong> уже включает хостинг, мониторинг и работу форм обратной связи. Care+ за 25 € в месяц добавляет техническую поддержку и правки сайта — расчёт ниже построен по базовому тарифу Care.
+        <div class="lg:col-span-5 space-y-3">
+
+          <div class="bg-white border border-zinc-200 rounded-xl p-3.5">
+            <div class="flex items-baseline justify-between gap-2 mb-2">
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-700">План WebExpress</span>
+              <span class="text-[10px] font-mono text-zinc-400">за сайт</span>
+            </div>
+            <div class="seg" id="seg-plan" role="group">
+              <button type="button" data-value="care" aria-pressed="true" onclick="setWebexpressPlan('care')">Care<span>60 € / год</span></button>
+              <button type="button" data-value="carePlus" aria-pressed="false" onclick="setWebexpressPlan('carePlus')">Care+<span>300 € / год</span></button>
+            </div>
+            <p class="mt-2 text-[11px] text-zinc-500 leading-snug">Care — сервер, SSL, мониторинг и работа форм. Care+ добавляет правки и техподдержку.</p>
+          </div>
+
+          <div class="bg-white border border-zinc-200 rounded-xl p-3.5">
+            <div class="flex items-baseline justify-between gap-2 mb-2">
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-700">Тариф конструкторов</span>
+              <span class="text-[10px] font-mono text-zinc-400">годовая оплата</span>
+            </div>
+            <div class="seg" id="seg-tier" role="group">
+              <button type="button" data-value="entry" aria-pressed="true" onclick="setVendorTier('entry')">Минимальный<span>Personal / Light</span></button>
+              <button type="button" data-value="business" aria-pressed="false" onclick="setVendorTier('business')">Бизнес<span>Business / Core</span></button>
+            </div>
+            <p class="mt-2 text-[11px] text-zinc-500 leading-snug">Минимальный — самая дешёвая платная подписка. Бизнес — уровень с экспортом кода у Tilda и магазином у Wix.</p>
+          </div>
+
+          <div class="bg-white border border-zinc-200 rounded-xl p-3.5">
+            <div class="flex items-baseline justify-between gap-2 mb-2">
+              <span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-700">Индексация продлений</span>
+              <span class="text-[10px] font-mono text-zinc-400">Tilda и Wix</span>
+            </div>
+            <div class="seg" id="seg-inflation" role="group">
+              <button type="button" data-value="0" aria-pressed="false" onclick="setInflation(0)">0%<span>без роста</span></button>
+              <button type="button" data-value="0.05" aria-pressed="true" onclick="setInflation(0.05)">+5%<span>в год</span></button>
+              <button type="button" data-value="0.08" aria-pressed="false" onclick="setInflation(0.08)">+8%<span>в год</span></button>
+            </div>
+            <p class="mt-2 text-[11px] text-zinc-500 leading-snug">Прайс WebExpress в расчёте не индексируется — считаем по текущей цене.</p>
+          </div>
+
         </div>
       </div>
 
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
-        
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+
         <!-- Tilda Card -->
         <div class="b-card rounded-xl p-5 flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-2">
               <span class="text-xs font-bold uppercase tracking-wider text-zinc-900">
                 Tilda Publishing
               </span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200 font-mono">
-                Personal / Business
+              <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200 font-mono" id="tilda-plan-chip">
+                Personal
               </span>
             </div>
             <div class="mt-4">
               <div class="text-xs text-zinc-500">Суммарно за 10 лет:</div>
-              <div class="text-3xl font-black text-black font-mono mt-1" id="tilda-total-display">1 510 €</div>
-              <div class="text-xs text-zinc-400 mt-1 font-mono" id="tilda-monthly-display">в среднем ~12,6 € / мес</div>
+              <div class="text-3xl font-black text-black font-mono mt-1" id="tilda-total-display">1 308 €</div>
+              <div class="text-xs text-zinc-400 mt-1 font-mono" id="tilda-monthly-display">в среднем ~11 € / мес</div>
             </div>
           </div>
           <div class="mt-6 pt-3 border-t border-zinc-100 text-[11px] text-zinc-600 space-y-1.5">
-            <div class="flex justify-between">
-              <span>Лицензия на 1 сайт:</span>
-              <span class="font-mono text-black font-medium">~10–15 € / мес</span>
+            <div class="flex justify-between gap-2">
+              <span>Платёж в 1-й год:</span>
+              <span class="font-mono text-black font-medium" id="tilda-rate-display">104 € / год</span>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
+              <span>Прайс-лист:</span>
+              <span class="font-mono text-zinc-800 text-right" id="tilda-price-source">10 $ / мес при оплате за год</span>
+            </div>
+            <div class="flex justify-between gap-2">
               <span>Экспорт кода:</span>
-              <span class="text-zinc-900 font-medium">План Business (от 240 €/г)</span>
+              <span class="text-zinc-900 font-medium text-right" id="tilda-export-display">Только на Business</span>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
               <span>Лимит хранилища:</span>
               <span class="font-mono text-zinc-800">1 ГБ на сайт</span>
             </div>
@@ -387,32 +437,36 @@
         <!-- Wix Card -->
         <div class="b-card rounded-xl p-5 flex flex-col justify-between">
           <div>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-2">
               <span class="text-xs font-bold uppercase tracking-wider text-zinc-900">
                 Wix Platform
               </span>
-              <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200 font-mono">
-                Core / Light
+              <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 text-zinc-600 border border-zinc-200 font-mono" id="wix-plan-chip">
+                Light
               </span>
             </div>
             <div class="mt-4">
               <div class="text-xs text-zinc-500">Суммарно за 10 лет:</div>
-              <div class="text-3xl font-black text-black font-mono mt-1" id="wix-total-display">2 660 €</div>
-              <div class="text-xs text-zinc-400 mt-1 font-mono" id="wix-monthly-display">в среднем ~22,2 € / мес</div>
+              <div class="text-3xl font-black text-black font-mono mt-1" id="wix-total-display">2 226 €</div>
+              <div class="text-xs text-zinc-400 mt-1 font-mono" id="wix-monthly-display">в среднем ~19 € / мес</div>
             </div>
           </div>
           <div class="mt-6 pt-3 border-t border-zinc-100 text-[11px] text-zinc-600 space-y-1.5">
-            <div class="flex justify-between">
-              <span>Лицензия на 1 сайт:</span>
-              <span class="font-mono text-black font-medium">~17–29 € / мес</span>
+            <div class="flex justify-between gap-2">
+              <span>Платёж в 1-й год:</span>
+              <span class="font-mono text-black font-medium" id="wix-rate-display">177 € / год</span>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
+              <span>Прайс-лист:</span>
+              <span class="font-mono text-zinc-800 text-right" id="wix-price-source">17 $ / мес при оплате за год</span>
+            </div>
+            <div class="flex justify-between gap-2">
               <span>Экспорт исходного кода:</span>
               <span class="text-zinc-900 font-bold">Невозможен</span>
             </div>
-            <div class="flex justify-between">
-              <span>Отключение баннеров:</span>
-              <span class="font-mono text-zinc-800">Платная подписка</span>
+            <div class="flex justify-between gap-2">
+              <span>Тарификация:</span>
+              <span class="text-zinc-800 text-right">Отдельная подписка на каждый сайт</span>
             </div>
           </div>
         </div>
@@ -420,39 +474,50 @@
         <!-- WebExpress service card -->
         <div class="b-card-highlight rounded-xl p-5 flex flex-col justify-between shadow-sm relative border-zinc-900">
           <div class="absolute -top-3 right-4 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black text-[#00dc82] text-[10px] font-bold tracking-wide uppercase border border-[#00dc82]/40 shadow-sm">
-            <span>Online • Макс. выгода</span>
+            <span>Online • Фиксированный прайс</span>
           </div>
           <div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold uppercase tracking-wider text-black flex items-center gap-1.5">
-                WebExpress Hosting Care
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-black">
+                WebExpress Hosting
+              </span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-black text-white font-mono" id="we-plan-chip">
+                Care
               </span>
             </div>
             <div class="mt-4">
               <div class="text-xs text-zinc-500">Суммарно за 10 лет:</div>
-              <div class="text-3xl font-black text-black font-mono mt-1 flex items-baseline gap-2">
-                <span id="vps-total-display">600 €</span>
-                <span class="text-xs font-mono font-semibold text-[#059669] bg-[#ecfdf5] px-1.5 py-0.5 rounded border border-[#a7f3d0]">Фикс. цена</span>
-              </div>
-              <div class="text-xs text-black font-medium mt-1" id="vps-savings-badge">Экономия: 2 060 € vs Wix</div>
+              <div class="text-3xl font-black text-black font-mono mt-1" id="vps-total-display">600 €</div>
+              <div class="text-xs text-zinc-400 mt-1 font-mono" id="vps-monthly-display">в среднем 5 € / мес</div>
             </div>
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              <div class="rounded-lg border border-zinc-200 px-2.5 py-2">
+                <div class="text-[10px] uppercase tracking-wider text-zinc-400 font-mono">vs Tilda</div>
+                <div class="text-xs font-mono font-bold mt-0.5 text-[#059669]" id="delta-tilda">−708 €</div>
+              </div>
+              <div class="rounded-lg border border-zinc-200 px-2.5 py-2">
+                <div class="text-[10px] uppercase tracking-wider text-zinc-400 font-mono">vs Wix</div>
+                <div class="text-xs font-mono font-bold mt-0.5 text-[#059669]" id="delta-wix">−1 626 €</div>
+              </div>
+            </div>
+            <p class="mt-2 text-[10px] text-zinc-400 leading-snug">− дешевле WebExpress, + дороже за 10 лет</p>
           </div>
-          <div class="mt-6 pt-3 border-t border-zinc-200 text-[11px] text-zinc-700 space-y-1.5">
-            <div class="flex justify-between">
+          <div class="mt-5 pt-3 border-t border-zinc-200 text-[11px] text-zinc-700 space-y-1.5">
+            <div class="flex justify-between gap-2">
+              <span>Платёж в 1-й год:</span>
+              <span class="font-mono text-black font-semibold" id="vps-rate-display">60 € / год</span>
+            </div>
+            <div class="flex justify-between gap-2">
               <span>Care (хостинг):</span>
               <span class="text-black font-semibold">5 € / месяц за сайт</span>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
               <span>Care+ (с поддержкой):</span>
               <span class="text-black font-semibold">25 € / месяц за сайт</span>
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
               <span>Инфраструктура:</span>
               <span class="font-mono text-black">NVMe / Nginx / SSL</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Обслуживание:</span>
-              <span class="text-black font-semibold">Мониторинг + формы</span>
             </div>
           </div>
         </div>
@@ -463,7 +528,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
           <div>
             <h3 class="text-base font-bold text-black">Кумулятивная динамика расходов (1–10 год)</h3>
-            <p class="text-xs text-zinc-500">Накопленная сумма затрат с учетом ежегодных продлений и инфляции</p>
+            <p class="text-xs text-zinc-500">Накопленная сумма платежей с учётом выбранной индексации продлений</p>
           </div>
           <div class="flex flex-wrap items-center gap-3 text-xs font-mono">
             <div class="flex items-center gap-1.5">
@@ -503,38 +568,63 @@
             <tr class="hover:bg-zinc-50/80 transition">
               <td class="py-3 px-3 font-sans font-medium text-zinc-800">
                 Tilda Publishing
+                <span class="block text-[10px] font-mono font-normal text-zinc-400 mt-0.5" id="tb-tilda-plan">Personal × 1 · 104 € / год</span>
               </td>
-              <td class="py-3 px-3 text-zinc-600" id="tb-tilda-y1">120 €</td>
-              <td class="py-3 px-3 text-zinc-600" id="tb-tilda-y3">378 €</td>
-              <td class="py-3 px-3 text-zinc-600" id="tb-tilda-y5">663 €</td>
-              <td class="py-3 px-3 font-bold text-zinc-900" id="tb-tilda-y10">1 509 €</td>
-              <td class="py-3 px-3 text-zinc-500 font-sans" id="tb-tilda-per-site">~151 € / сайт / год</td>
-              <td class="py-3 px-3 text-zinc-400 font-sans text-[11px]">Лимит 1 ГБ, отключение при неоплате</td>
+              <td class="py-3 px-3 text-zinc-600" id="tb-tilda-y1">104 €</td>
+              <td class="py-3 px-3 text-zinc-600" id="tb-tilda-y3">328 €</td>
+              <td class="py-3 px-3 text-zinc-600" id="tb-tilda-y5">575 €</td>
+              <td class="py-3 px-3 font-bold text-zinc-900" id="tb-tilda-y10">1 308 €</td>
+              <td class="py-3 px-3 text-zinc-500 font-sans" id="tb-tilda-per-site">~131 € / сайт / год</td>
+              <td class="py-3 px-3 text-zinc-400 font-sans text-[11px]">1 ГБ на сайт, экспорт кода только на Business</td>
             </tr>
             <tr class="hover:bg-zinc-50/80 transition">
               <td class="py-3 px-3 font-sans font-medium text-zinc-800">
                 Wix Platform
+                <span class="block text-[10px] font-mono font-normal text-zinc-400 mt-0.5" id="tb-wix-plan">Light × 1 · 177 € / год</span>
               </td>
-              <td class="py-3 px-3 text-zinc-600" id="tb-wix-y1">204 €</td>
-              <td class="py-3 px-3 text-zinc-600" id="tb-wix-y3">643 €</td>
-              <td class="py-3 px-3 text-zinc-600" id="tb-wix-y5">1 127 €</td>
-              <td class="py-3 px-3 font-bold text-zinc-900" id="tb-wix-y10">2 566 €</td>
-              <td class="py-3 px-3 text-zinc-500 font-sans" id="tb-wix-per-site">~257 € / сайт / год</td>
-              <td class="py-3 px-3 text-zinc-400 font-sans text-[11px]">Скачкообразное продление, код закрыт</td>
+              <td class="py-3 px-3 text-zinc-600" id="tb-wix-y1">177 €</td>
+              <td class="py-3 px-3 text-zinc-600" id="tb-wix-y3">558 €</td>
+              <td class="py-3 px-3 text-zinc-600" id="tb-wix-y5">978 €</td>
+              <td class="py-3 px-3 font-bold text-zinc-900" id="tb-wix-y10">2 226 €</td>
+              <td class="py-3 px-3 text-zinc-500 font-sans" id="tb-wix-per-site">~223 € / сайт / год</td>
+              <td class="py-3 px-3 text-zinc-400 font-sans text-[11px]">Подписка на каждый сайт, код закрыт</td>
             </tr>
             <tr class="bg-zinc-100/60 font-semibold border-l-2 border-black">
               <td class="py-3 px-3 font-sans text-black">
-                WebExpress Hosting Care
+                WebExpress Hosting
+                <span class="block text-[10px] font-mono font-normal text-zinc-500 mt-0.5" id="tb-vps-plan">Care × 1 · 60 € / год</span>
               </td>
               <td class="py-3 px-3 text-black" id="tb-vps-y1">60 €</td>
               <td class="py-3 px-3 text-black" id="tb-vps-y3">180 €</td>
               <td class="py-3 px-3 text-black" id="tb-vps-y5">300 €</td>
               <td class="py-3 px-3 font-black text-black" id="tb-vps-y10">600 €</td>
               <td class="py-3 px-3 text-black font-sans" id="tb-vps-per-site">60 € / сайт / год</td>
-              <td class="py-3 px-3 text-zinc-500 font-sans text-[11px] font-normal">Базовое обслуживание включено</td>
+              <td class="py-3 px-3 text-zinc-500 font-sans text-[11px] font-normal">Хостинг, SSL, мониторинг и формы включены</td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="mt-8 rounded-xl border border-zinc-200 bg-zinc-50 p-4 sm:p-5">
+        <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-400">Источники цен</div>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4 text-[11px] text-zinc-600 leading-relaxed">
+          <div>
+            <div class="font-semibold text-zinc-900 font-sans">Tilda Publishing</div>
+            <p class="mt-1">Personal — 10 $ / мес при оплате за год (120 $ в год, 1 сайт). Business — 20 $ / мес (240 $ в год, до 5 сайтов, экспорт кода и API). При помесячной оплате — 15 $ и 25 $.</p>
+            <a href="https://tilda.cc/pricing/" target="_blank" rel="noopener noreferrer" class="inline-block mt-1.5 font-mono text-[10px] text-zinc-500 underline decoration-zinc-300 hover:text-black">tilda.cc/pricing</a>
+          </div>
+          <div>
+            <div class="font-semibold text-zinc-900 font-sans">Wix Platform</div>
+            <p class="mt-1">Light — 17 $ / мес при оплате за год (204 $ в год, 2 ГБ). Core — 29 $ / мес (348 $ в год, 50 ГБ, магазин). Подписка покупается на каждый сайт отдельно, помесячная оплата дороже.</p>
+            <a href="https://www.wix.com/plans" target="_blank" rel="noopener noreferrer" class="inline-block mt-1.5 font-mono text-[10px] text-zinc-500 underline decoration-zinc-300 hover:text-black">wix.com/plans</a>
+          </div>
+          <div>
+            <div class="font-semibold text-zinc-900 font-sans">WebExpress</div>
+            <p class="mt-1">Care — 5 € / мес или 60 € за год: сервер, SSL, подключение домена, мониторинг, резервные копии и работа форм. Care+ — 25 € / мес или 300 € за год: то же плюс правки и техподдержка.</p>
+            <a href="webexpress_landing_v8.html#maintenance" class="inline-block mt-1.5 font-mono text-[10px] text-zinc-500 underline decoration-zinc-300 hover:text-black">Тарифы WebExpress</a>
+          </div>
+        </div>
+        <p class="mt-4 pt-3 border-t border-zinc-200 text-[11px] text-zinc-500 leading-relaxed">Tilda и Wix публикуют цены в долларах — здесь они пересчитаны в евро по курсу 1 € = 1,15 $ и округлены до целых. Домен, эквайринг и сама разработка сайта в расчёт не входят: они оплачиваются отдельно в любом из трёх вариантов.</p>
       </div>
 
     </div>
@@ -947,8 +1037,8 @@
       'Сколько на самом деле стоит работающий сайт':'Cik patiesībā maksā funkcionējoša mājaslapa',
       'Сравните подписки конструкторов с обслуживанием WebExpress за':'Salīdziniet konstruktoru abonementus ar WebExpress apkalpošanu par',
       '5 € в месяц':'5 € mēnesī',': собственный сервер, мониторинг и обработка заявок уже включены. Care+ с технической поддержкой — 25 € в месяц.':': savs serveris, monitorings un pieteikumu apstrāde jau ir iekļauta. Care+ ar tehnisko atbalstu — 25 € mēnesī.',
-      'Экономия на 1 сайт':'Ietaupījums 1 vietnei','за 10 лет владения':'10 gadu laikā',
-      'Экономия на 5 сайтов':'Ietaupījums 5 vietnēm','при пяти проектах':'pieciem projektiem',
+      'Экономия на 1 сайт':'Ietaupījums 1 vietnei','за 10 лет vs Wix на тарифе Care':'10 gados pret Wix ar Care plānu',
+      'Экономия на 5 сайтов':'Ietaupījums 5 vietnēm','за 10 лет vs Wix, пять проектов':'10 gados pret Wix, pieci projekti',
       'HTML против Zero Block':'HTML pret Zero Block','Полный суверенитет кода':'Pilnīga koda neatkarība',
       'Структура услуги':'Pakalpojuma struktūra','Три слоя, которые держат сайт онлайн':'Trīs slāņi, kas uztur vietni tiešsaistē',
       'Это не просто место на сервере. WebExpress объединяет инфраструктуру, технический контроль и приём заявок в одну понятную услугу.':'Tā nav tikai vieta serverī. WebExpress apvieno infrastruktūru, tehnisko kontroli un pieteikumu saņemšanu vienā saprotamā pakalpojumā.',
@@ -960,29 +1050,43 @@
       'Формы и каналы связи продолжают принимать обращения клиентов.':'Veidlapas un saziņas kanāli turpina saņemt klientu pieteikumus.',
       'Симулятор TCO':'TCO simulators','Интерактивный расчет расходов':'Interaktīvs izmaksu aprēķins',
       'Оцените долгосрочные расходы при росте количества проектов':'Novērtējiet ilgtermiņa izmaksas, pieaugot projektu skaitam',
-      'Рост продлений/год:':'Abonementa sadārdzinājums gadā:','0% (Фикс. цена)':'0% (fiksēta cena)',
-      '+5% в год':'+5% gadā','+8% в год':'+8% gadā','Количество обслуживаемых сайтов:':'Apkalpojamo vietņu skaits:',
-      '1 сайт':'1 vietne','3 сайта':'3 vietnes','5 сайтов':'5 vietnes','10 сайтов':'10 vietnes',
-      'Быстрый выбор:':'Ātrā izvēle:','Принцип тарификации:':'Tarifa princips:',
-      'Конструкторы берут отдельную подписку за каждый сайт. В WebExpress тариф':'Konstruktori iekasē atsevišķu abonēšanas maksu par katru vietni. WebExpress tarifs',
-      '5 € в месяц за проект':'5 € mēnesī par projektu',
-      'уже включает хостинг, мониторинг и работу форм обратной связи. Care+ за 25 € в месяц добавляет техническую поддержку и правки сайта — расчёт ниже построен по базовому тарифу Care.':'jau ietver hostingu, monitoringu un saziņas veidlapu darbību. Care+ par 25 € mēnesī pievieno tehnisko atbalstu un vietnes labojumus — aprēķins zemāk veidots pēc bāzes plāna Care.',
-      'Суммарно за 10 лет:':'Kopā 10 gados:','в среднем ~12,6 € / мес':'vidēji ~12,6 € / mēn.','в среднем ~22,2 € / мес':'vidēji ~22,2 € / mēn.',
-      'Лицензия на 1 сайт:':'Licence 1 vietnei:','~10–15 € / мес':'~10–15 € / mēn.','~17–29 € / мес':'~17–29 € / mēn.',
-      'Экспорт кода:':'Koda eksports:','План Business (от 240 €/г)':'Business plāns (no 240 €/gadā)',
-      'Лимит хранилища:':'Krātuves limits:','1 ГБ на сайт':'1 GB vietnei','Экспорт исходного кода:':'Pirmkoda eksports:',
-      'Невозможен':'Nav iespējams','Отключение баннеров:':'Reklāmu noņemšana:','Платная подписка':'Maksas abonements',
-      'Online • Макс. выгода':'Tiešsaistē • Maks. ieguvums','Фикс. цена':'Fiksēta cena','Тариф:':'Tarifs:',
-      '5 € / месяц за сайт':'5 € / mēnesī par vietni','25 € / месяц за сайт':'25 € / mēnesī par vietni',
+      'Прайс-листы: сентябрь 2026':'Cenrāži: 2026. gada septembris','Пересчёт по курсу 1 € = 1,15 $':'Pārrēķins pēc kursa 1 € = 1,15 $',
+      'Количество обслуживаемых сайтов:':'Apkalpojamo vietņu skaits:',
+      '1 сайт':'1 vietne','3 сайта':'3 vietnes','5 сайтов':'5 vietnes','10 сайтов':'10 vietnes','Быстрый выбор:':'Ātrā izvēle:',
+      'План WebExpress':'WebExpress plāns','за сайт':'par vietni','60 € / год':'60 € / gadā','300 € / год':'300 € / gadā',
+      'Care — сервер, SSL, мониторинг и работа форм. Care+ добавляет правки и техподдержку.':'Care — serveris, SSL, monitorings un veidlapu darbība. Care+ pievieno labojumus un tehnisko atbalstu.',
+      'Тариф конструкторов':'Konstruktoru plāns','годовая оплата':'gada maksājums','Минимальный':'Minimālais','Бизнес':'Bizness',
+      'Минимальный — самая дешёвая платная подписка. Бизнес — уровень с экспортом кода у Tilda и магазином у Wix.':'Minimālais — lētākais maksas abonements. Bizness — līmenis ar koda eksportu Tilda un interneta veikalu Wix.',
+      'Индексация продлений':'Abonementu indeksācija','Tilda и Wix':'Tilda un Wix','без роста':'bez pieauguma','в год':'gadā',
+      'Прайс WebExpress в расчёте не индексируется — считаем по текущей цене.':'WebExpress cenrādis aprēķinā netiek indeksēts — rēķinām pēc pašreizējās cenas.',
+      'База расчёта':'Aprēķina bāze',
+      '1 сайт · Tilda Personal — 1 подписка, 104 € / год · Wix Light — 1 подписка, 177 € / год · WebExpress Care — 60 € / год. Индексация продлений Tilda и Wix: +5% в год.':'1 vietne · Tilda Personal — 1 abonements, 104 € / gadā · Wix Light — 1 abonements, 177 € / gadā · WebExpress Care — 60 € / gadā. Tilda un Wix abonementu indeksācija: +5% gadā.',
+      'Суммарно за 10 лет:':'Kopā 10 gados:','в среднем ~11 € / мес':'vidēji ~11 € / mēn.','в среднем ~19 € / мес':'vidēji ~19 € / mēn.','в среднем 5 € / мес':'vidēji 5 € / mēn.',
+      'Платёж в 1-й год:':'Maksājums 1. gadā:','Прайс-лист:':'Cenrādis:','104 € / год':'104 € / gadā','177 € / год':'177 € / gadā',
+      '10 $ / мес при оплате за год':'10 $ / mēn. ar gada maksājumu','17 $ / мес при оплате за год':'17 $ / mēn. ar gada maksājumu',
+      'Экспорт кода:':'Koda eksports:','Только на Business':'Tikai Business plānā',
+      'Лимит хранилища:':'Krātuves limits:','1 ГБ на сайт':'1 GB vietnei',
+      'Экспорт исходного кода:':'Pirmkoda eksports:','Невозможен':'Nav iespējams',
+      'Тарификация:':'Tarifikācija:','Отдельная подписка на каждый сайт':'Atsevišķs abonements katrai vietnei',
+      'Online • Фиксированный прайс':'Tiešsaistē • Fiksēts cenrādis',
+      '− дешевле WebExpress, + дороже за 10 лет':'− WebExpress lētāks, + dārgāks 10 gados',
       'Care (хостинг):':'Care (hostings):','Care+ (с поддержкой):':'Care+ (ar atbalstu):',
-      'Инфраструктура:':'Infrastruktūra:','Обслуживание:':'Apkalpošana:',
-      'Мониторинг + формы':'Monitorings + veidlapas','Кумулятивная динамика расходов (1–10 год)':'Kopējo izmaksu dinamika (1.–10. gads)',
-      'Накопленная сумма затрат с учетом ежегодных продлений и инфляции':'Uzkrātās izmaksas, ņemot vērā ikgadējo sadārdzinājumu un inflāciju',
+      '5 € / месяц за сайт':'5 € / mēnesī par vietni','25 € / месяц за сайт':'25 € / mēnesī par vietni','Инфраструктура:':'Infrastruktūra:',
+      'Кумулятивная динамика расходов (1–10 год)':'Kopējo izmaksu dinamika (1.–10. gads)',
+      'Накопленная сумма платежей с учётом выбранной индексации продлений':'Uzkrātā maksājumu summa, ņemot vērā izvēlēto abonementu indeksāciju',
       'Платформа / Тариф':'Platforma / Tarifs','Год 1':'1. gads','Год 3':'3. gads','Год 5':'5. gads',
-      'Год 10 (Итог TCO)':'10. gads (TCO kopā)','В пересчете за 1 сайт':'Pārrēķinot uz 1 vietni',
-      'Ограничения платформы':'Platformas ierobežojumi','~151 € / сайт / год':'~151 € / vietne / gadā','~257 € / сайт / год':'~257 € / vietne / gadā','60 € / сайт / год':'60 € / vietne / gadā',
-      'Лимит 1 ГБ, отключение при неоплате':'1 GB limits, atslēgšana neapmaksas gadījumā',
-      'Скачкообразное продление, код закрыт':'Straujš sadārdzinājums, slēgts kods','Базовое обслуживание включено':'Pamata apkalpošana iekļauta',
+      'Год 10 (Итог TCO)':'10. gads (TCO kopā)','В пересчете за 1 сайт':'Pārrēķinot uz 1 vietni','Ограничения платформы':'Platformas ierobežojumi',
+      'Personal × 1 · 104 € / год':'Personal × 1 · 104 € / gadā','Light × 1 · 177 € / год':'Light × 1 · 177 € / gadā','Care × 1 · 60 € / год':'Care × 1 · 60 € / gadā',
+      '~131 € / сайт / год':'~131 € / vietne / gadā','~223 € / сайт / год':'~223 € / vietne / gadā','60 € / сайт / год':'60 € / vietne / gadā',
+      '1 ГБ на сайт, экспорт кода только на Business':'1 GB vietnei, koda eksports tikai Business plānā',
+      'Подписка на каждый сайт, код закрыт':'Abonements katrai vietnei, kods slēgts',
+      'Хостинг, SSL, мониторинг и формы включены':'Hostings, SSL, monitorings un veidlapas iekļautas',
+      'Источники цен':'Cenu avoti',
+      'Personal — 10 $ / мес при оплате за год (120 $ в год, 1 сайт). Business — 20 $ / мес (240 $ в год, до 5 сайтов, экспорт кода и API). При помесячной оплате — 15 $ и 25 $.':'Personal — 10 $ / mēn. ar gada maksājumu (120 $ gadā, 1 vietne). Business — 20 $ / mēn. (240 $ gadā, līdz 5 vietnēm, koda eksports un API). Maksājot pa mēnesim — 15 $ un 25 $.',
+      'Light — 17 $ / мес при оплате за год (204 $ в год, 2 ГБ). Core — 29 $ / мес (348 $ в год, 50 ГБ, магазин). Подписка покупается на каждый сайт отдельно, помесячная оплата дороже.':'Light — 17 $ / mēn. ar gada maksājumu (204 $ gadā, 2 GB). Core — 29 $ / mēn. (348 $ gadā, 50 GB, veikals). Abonements jāpērk katrai vietnei atsevišķi, ikmēneša maksājums ir dārgāks.',
+      'Care — 5 € / мес или 60 € за год: сервер, SSL, подключение домена, мониторинг, резервные копии и работа форм. Care+ — 25 € / мес или 300 € за год: то же плюс правки и техподдержка.':'Care — 5 € / mēn. vai 60 € gadā: serveris, SSL, domēna pieslēgšana, monitorings, rezerves kopijas un veidlapu darbība. Care+ — 25 € / mēn. vai 300 € gadā: tas pats plus labojumi un tehniskais atbalsts.',
+      'Тарифы WebExpress':'WebExpress tarifi',
+      'Tilda и Wix публикуют цены в долларах — здесь они пересчитаны в евро по курсу 1 € = 1,15 $ и округлены до целых. Домен, эквайринг и сама разработка сайта в расчёт не входят: они оплачиваются отдельно в любом из трёх вариантов.':'Tilda un Wix publicē cenas dolāros — šeit tās pārrēķinātas eiro pēc kursa 1 € = 1,15 $ un noapaļotas līdz veseliem. Domēns, maksājumu pieņemšana un pašas vietnes izstrāde aprēķinā neietilpst: tie tiek apmaksāti atsevišķi jebkurā no trim variantiem.',
       'Архитектурное сравнение':'Arhitektūras salīdzinājums','Чистая разработка против Zero Block':'Tīra izstrāde pret Zero Block',
       'Разница между визуальной сборкой и профессиональной инженерной версткой на реальных показателях скорости, SEO и адаптивности.':'Vizuālas salikšanas un profesionālas izstrādes atšķirības reālos ātruma, SEO un responsivitātes rādītājos.',
       'Производительность и Web Vitals':'Veiktspēja un Web Vitals',
@@ -1114,22 +1218,38 @@
       if (options.toast !== false) showToast(currentLanguage === 'lv' ? 'Valoda: latviešu' : 'Язык: русский');
     }
 
+    /* ------------------------------------------------------------------
+       Real price list, September 2026.
+
+       Tilda and Wix publish their prices in USD (tilda.cc/pricing,
+       wix.com/plans); the EUR column is those prices converted at
+       1 EUR = 1.15 USD and rounded to whole euro. WebExpress rates come
+       from our own price list: Care 5 EUR/month (60 EUR/year),
+       Care+ 25 EUR/month (300 EUR/year), per site.
+       ------------------------------------------------------------------ */
+    const FX_EUR_USD = 1.15;
+
+    const PRICING = {
+      tilda: {
+        personal: { name: 'Personal', usdMonthly: 10, usdYear: 120, eurYear: 104, sitesPerSub: 1 },
+        business: { name: 'Business', usdMonthly: 20, usdYear: 240, eurYear: 209, sitesPerSub: 5 }
+      },
+      wix: {
+        light: { name: 'Light', usdMonthly: 17, usdYear: 204, eurYear: 177, sitesPerSub: 1 },
+        core:  { name: 'Core',  usdMonthly: 29, usdYear: 348, eurYear: 303, sitesPerSub: 1 }
+      },
+      webexpress: {
+        care:     { name: 'Care',  eurMonth: 5,  eurYear: 60 },
+        carePlus: { name: 'Care+', eurMonth: 25, eurYear: 300 }
+      }
+    };
+
     /* State Management */
     const state = {
       sites: 1,
       inflation: 0.05,
-      pricing: {
-        tilda: {
-          singleSiteAnnual: 120,
-          business5SitesAnnual: 240,
-        },
-        wix: {
-          singleSiteAnnual: 204,
-        },
-        vps: {
-          baseAnnual: 60,
-        }
-      }
+      wePlan: 'care',
+      tier: 'entry'
     };
 
     let chartInstance = null;
@@ -1152,62 +1272,118 @@
       return Math.round(amountEUR).toLocaleString(locale) + ' €';
     }
 
-    /* Handle Sites Count Slider */
+    function perYear(amountEUR) {
+      return `${formatMoney(amountEUR)} / ${currentLanguage === 'lv' ? 'gadā' : 'год'}`;
+    }
+
+    function sitesWord(count) {
+      if (currentLanguage === 'lv') return count === 1 ? 'vietne' : 'vietnes';
+      if (count === 1) return 'сайт';
+      return count < 5 ? 'сайта' : 'сайтов';
+    }
+
+    function subsWord(count) {
+      if (currentLanguage === 'lv') return count === 1 ? 'abonements' : 'abonementi';
+      if (count === 1) return 'подписка';
+      return count < 5 ? 'подписки' : 'подписок';
+    }
+
+    /* ---------------- Tariff selection per vendor ---------------- */
+
+    /* Tilda sells Personal for a single site and Business for up to five,
+       so several sites are cheapest as whole Business subscriptions. */
+    function tildaPlanFor(sites, tier) {
+      const businessSubs = Math.ceil(sites / PRICING.tilda.business.sitesPerSub);
+      const businessCost = businessSubs * PRICING.tilda.business.eurYear;
+      if (tier === 'business') {
+        return { plan: PRICING.tilda.business, subs: businessSubs, yearCost: businessCost };
+      }
+      const personalCost = sites * PRICING.tilda.personal.eurYear;
+      if (personalCost <= businessCost) {
+        return { plan: PRICING.tilda.personal, subs: sites, yearCost: personalCost };
+      }
+      return { plan: PRICING.tilda.business, subs: businessSubs, yearCost: businessCost };
+    }
+
+    /* Wix has no multi-site plan: one subscription per site. */
+    function wixPlanFor(sites, tier) {
+      const plan = tier === 'business' ? PRICING.wix.core : PRICING.wix.light;
+      return { plan, subs: sites, yearCost: sites * plan.eurYear };
+    }
+
+    function webexpressPlanFor(sites, planKey) {
+      const plan = PRICING.webexpress[planKey] || PRICING.webexpress.care;
+      return { plan, subs: sites, yearCost: sites * plan.eurYear };
+    }
+
+    /* ---------------- Control handlers ---------------- */
+
+    function syncSegment(groupId, value) {
+      document.querySelectorAll(`#${groupId} button`).forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.value === String(value)));
+      });
+    }
+
     function handleSitesChange(val) {
-      state.sites = parseInt(val);
-      const suffix = currentLanguage === 'lv'
-        ? (state.sites === 1 ? 'vietne' : 'vietnes')
-        : (state.sites === 1 ? 'сайт' : (state.sites < 5 ? 'сайта' : 'сайтов'));
-      document.getElementById('sites-count-display').innerText = `${state.sites} ${suffix}`;
+      state.sites = parseInt(val, 10);
+      document.getElementById('sites-count-display').innerText = `${state.sites} ${sitesWord(state.sites)}`;
       recalculate();
     }
 
-    /* Cost Engine */
-    function calculateCumulativeSeries() {
-      const years = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    function setWebexpressPlan(planKey) {
+      state.wePlan = planKey === 'carePlus' ? 'carePlus' : 'care';
+      syncSegment('seg-plan', state.wePlan);
+      recalculate();
+    }
+
+    function setVendorTier(tier) {
+      state.tier = tier === 'business' ? 'business' : 'entry';
+      syncSegment('seg-tier', state.tier);
+      recalculate();
+    }
+
+    function setInflation(rate) {
+      state.inflation = Number(rate);
+      syncSegment('seg-inflation', state.inflation);
+      recalculate();
+    }
+
+    /* ---------------- Cost Engine ---------------- */
+
+    /* Cumulative payments over ten years. Builder subscriptions are indexed
+       every renewal; the WebExpress rate is taken as it stands today. */
+    function buildSeries(sites, options) {
+      const inflation = options.inflation;
+      const tilda = tildaPlanFor(sites, options.tier);
+      const wix = wixPlanFor(sites, options.tier);
+      const we = webexpressPlanFor(sites, options.wePlan);
+
+      const years = [];
       const tildaSeries = [];
       const wixSeries = [];
       const vpsSeries = [];
-
       let cumTilda = 0;
       let cumWix = 0;
       let cumVps = 0;
 
       for (let y = 1; y <= 10; y++) {
-        const inflationMult = Math.pow(1 + state.inflation, y - 1);
-
-        // 1. Tilda formula
-        let currentYearTilda = 0;
-        if (state.sites === 1) {
-          currentYearTilda = state.pricing.tilda.singleSiteAnnual * inflationMult;
-        } else if (state.sites <= 5) {
-          currentYearTilda = state.pricing.tilda.business5SitesAnnual * inflationMult;
-        } else {
-          const blocksOf5 = Math.ceil(state.sites / 5);
-          currentYearTilda = (blocksOf5 * state.pricing.tilda.business5SitesAnnual) * inflationMult;
-        }
-        cumTilda += currentYearTilda;
+        const indexation = Math.pow(1 + inflation, y - 1);
+        cumTilda += tilda.yearCost * indexation;
+        cumWix += wix.yearCost * indexation;
+        cumVps += we.yearCost;
+        years.push(y);
         tildaSeries.push(Math.round(cumTilda));
-
-        // 2. Wix formula (per-site linear cost)
-        const currentYearWix = (state.sites * state.pricing.wix.singleSiteAnnual) * inflationMult;
-        cumWix += currentYearWix;
         wixSeries.push(Math.round(cumWix));
-
-        // 3. WebExpress Hosting Care: fixed 60 € per site/year.
-        const currentYearVps = state.sites * state.pricing.vps.baseAnnual;
-        cumVps += currentYearVps;
         vpsSeries.push(Math.round(cumVps));
       }
 
-      return { years, tildaSeries, wixSeries, vpsSeries };
+      return { years, tildaSeries, wixSeries, vpsSeries, tilda, wix, we };
     }
 
     function initOrUpdateChart(seriesData) {
       const canvas = document.getElementById('tcoChart');
       if (!canvas || typeof Chart === 'undefined') return;
       const ctx = canvas.getContext('2d');
-      const currencySymbol = '€';
 
       const dataTilda = seriesData.tildaSeries.map(v => Math.round(v));
       const dataWix = seriesData.wixSeries.map(v => Math.round(v));
@@ -1219,15 +1395,16 @@
       greenGradient.addColorStop(0.5, 'rgba(0, 220, 130, 0.10)');
       greenGradient.addColorStop(1, 'rgba(0, 220, 130, 0.00)');
 
+      const webexpressLabel = `WebExpress ${seriesData.we.plan.name}`;
+
       if (chartInstance) {
         chartInstance.data.labels = seriesData.years.map(year => currentLanguage === 'lv' ? `${year}. gads` : `Год ${year}`);
+        chartInstance.data.datasets[2].label = webexpressLabel;
         chartInstance.data.datasets[0].data = dataTilda;
         chartInstance.data.datasets[1].data = dataWix;
         chartInstance.data.datasets[2].data = dataVps;
         chartInstance.data.datasets[2].backgroundColor = greenGradient;
-        chartInstance.options.scales.y.ticks.callback = function(value) {
-          return value.toLocaleString() + ' ' + currencySymbol;
-        };
+        chartInstance.options.scales.y.ticks.callback = formatMoney;
         chartInstance.update();
         return;
       }
@@ -1266,7 +1443,7 @@
               fill: false
             },
             {
-              label: 'WebExpress Hosting Care',
+              label: webexpressLabel,
               data: dataVps,
               borderColor: '#00dc82', // Acid neon green line
               backgroundColor: greenGradient,
@@ -1309,7 +1486,7 @@
                   let label = context.dataset.label || '';
                   if (label) label += ': ';
                   if (context.parsed.y !== null) {
-                    label += context.parsed.y.toLocaleString() + ' ' + currencySymbol;
+                    label += formatMoney(context.parsed.y);
                   }
                   return label;
                 }
@@ -1339,9 +1516,7 @@
                   family: '"JetBrains Mono", monospace',
                   size: 11
                 },
-                callback: function(value) {
-                  return value.toLocaleString() + ' ' + currencySymbol;
-                }
+                callback: formatMoney
               }
             }
           }
@@ -1349,76 +1524,103 @@
       });
     }
 
-    function recalculate() {
-      const inflationSelect = document.getElementById('inflation-rate');
-      if (inflationSelect) {
-        state.inflation = parseFloat(inflationSelect.value);
-      }
+    function vendorPriceSource(plan) {
+      return currentLanguage === 'lv'
+        ? `${plan.usdMonthly} $ / mēn. ar gada maksājumu`
+        : `${plan.usdMonthly} $ / мес при оплате за год`;
+    }
 
-      const series = calculateCumulativeSeries();
+    function renderDelta(elementId, vendorTotal, weTotal) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+      const diff = vendorTotal - weTotal;
+      const cheaper = diff > 0;
+      element.innerText = (cheaper ? '−' : '+') + formatMoney(Math.abs(diff));
+      element.classList.toggle('text-[#059669]', cheaper);
+      element.classList.toggle('text-zinc-900', !cheaper);
+    }
+
+    function indexationLabel() {
+      if (state.inflation === 0) return currentLanguage === 'lv' ? 'netiek ņemta vērā' : 'не учитывается';
+      const percent = Math.round(state.inflation * 100);
+      return currentLanguage === 'lv' ? `+${percent}% gadā` : `+${percent}% в год`;
+    }
+
+    function recalculate() {
+      const lv = currentLanguage === 'lv';
+      const series = buildSeries(state.sites, {
+        inflation: state.inflation,
+        tier: state.tier,
+        wePlan: state.wePlan
+      });
       initOrUpdateChart(series);
 
       const tildaTotal10 = series.tildaSeries[9];
       const wixTotal10 = series.wixSeries[9];
       const vpsTotal10 = series.vpsSeries[9];
 
-      // Update Card Totals
+      // Which subscriptions the current scenario is actually made of.
+      const basisParts = [
+        `${state.sites} ${sitesWord(state.sites)}`,
+        `Tilda ${series.tilda.plan.name} — ${series.tilda.subs} ${subsWord(series.tilda.subs)}, ${perYear(series.tilda.yearCost)}`,
+        `Wix ${series.wix.plan.name} — ${series.wix.subs} ${subsWord(series.wix.subs)}, ${perYear(series.wix.yearCost)}`,
+        `WebExpress ${series.we.plan.name} — ${perYear(series.we.yearCost)}`
+      ];
+      document.getElementById('calc-basis').innerText = `${basisParts.join(' · ')}. ${lv ? 'Tilda un Wix abonementu indeksācija' : 'Индексация продлений Tilda и Wix'}: ${indexationLabel()}.`;
+
+      // Plan badges
+      document.getElementById('tilda-plan-chip').innerText = series.tilda.plan.name;
+      document.getElementById('wix-plan-chip').innerText = series.wix.plan.name;
+      document.getElementById('we-plan-chip').innerText = series.we.plan.name;
+
+      // Card Totals
       document.getElementById('tilda-total-display').innerText = formatMoney(tildaTotal10);
       document.getElementById('wix-total-display').innerText = formatMoney(wixTotal10);
       document.getElementById('vps-total-display').innerText = formatMoney(vpsTotal10);
 
       // Monthly Averages
-      const monthlyPrefix = currentLanguage === 'lv' ? 'vidēji' : 'в среднем';
-      const monthlySuffix = currentLanguage === 'lv' ? 'mēn.' : 'мес';
+      const monthlyPrefix = lv ? 'vidēji' : 'в среднем';
+      const monthlySuffix = lv ? 'mēn.' : 'мес';
       document.getElementById('tilda-monthly-display').innerText = `${monthlyPrefix} ~${formatMoney(tildaTotal10 / 120)} / ${monthlySuffix}`;
       document.getElementById('wix-monthly-display').innerText = `${monthlyPrefix} ~${formatMoney(wixTotal10 / 120)} / ${monthlySuffix}`;
-      
-      const vpsSavingsVsWix = wixTotal10 - vpsTotal10;
-      document.getElementById('vps-savings-badge').innerText = `${currentLanguage === 'lv' ? 'Ietaupījums' : 'Экономия'}: ${formatMoney(vpsSavingsVsWix)} vs Wix`;
+      document.getElementById('vps-monthly-display').innerText = `${monthlyPrefix} ${formatMoney(vpsTotal10 / 120)} / ${monthlySuffix}`;
 
-      // Update Table Cells
-      document.getElementById('tb-tilda-y1').innerText = formatMoney(series.tildaSeries[0]);
-      document.getElementById('tb-wix-y1').innerText = formatMoney(series.wixSeries[0]);
-      document.getElementById('tb-vps-y1').innerText = formatMoney(series.vpsSeries[0]);
+      // First-year payment and published price list
+      document.getElementById('tilda-rate-display').innerText = perYear(series.tilda.yearCost);
+      document.getElementById('wix-rate-display').innerText = perYear(series.wix.yearCost);
+      document.getElementById('vps-rate-display').innerText = perYear(series.we.yearCost);
+      document.getElementById('tilda-price-source').innerText = vendorPriceSource(series.tilda.plan);
+      document.getElementById('tilda-export-display').innerText = series.tilda.plan === PRICING.tilda.business
+        ? (lv ? 'Iekļauts Business' : 'Включён в Business')
+        : (lv ? 'Tikai Business plānā' : 'Только на Business');
+      document.getElementById('wix-price-source').innerText = vendorPriceSource(series.wix.plan);
 
-      document.getElementById('tb-tilda-y3').innerText = formatMoney(series.tildaSeries[2]);
-      document.getElementById('tb-wix-y3').innerText = formatMoney(series.wixSeries[2]);
-      document.getElementById('tb-vps-y3').innerText = formatMoney(series.vpsSeries[2]);
+      // WebExpress vs each builder over ten years
+      renderDelta('delta-tilda', tildaTotal10, vpsTotal10);
+      renderDelta('delta-wix', wixTotal10, vpsTotal10);
 
-      document.getElementById('tb-tilda-y5').innerText = formatMoney(series.tildaSeries[4]);
-      document.getElementById('tb-wix-y5').innerText = formatMoney(series.wixSeries[4]);
-      document.getElementById('tb-vps-y5').innerText = formatMoney(series.vpsSeries[4]);
+      // Table
+      document.getElementById('tb-tilda-plan').innerText = `${series.tilda.plan.name} × ${series.tilda.subs} · ${perYear(series.tilda.yearCost)}`;
+      document.getElementById('tb-wix-plan').innerText = `${series.wix.plan.name} × ${series.wix.subs} · ${perYear(series.wix.yearCost)}`;
+      document.getElementById('tb-vps-plan').innerText = `${series.we.plan.name} × ${series.we.subs} · ${perYear(series.we.yearCost)}`;
 
-      document.getElementById('tb-tilda-y10').innerText = formatMoney(tildaTotal10);
-      document.getElementById('tb-wix-y10').innerText = formatMoney(wixTotal10);
-      document.getElementById('tb-vps-y10').innerText = formatMoney(vpsTotal10);
+      [[0, 'y1'], [2, 'y3'], [4, 'y5'], [9, 'y10']].forEach(([index, key]) => {
+        document.getElementById(`tb-tilda-${key}`).innerText = formatMoney(series.tildaSeries[index]);
+        document.getElementById(`tb-wix-${key}`).innerText = formatMoney(series.wixSeries[index]);
+        document.getElementById(`tb-vps-${key}`).innerText = formatMoney(series.vpsSeries[index]);
+      });
 
-      const siteYear = currentLanguage === 'lv' ? 'vietne / gadā' : 'сайт / год';
-      const units = currentLanguage === 'lv' ? 'gab.' : 'шт';
+      const siteYear = lv ? 'vietne / gadā' : 'сайт / год';
       document.getElementById('tb-tilda-per-site').innerText = `~${formatMoney(tildaTotal10 / 10 / state.sites)} / ${siteYear}`;
       document.getElementById('tb-wix-per-site').innerText = `~${formatMoney(wixTotal10 / 10 / state.sites)} / ${siteYear}`;
-      document.getElementById('tb-vps-per-site').innerText = `~${formatMoney(vpsTotal10 / 10 / state.sites)} / ${currentLanguage === 'lv' ? 'vietne' : 'сайт'} (${state.sites} ${units})`;
+      document.getElementById('tb-vps-per-site').innerText = `${formatMoney(vpsTotal10 / 10 / state.sites)} / ${siteYear}`;
 
-      // Quick Chips calculation
-      const series1 = calculateCustomScenario(1);
-      const series5 = calculateCustomScenario(5);
-      document.getElementById('chip-saving-1').innerText = `~${formatMoney(series1.wixSeries[9] - series1.vpsSeries[9])}`;
-      document.getElementById('chip-saving-5').innerText = `~${formatMoney(series5.wixSeries[9] - series5.vpsSeries[9])}`;
-    }
-
-    function calculateCustomScenario(sitesCount) {
-      let cumWix = 0;
-      let cumVps = 0;
-      const wixSeries = [];
-      const vpsSeries = [];
-      for (let y = 1; y <= 10; y++) {
-        const inflationMult = Math.pow(1 + state.inflation, y - 1);
-        cumWix += (sitesCount * state.pricing.wix.singleSiteAnnual) * inflationMult;
-        cumVps += sitesCount * state.pricing.vps.baseAnnual;
-        wixSeries.push(cumWix);
-        vpsSeries.push(cumVps);
-      }
-      return { wixSeries, vpsSeries };
+      // Hero chips: saving against Wix on the base Care plan.
+      const chipOptions = { inflation: state.inflation, tier: state.tier, wePlan: 'care' };
+      const chipOne = buildSeries(1, chipOptions);
+      const chipFive = buildSeries(5, chipOptions);
+      document.getElementById('chip-saving-1').innerText = `~${formatMoney(chipOne.wixSeries[9] - chipOne.vpsSeries[9])}`;
+      document.getElementById('chip-saving-5').innerText = `~${formatMoney(chipFive.wixSeries[9] - chipFive.vpsSeries[9])}`;
     }
 
     function setPresetSites(val) {
@@ -1551,6 +1753,9 @@
         initialLanguage = queryLanguage || localStorage.getItem('webexpress-language') || 'lv';
       } catch (error) {}
       updateArchitectureDepth(architectureDepth.value);
+      syncSegment('seg-plan', state.wePlan);
+      syncSegment('seg-tier', state.tier);
+      syncSegment('seg-inflation', state.inflation);
       setCalculatorLanguage(initialLanguage, { toast: false });
     });
   </script>
