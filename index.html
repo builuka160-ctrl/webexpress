@@ -298,45 +298,53 @@
       transform: translateY(-3px);
 }
 
-    /* ---------- Pricing: oversized word backdrop + glass plan cards ---------- */
-    .pricing-stage {
+    /* ---------- Pricing: dark band, oversized word, glass plan cards ---------- */
+    .pricing-band {
       position: relative;
       isolation: isolate;
-      padding-top: 5.5rem;
+      overflow: hidden;
+      padding: clamp(3.25rem, 6vw, 5.5rem) 0 clamp(3.5rem, 6vw, 5.5rem);
+      background:
+        radial-gradient(90% 60% at 50% 0%, rgba(148, 163, 184, 0.13) 0%, rgba(148, 163, 184, 0) 60%),
+        linear-gradient(180deg, #0F172A 0%, #0B1120 52%, #0F172A 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      color: #FFFFFF;
     }
-    .pricing-stage::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 2rem;
-      width: min(68rem, 112%);
-      height: 24rem;
-      transform: translateX(-50%);
-      background: radial-gradient(58% 58% at 50% 42%, rgba(148, 163, 184, 0.20), rgba(148, 163, 184, 0) 72%);
-      filter: blur(4px);
-      z-index: -2;
-      pointer-events: none;
+    .pricing-band > * { position: relative; z-index: 1; }
+
+    .pricing-head .pricing-kicker { color: #94A3B8; }
+    .pricing-head h2 { color: #FFFFFF; }
+    .pricing-head p { color: #94A3B8; }
+
+    .pricing-stage {
+      position: relative;
+      padding-top: clamp(3rem, 6.5vw, 6rem);
     }
     .pricing-word {
       position: absolute;
       left: 50%;
       top: 0;
       transform: translateX(-50%);
-      z-index: -1;
+      z-index: 0;
       display: block;
       font-weight: 900;
-      font-size: clamp(4.5rem, 16vw, 12.5rem);
+      font-size: clamp(4.25rem, 16vw, 13rem);
       line-height: 0.82;
-      letter-spacing: -0.045em;
+      letter-spacing: -0.05em;
       white-space: nowrap;
       user-select: none;
       pointer-events: none;
-      background: linear-gradient(180deg, #94a3b8 0%, #cbd5e1 46%, rgba(226, 232, 240, 0.3) 100%);
+      background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.72) 52%, rgba(255, 255, 255, 0.16) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       -webkit-text-fill-color: transparent;
     }
+    /* The Russian word is longer and wider — keep it in the same proportion. */
+    html:lang(ru) .pricing-word { font-size: clamp(3.4rem, 12.5vw, 10.5rem); }
+
+    .pricing-grid { position: relative; z-index: 1; }
 
     .plan-card {
       position: relative;
@@ -346,38 +354,38 @@
       padding: 2rem;
       border-radius: 1.75rem;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.92) 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(203, 213, 225, 0.8);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 18px 44px -26px rgba(15, 23, 42, 0.38);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.015) 100%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 32px 60px -34px rgba(0, 0, 0, 0.95);
       transition: transform var(--motion-base) var(--motion-spring),
                   box-shadow var(--motion-base) var(--motion-spring),
                   border-color var(--motion-fast) ease;
     }
-    /* Soft bloom behind the price, like light spilling from under the number. */
+    /* The bright bloom behind the price — the signature of the reference layout. */
     .plan-card::before {
       content: '';
       position: absolute;
-      top: -3.5rem;
-      left: 6%;
+      top: -3rem;
+      left: 0%;
       width: 17rem;
-      height: 12rem;
-      background: radial-gradient(50% 50% at 50% 50%, rgba(148, 163, 184, 0.30), rgba(148, 163, 184, 0.10) 46%, rgba(148, 163, 184, 0) 74%);
-      filter: blur(14px);
+      height: 13rem;
+      border-radius: 50%;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.62) 0%, rgba(226, 232, 240, 0.20) 48%, rgba(148, 163, 184, 0) 74%);
+      filter: blur(26px);
       pointer-events: none;
       z-index: 0;
     }
     .plan-card > * { position: relative; z-index: 1; }
 
     .plan-card--featured {
-      border-color: rgba(15, 23, 42, 0.85);
-      border-width: 2px;
-      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 28px 60px -30px rgba(15, 23, 42, 0.5);
+      border-color: rgba(255, 255, 255, 0.24);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.04) 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 40px 70px -34px rgba(0, 0, 0, 1);
     }
     .plan-card--featured::before {
-      background: radial-gradient(50% 50% at 50% 50%, rgba(100, 116, 139, 0.32), rgba(148, 163, 184, 0.12) 46%, rgba(148, 163, 184, 0) 74%);
+      background: radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.8) 0%, rgba(226, 232, 240, 0.26) 48%, rgba(148, 163, 184, 0) 74%);
     }
 
     @media (min-width: 1024px) {
@@ -385,11 +393,11 @@
     }
     @media (hover: hover) and (pointer: fine) {
       .plan-card:hover {
-        border-color: rgba(148, 163, 184, 0.9);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 26px 52px -26px rgba(15, 23, 42, 0.42);
+        border-color: rgba(255, 255, 255, 0.22);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 40px 70px -32px rgba(0, 0, 0, 1);
         transform: translateY(-4px);
       }
-      .plan-card--featured:hover { border-color: rgba(15, 23, 42, 0.95); }
+      .plan-card--featured:hover { border-color: rgba(255, 255, 255, 0.38); }
     }
     @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
       .plan-card--featured:hover { transform: translateY(-1.35rem); }
@@ -397,19 +405,18 @@
 
     .plan-badge {
       display: inline-flex;
-      align-self: flex-start;
       align-items: center;
-      margin-bottom: 1.1rem;
-      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.15rem;
+      padding: 0.32rem 0.85rem;
       border-radius: 999px;
-      background: #0F172A;
-      color: #FFFFFF;
+      background: #FFFFFF;
+      color: #0F172A;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.625rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      box-shadow: 0 6px 16px -8px rgba(15, 23, 42, 0.7);
+      box-shadow: 0 8px 20px -10px rgba(255, 255, 255, 0.6);
     }
 
     .plan-head {
@@ -417,7 +424,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 0.75rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
     .plan-name {
       font-family: 'JetBrains Mono', monospace;
@@ -425,44 +432,44 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #475569;
+      color: #94A3B8;
     }
-    .plan-card--featured .plan-name { color: #0F172A; font-weight: 800; }
+    .plan-card--featured .plan-name { color: #FFFFFF; font-weight: 800; }
     .plan-term {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.7rem;
       font-weight: 600;
-      color: #64748B;
+      color: #8FA0B6;
       white-space: nowrap;
     }
 
     .plan-price {
       display: block;
-      font-size: clamp(2.6rem, 4.2vw, 3.35rem);
+      font-size: clamp(2.7rem, 4.4vw, 3.5rem);
       font-weight: 900;
       line-height: 1;
-      letter-spacing: -0.035em;
-      color: #0F172A;
+      letter-spacing: -0.04em;
+      color: #FFFFFF;
     }
     .plan-note {
       display: block;
-      margin-top: 0.5rem;
+      margin-top: 0.55rem;
       font-size: 0.7rem;
       font-weight: 500;
-      color: #64748B;
+      color: #8FA0B6;
     }
     .plan-target {
       margin-top: 1.15rem;
       font-size: 0.825rem;
       line-height: 1.6;
-      color: #475569;
+      color: #94A3B8;
     }
 
     /* Edge-to-edge rule, same as the reference card. */
     .plan-rule {
       margin: 1.5rem -2rem;
       border: 0;
-      border-top: 1px solid rgba(203, 213, 225, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
     }
 
     .plan-features {
@@ -480,9 +487,9 @@
       font-size: 0.825rem;
       line-height: 1.45;
       font-weight: 500;
-      color: #334155;
+      color: #CBD5E1;
     }
-    .plan-feature--strong { color: #0F172A; font-weight: 700; }
+    .plan-feature--strong { color: #FFFFFF; font-weight: 700; }
     .plan-check {
       display: inline-flex;
       align-items: center;
@@ -491,17 +498,15 @@
       width: 1.4rem;
       height: 1.4rem;
       border-radius: 999px;
-      background: #F1F5F9;
-      border: 1px solid rgba(203, 213, 225, 0.9);
-      color: #0F172A;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
     }
     .plan-check svg { width: 0.7rem; height: 0.7rem; }
     .plan-card--featured .plan-check {
-      background: #0F172A;
-      border-color: #0F172A;
-      color: #FFFFFF;
-      box-shadow: 0 4px 10px -6px rgba(15, 23, 42, 0.8);
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     .plan-cta {
@@ -509,26 +514,25 @@
       width: 100%;
       padding: 0.95rem 1rem;
       border-radius: 0.9rem;
-      border: 1px solid rgba(203, 213, 225, 1);
-      background: #FFFFFF;
-      color: #0F172A;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
       text-align: center;
       font-size: 0.875rem;
       font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
       transition: background-color var(--motion-fast) ease, border-color var(--motion-fast) ease,
                   transform var(--motion-base) var(--motion-spring), box-shadow var(--motion-fast) ease;
     }
     .plan-cta--solid {
-      background: #0F172A;
-      border-color: #0F172A;
-      color: #FFFFFF;
-      box-shadow: 0 10px 24px -14px rgba(15, 23, 42, 0.9);
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 16px 34px -18px rgba(255, 255, 255, 0.75);
     }
     @media (hover: hover) and (pointer: fine) {
-      .plan-cta:hover { background: #F1F5F9; border-color: #94A3B8; transform: translateY(-1px); }
-      .plan-cta--solid:hover { background: #1E293B; border-color: #1E293B; }
+      .plan-cta:hover { background: rgba(255, 255, 255, 0.13); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-1px); }
+      .plan-cta--solid:hover { background: #E2E8F0; border-color: #E2E8F0; }
     }
     .plan-cta:active { transform: translateY(0); }
 
@@ -813,7 +817,6 @@
       main > section:first-child .gap-x-6 { display: grid; grid-template-columns: 1fr; gap: 0.55rem; text-align: left; }
 
       #benefits > .mb-14,
-      #pricing > .mb-14,
       #portfolio > .mb-14,
       #faq > .mb-14 { margin-bottom: 2rem; }
       .benefits-grid {
@@ -871,9 +874,10 @@
       #pricing .plan-price { font-size: 2.35rem; }
       #pricing .plan-target { margin-top: 0.9rem; font-size: 0.78rem; }
       #pricing .plan-cta { padding: 0.85rem 0.9rem; }
-      .pricing-stage { padding-top: 3.25rem; }
-      .pricing-stage::before { height: 16rem; }
+      .pricing-band { padding: 2.75rem 0 3rem; }
+      .pricing-stage { padding-top: 2.75rem; }
       .pricing-word { font-size: clamp(3.4rem, 20vw, 5.5rem); }
+      html:lang(ru) .pricing-word { font-size: clamp(2.9rem, 17vw, 4.75rem); }
       #portfolio .grid { gap: 1rem; }
       #portfolio .card-silver > div:last-child { padding: 1.25rem; }
       #faq details { padding: 1.15rem; }
@@ -1486,18 +1490,20 @@
       </div>
     </section>
 
-    <section id="pricing" class="max-w-7xl mx-auto px-4 sm:px-8 py-20">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs font-mono tracking-widest text-silver-600 uppercase font-bold" data-i18n="pricing_tag">Godīgas cenas</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-silver-900 mt-2 mb-3" data-i18n="pricing_title">Fiksētas izmaksas. Bez slēptām piemaksām.</h2>
-        <p class="text-sm sm:text-base text-silver-600" data-i18n="pricing_subtitle">Nekādu «cena pēc pieprasījuma». Jūs uzreiz zināt budžetu.</p>
+    <section id="pricing" class="py-20">
+      <!-- Dark band: oversized word backdrop, glass cards, edge-to-edge rule -->
+      <div class="pricing-band">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="pricing-head text-center max-w-2xl mx-auto">
+        <span class="pricing-kicker text-xs font-mono tracking-widest uppercase font-bold" data-i18n="pricing_tag">Godīgas cenas</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mt-2 mb-3" data-i18n="pricing_title">Fiksētas izmaksas. Bez slēptām piemaksām.</h2>
+        <p class="text-sm sm:text-base" data-i18n="pricing_subtitle">Nekādu «cena pēc pieprasījuma». Jūs uzreiz zināt budžetu.</p>
       </div>
 
-      <!-- Pricing Cards: oversized word backdrop, glass cards, edge-to-edge rule -->
       <div class="pricing-stage">
         <span class="pricing-word" aria-hidden="true" data-i18n="pricing_word">Cenas</span>
 
-        <div class="pricing-grid grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12 items-stretch">
+        <div class="pricing-grid grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           <!-- Tier 1: Start 250 € -->
           <div class="plan-card">
             <div>
@@ -1633,8 +1639,11 @@
           </div>
         </div>
       </div>
+        </div>
+      </div>
 
       <!-- Maintenance Service Block -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 mt-12 sm:mt-16">
       <div class="card-silver rounded-3xl p-8 bg-slate-50/80 border-silver-300">
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div class="max-w-2xl">
@@ -1678,6 +1687,7 @@
             </a>
           </div>
         </div>
+      </div>
       </div>
     </section>
 
