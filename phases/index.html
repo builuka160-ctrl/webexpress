@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHASES — зарядки для электромобилей в Эстонии, Латвии и Литве</title>
+  <meta name="description" content="Установка и продажа зарядных станций для электромобилей: комплект с установкой, B2B-проекты, партнёры-электрики. EE / LV / LT.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header id="top">
+    <a href="#top" class="logo">PHASES</a>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#calculator">Смета</a>
+      <a href="#cases">Проекты</a>
+      <a href="#partners">Партнёрам</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <!-- TODO: языки ET / LV / LT / EN / RU / PL. Первый выпуск: RU, EN, LV -->
+    <div class="lang">
+      <a href="#" data-lang="ru">RU</a>
+      <a href="#" data-lang="en">EN</a>
+      <a href="#" data-lang="lv">LV</a>
+      <a href="#" data-lang="lt">LT</a>
+      <a href="#" data-lang="et">ET</a>
+      <a href="#" data-lang="pl">PL</a>
+    </div>
+    <a href="#estimate" class="btn">Получить смету</a>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero">
+      <h1>Зарядка для электромобиля: оборудование и установка под ключ</h1>
+      <p>Эстония · Латвия · Литва. Бесплатное обследование и смета. Комплект с установкой.</p>
+      <a href="#estimate" class="btn">Получить смету</a>
+      <a href="#catalog" class="btn btn-secondary">Смотреть каталог</a>
+      <!-- TODO: hero-изображение / видео -->
+    </section>
+
+    <!-- ============ ПОЧЕМУ МЫ / ДОВЕРИЕ ============ -->
+    <section id="trust">
+      <h2>Почему PHASES</h2>
+      <ul>
+        <li>Бесплатное обследование и смета</li>
+        <li>Оплата после утверждения сметы</li>
+        <li>Работаем в EE, LV, LT</li>
+        <li>Клиенты: премиум-авто, автоцентры, бизнес</li>
+        <!-- TODO: только подтверждённые Мартином обещания, сроки и гарантия -->
+      </ul>
+      <div class="logos">
+        <!-- TODO: логотипы брендов только с письменного разрешения:
+             BMW, Tesla, Hyundai, Easee, Wallbox, Vool, ABB, Kempower -->
+      </div>
+    </section>
+
+    <!-- ============ УСЛУГИ ============ -->
+    <section id="services">
+      <h2>Услуги</h2>
+      <div class="grid">
+        <article>
+          <h3>Комплект с установкой (PHASES Kit)</h3>
+          <p>Зарядная станция + монтаж + подключение. Главный продукт.</p>
+          <a href="#estimate">Рассчитать</a>
+          <!-- TODO: Kit Basic / Kit Pro — состав и отличия (уточнить у Мартина) -->
+        </article>
+        <article>
+          <h3>Зарядка для дома</h3>
+          <p>Частные дома и квартиры. Осмотр, смета, установка.</p>
+          <a href="#estimate">Заказать</a>
+        </article>
+        <article>
+          <h3>Паркинги и B2B-проекты</h3>
+          <p>Многоквартирные дома, офисы, автоцентры. Управление нагрузкой (DLM).</p>
+          <a href="#contact">Обсудить проект</a>
+        </article>
+        <article>
+          <h3>Только оборудование</h3>
+          <p>Продажа зарядных станций без монтажа.</p>
+          <a href="#catalog">В каталог</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ КАТАЛОГ ============ -->
+    <section id="catalog">
+      <h2>Каталог</h2>
+      <!-- TODO: данные из ChargeShop (10–20 SKU). Режим: реферал / продажа на сайте — решить -->
+      <div class="filters">
+        <button data-filter="all">Все</button>
+        <button data-filter="station">Станции</button>
+        <button data-filter="dlm">DLM</button>
+        <button data-filter="cable">Кабели</button>
+        <button data-filter="holder">Держатели</button>
+        <button data-filter="kit">Комплекты</button>
+      </div>
+      <div class="grid" id="catalog-grid">
+        <!-- Заполняется из script.js (массив PRODUCTS) -->
+      </div>
+    </section>
+
+    <!-- ============ КАЛЬКУЛЯТОР ============ -->
+    <section id="calculator">
+      <h2>Предварительная смета</h2>
+      <p>Ориентировочная стоимость до осмотра. Точная смета — после обследования.</p>
+      <form id="calc-form">
+        <label>Страна
+          <select name="country">
+            <option value="ee">Эстония</option>
+            <option value="lv">Латвия</option>
+            <option value="lt">Литва</option>
+          </select>
+        </label>
+        <label>Тип объекта
+          <select name="object">
+            <option value="house">Частный дом</option>
+            <option value="parking">Паркинг / многоквартирный дом</option>
+            <option value="business">Бизнес</option>
+          </select>
+        </label>
+        <label>Станция
+          <select name="station"></select>
+        </label>
+        <label>Длина кабеля до щита, м
+          <input type="number" name="cable" min="1" max="100" value="10">
+        </label>
+        <label>Сложность трассы
+          <select name="route">
+            <option value="easy">Простая (стена, короткая трасса)</option>
+            <option value="medium">Средняя</option>
+            <option value="hard">Сложная (сверление, земля, перекрытия)</option>
+          </select>
+        </label>
+        <label><input type="checkbox" name="dlm"> Управление нагрузкой (DLM)</label>
+        <button type="submit" class="btn">Рассчитать</button>
+      </form>
+      <div id="calc-result" hidden>
+        <p>Ориентировочно: <strong id="calc-total"></strong></p>
+        <p><small>Предварительный расчёт, не является офертой.</small></p>
+        <a href="#estimate" class="btn">Отправить заявку на точную смету</a>
+      </div>
+      <!-- TODO: цены — «нулевая смета» от Мартина. Сейчас в script.js стоят заглушки -->
+    </section>
+
+    <!-- ============ ЗАЯВКА ============ -->
+    <section id="estimate">
+      <h2>Заявка на смету</h2>
+      <form id="lead-form" action="#" method="post" enctype="multipart/form-data">
+        <label>Имя <input type="text" name="name" required></label>
+        <label>Телефон / WhatsApp <input type="tel" name="phone" required></label>
+        <label>Email <input type="email" name="email"></label>
+        <label>Страна
+          <select name="country">
+            <option value="ee">Эстония</option>
+            <option value="lv">Латвия</option>
+            <option value="lt">Литва</option>
+          </select>
+        </label>
+        <label>Адрес объекта <input type="text" name="address"></label>
+        <label>Клиент
+          <select name="client">
+            <option value="b2c">Частное лицо</option>
+            <option value="b2b">Компания</option>
+          </select>
+        </label>
+        <label>Марка автомобиля <input type="text" name="car"></label>
+        <label>Фото электрического щита <input type="file" name="photo_panel" accept="image/*"></label>
+        <label>Фото места установки <input type="file" name="photo_spot" accept="image/*"></label>
+        <label>Фото трассы кабеля <input type="file" name="photo_route" accept="image/*" multiple></label>
+        <label>Комментарий <textarea name="message" rows="4"></textarea></label>
+        <label><input type="checkbox" name="consent" required> Согласен на обработку данных (политика конфиденциальности)</label>
+        <button type="submit" class="btn">Отправить</button>
+        <p id="lead-status" role="status"></p>
+      </form>
+      <!-- TODO: отправка на бэкенд / почту; WhatsApp — запасной канал. Файлы через wa.me не передать -->
+    </section>
+
+    <!-- ============ ПРОЕКТЫ ============ -->
+    <section id="cases">
+      <h2>Проекты</h2>
+      <div class="grid">
+        <article><h3>ESSVE</h3><p>TODO: описание, фото</p></article>
+        <article><h3>Talsi</h3><p>TODO: описание, фото</p></article>
+        <article><h3>Slokas 61B</h3><p>TODO: описание, фото</p></article>
+        <article><h3>BMW Destination</h3><p>TODO: описание, фото</p></article>
+      </div>
+      <h3>Отзывы</h3>
+      <!-- TODO: реальные отзывы от Мартина -->
+    </section>
+
+    <!-- ============ ПАРТНЁРАМ ============ -->
+    <section id="partners">
+      <h2>Партнёрам-электрикам</h2>
+      <p>Получайте заказы на монтаж от PHASES. Заказ назначает диспетчер PHASES.</p>
+      <ul>
+        <li>Договорные цены для электриков</li>
+        <li>Личный кабинет партнёра</li>
+        <li>Карта партнёров</li>
+      </ul>
+      <a href="#partner-form" class="btn">Стать партнёром</a>
+      <form id="partner-form" action="#" method="post">
+        <label>Имя / компания <input type="text" name="name" required></label>
+        <label>Город <input type="text" name="city" required></label>
+        <label>Телефон <input type="tel" name="phone" required></label>
+        <label>Опыт / сертификаты <textarea name="experience" rows="3"></textarea></label>
+        <button type="submit" class="btn">Отправить</button>
+      </form>
+      <!-- TODO: кабинет и карта партнёров — второй этап (CRM) -->
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq">
+      <h2>Вопросы и ответы</h2>
+      <details><summary>Что входит в стандартную установку?</summary><p>TODO: Мартин — точный состав (что включено / оплачивается отдельно).</p></details>
+      <details><summary>Сколько стоит установка?</summary><p>TODO: диапазон / зависит от объекта. Бесплатная смета.</p></details>
+      <details><summary>Как быстро вы приедете?</summary><p>TODO: реальные сроки.</p></details>
+      <details><summary>Какая гарантия?</summary><p>TODO: условия гарантии.</p></details>
+      <details><summary>В каких странах работаете?</summary><p>Эстония, Латвия, Литва.</p></details>
+    </section>
+
+    <!-- ============ КОНТАКТЫ ============ -->
+    <section id="contact">
+      <h2>Контакты</h2>
+      <p>Martins Milašs</p>
+      <p>Тел.: <a href="tel:+37127744375">27744375</a></p>
+      <p>Email: <a href="mailto:martins@placenphase.lv">martins@placenphase.lv</a></p>
+      <p><a href="https://wa.me/37127744375" id="wa-link">Написать в WhatsApp</a></p>
+      <p>Языки: LV, LT, RU, EN</p>
+      <!-- TODO: юр. данные (название, рег. номер, адрес), номер телефона с кодом страны — проверить -->
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <p>© PHASES</p>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#cases">Проекты</a>
+      <a href="#partners">Партнёрам</a>
+      <a href="#contact">Контакты</a>
+      <a href="#">Политика конфиденциальности</a>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
